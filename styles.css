@@ -1,0 +1,1495 @@
+
+:root {
+  --primary-color: #00c8ff;
+  --text-color: #fff;
+  --background-dark: #000000;
+  --background-light: #1a1a1a;
+}
+
+html {
+    scroll-behavior: smooth;
+	overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Add this for better performance */
+	.video-container video {
+	will-change: transform;
+}
+
+/* Add this for better mobile performance */
+@media (max-width: 768px) {
+  .hero-text h2 {
+    font-size: 4rem;
+  }
+  
+  .what-i-do-item h3 {
+    font-size: 4rem;
+  }
+}
+
+/* General Styles */
+body {
+    padding-top: 80px; /* Adjust according to the height of your fixed navbar */
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+	z-index: 0;
+    position: relative; /* Ensure stacking context */
+}
+
+/* Logo in the top left corner */
+.logo {
+    position: fixed;
+    top: 40px;
+    left: 40px;
+    z-index: 1000;
+    animation: fadeInLogo 1s ease-out forwards;
+}
+
+.logo a {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none; /* Remove underline */
+    cursor: pointer;
+}
+
+.logo img {
+    width: 30px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover img {
+    transform: scale(1.1);
+}
+
+/* Navigation Bar */
+.navbar {
+    position: fixed;
+    top: 40px;
+    right: 40px;
+    font-size: 1rem;
+    z-index: 1000;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.navbar-links {
+    list-style: none;
+	flex-direction: column;
+    display: flex;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-links li {
+    font-weight: 600;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+    transition: color 0.3s ease;
+}
+
+.navbar-links li a {
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    display: inline-block;
+    padding: 5px;
+	transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.navbar-links li a:hover {
+    transform: scale(1.05);
+    color: #00c8ff;
+}
+
+@media (max-width: 768px) {
+    .navbar-links {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .navbar {
+        top: 10px;
+        right: 10px;
+    }
+}
+
+/* Video Container for Hero Section */
+.video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Ensures no scroll bars from the video */
+    z-index: -1; /* Places the video behind the content */
+}
+
+.background-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Makes the video cover the entire container */
+    position: absolute;
+}
+
+/* Hero Section Adjustments */
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full screen height */
+    text-align: center;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    z-index: 1; /* Stacks hero content above the video */
+    color: #fff;
+    padding-top: 0; /* Removes unnecessary padding */
+    box-sizing: border-box; /* Ensures padding doesn't affect overall size */
+}
+
+/* Hero Content Container */
+.hero-content {
+    max-width: 800px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers content vertically */
+    align-items: center; /* Centers content horizontally */
+    height: 100%; /* Use full height of parent for centering */
+    text-align: center; /* Align text properly */
+}
+
+/* Hero Heading */
+.hero-heading {
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #fff;
+    animation: fadeInUp 1s ease-out;
+}
+
+/* Hero Text Styles */
+.hero-text {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    align-self: center; /* Ensures the hero text is centered */
+}
+
+/* Individual hero text elements */
+.hero-text-transforming,
+.hero-text-ideas,
+.hero-text-reality {
+    font-size: 6rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 0;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out forwards;
+    transition: transform 0.3s ease, color 0.3s ease;
+    white-space: nowrap;
+    line-height: 1; /* Adjust line height for space between lines */
+}
+
+/* Specific text color and animation delays */
+.hero-text-ideas {
+    color: #00c8ff;
+    animation-delay: 1s;
+}
+
+.hero-text-transforming {
+    animation-delay: 0.5s;
+}
+
+.hero-text-reality {
+    animation-delay: 1.5s;
+}
+
+/* Hover Effect on Hero Text */
+.hero-text h2:hover {
+    transform: scale(1.1);
+    color: #00c8ff;
+    transition: all 0.3s ease-in-out;
+}
+
+.linkedin-icon {
+    position: fixed;
+    bottom: 40px;
+    left: 40px;
+    font-size: 2rem;
+    color: #fff;
+    transition: color 0.3s ease;
+    z-index: 2147483647 !important; /* Maximum and forceful override */
+    pointer-events: auto; /* Ensure interactivity */
+}
+
+.linkedin-icon:hover {
+    color: #00c8ff;
+}
+
+/* FadeIn Animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* FadeInUp Animation */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Gradient Background Animation */
+@keyframes gradientBackground {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* About Section */
+.about-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px; /* Adjust padding for a better fit */
+    background: #0f0f0f;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.about-container {
+    max-width: 1200px; /* Adjust width for a smaller container */
+    text-align: left;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+}
+
+/* About Title */
+.about-title {
+    font-size: 1rem; /* Slightly smaller title */
+    font-weight: 400;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    color: #fff;
+    text-transform: uppercase;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    text-align: center; /* Center text */
+    width: 100%; /* Ensure it spans the full container */
+    position: relative;
+}
+
+/* About Description */
+.about-description {
+    font-size: 4vw; /* Adjusted text size */
+	    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.2; /* Line height for readability */
+    margin: 0;
+    width: 100%;
+    color: rgba(182, 182, 182, 0.2);
+    background: linear-gradient(to right, #fff, #fff) no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-size: 0%;
+    transition: background-size cubic-bezier(0.1, 0.5, 0.5, 1) 0.5s;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    position: relative;
+}
+
+/* Highlight Text */
+.about-description .highlight {
+    position: absolute;
+    top: 0; /* Adjust position above the main text */
+    left: 250px; /* Initial horizontal position */
+    font-size: 4vw; /* Dynamic font size for large screens */
+    color: #00c8ff; /* Light blue highlight color */
+    opacity: 0; /* Initially hidden */
+    visibility: hidden; /* Fully hidden from view */
+    transform: translateY(-10px); /* Initial offset for smooth transition */
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease; /* Smooth animation */
+}
+
+/* Hover Effect */
+.about-description:hover .highlight {
+    opacity: 1; /* Make visible */
+    visibility: visible; /* Fully show the highlight */
+    transform: translateY(0); /* Reset offset for smooth transition */
+}
+
+/* Media Queries for Responsiveness */
+@media screen and (max-width: 1200px) {
+    .about-description .highlight {
+        left: 200px; /* Adjust horizontal position for medium screens */
+        font-size: 4vw; /* Slightly larger font size */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .about-description .highlight {
+        left: 150px; /* Further adjust for smaller screens */
+		top: -10px; /* Adjust vertical positioning */
+        font-size: 3vw; /* Increase font size for better readability */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .about-description .highlight {
+        left: 85px; /* Align closer for very small screens */
+        top: 0px; /* Adjust vertical positioning */
+        font-size: 3vw; /* Ensure readability */
+    }
+}
+
+/* What I Do Section */
+.what-i-do-section {
+    background-color: #0f0f0f;
+    padding: 80px 20px;
+    text-align: center;
+    color: #fff;
+}
+
+.what-i-do-title {
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    color: #fff;
+    text-transform: uppercase;
+	text-align: center;
+}
+
+.what-i-do-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    align-items: stretch;
+}
+
+/* Hover Effect */
+.what-i-do-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    width: 100%;
+    height: 120px;
+    position: relative;
+    overflow: hidden;
+    background-color: transparent;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.what-i-do-item::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: #00c8ff;
+    transition: height 0.4s ease, top 0.4s ease;
+    z-index: -1;
+}
+
+/* Hover effect */
+.what-i-do-item:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0px 10px 15px rgba(0, 200, 255, 0.3);
+}
+
+/* Hover animation for expanding light blue color */
+.what-i-do-item:hover::before {
+    height: 100%;
+    top: 0;
+}
+
+.what-i-do-item h3 {
+    font-size: 6rem;
+    font-weight: 600;
+    margin: 0;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    transition: color 0.3s ease, font-size 0.3s ease, transform 0.3s ease;
+    flex-basis: 40%;
+    line-height: 1;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.what-i-do-item:hover h3 {
+    font-size: 7rem;
+    color: #000;
+    transform: translateX(20px) rotate(-5deg);
+}
+
+.what-i-do-item p {
+    font-size: 1.2rem;
+    color: #ccc;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s 0.3s;
+    flex-basis: 40%;
+    line-height: 1.5;
+}
+
+.what-i-do-item:hover p {
+    opacity: 1;
+    visibility: visible;
+    color: #000;
+    transform: translateX(10px);
+}
+
+/* Experience Section */
+.experience-section {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center;
+    justify-content: flex-start; /* Position content at the top */
+    padding-top: 100px;
+    padding-bottom: 50px;
+    background: #0f0f0f;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    background-image: url('https://cdn.midjourney.com/6c59c6ac-46b7-4a2b-80ce-fad81c3a2e8f/0_0.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Parallax effect */
+    background-repeat: no-repeat;
+    will-change: background-position; /* Optimizes performance */
+}
+
+/* Experience Container */
+.experience-container {
+    z-index: 1;
+    max-width: 900px;
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+/* Experience Title */
+.experience-title {
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    color: #fff;
+    text-transform: uppercase;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+/* Experience Description */
+.experience-description {
+    font-size: 3rem;
+    line-height: 1.4;
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-top: 0;
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding: 0 20px;
+    position: relative;
+    transition: opacity 0.3s ease;
+}
+
+/* Hover effect for experience description */
+.experience-description:hover {
+    opacity: 1;
+}
+
+/* Hovered content (hidden by default) */
+.experience-description::after {
+    content: "2 years in professional design, I specialize in UI/UX, branding, and design technology.";
+    display: block;
+    font-size: 1.5rem;
+    margin-top: 20px;
+    color: #00c8ff;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Show additional text on hover */
+.experience-description:hover::after {
+    opacity: 1;
+}
+
+/* Title "HISTORY" positioned at the bottom */
+.experience-history {
+    font-size: 1rem;
+    font-weight: 400;
+    margin-top: 0;
+    margin-bottom: 0;
+    letter-spacing: 2px;
+    color: #fff;
+    text-transform: uppercase;
+    opacity: 1;
+    text-align: center;
+    transition: opacity 0.3s ease;
+}
+
+/* Hover effect for history title */
+.experience-section:hover .experience-history {
+    opacity: 0.8;
+}
+
+
+/* Section Styles */
+.history {
+  position: relative;
+  background-color: #0f0f0f;
+  background-size: cover;
+  background-position: center;
+  padding: 5px 0; /* Уменьшенные отступы сверху и снизу */
+  width: 100%;
+  text-align: center;
+  padding-top: 10px; /* Уменьшение отступа сверху */
+  padding-bottom: 20px; /* Уменьшение отступа снизу */
+  margin-top: 0;
+  display: flex;
+  justify-content: center; /* Центрируем содержимое по горизонтали */
+  align-items: flex-start; /* Выравнивание содержимого по верхнему краю */
+  transition: background-color 0.3s ease;
+}
+
+/* History Container */
+.history-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 50%;
+  position: relative;
+  padding-top: 10px; /* Немного уменьшаем отступ сверху контейнера */
+  padding-bottom: 30px; /* Уменьшаем отступ снизу */
+}
+
+/* History Item Styles */
+.history-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 80%;
+  position: relative;
+  padding-bottom: 30px; /* Уменьшаем отступ снизу */
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.history-item:hover {
+  transform: translateX(10px);
+  opacity: 1;
+}
+
+/* History Item Line Styles */
+.history-item::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%; /* Set width to full viewport width */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Reduced opacity to make the line more subtle */
+  transition: border-color 0.3s ease;
+}
+
+.history-item:hover::after {
+  border-color: rgba(0, 200, 255, 0.3); /* Slightly more subtle color for hover state */
+}
+
+/* Year Styles */
+.year {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #fff;
+  margin-right: 20px;
+  transition: color 0.3s ease;
+}
+
+.history-item:hover .year {
+  color: #00c8ff;
+}
+
+/* Text Styles */
+.text {
+  text-align: center;
+  color: #fff;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.history-item:hover .text {
+  opacity: 1;
+}
+
+h2 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1rem;
+}
+
+.history-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.history-item .text {
+  text-align: center;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.portfolio-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 0;
+    background-color: #0f0f0f;
+    color: var(--text-color);
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.3s ease;
+}
+
+.planet-background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 800px;
+    height: 800px;
+    background-image: url('blackplanet.png');
+    background-size: cover;
+    background-position: center;
+    transform: translate(-50%, -50%);
+    will-change: transform;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.2;
+}
+
+.portfolio-container {
+    z-index: 1;
+    max-width: 900px;
+    text-align: center;
+    width: 100%;
+}
+
+.portfolio-title {
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    color: var(--text-color);
+    text-transform: uppercase;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.portfolio-title:hover {
+    opacity: 1;
+}
+
+.portfolio-description {
+    font-size: 3rem;
+    line-height: 1.4;
+    color: #ccc;
+    font-weight: 600;
+    text-transform: uppercase;
+    opacity: 0.8;
+    transition: color 0.3s ease, opacity 0.3s ease;
+    margin-top: 0;
+    width: 100%;
+	margin-bottom: 150px;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.portfolio-description:hover {
+    color: var(--text-color);
+    opacity: 1;
+}
+
+.portfolio-grid {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    gap: 30px; /* Provides space between items */
+    margin-top: 40px;
+    width: 100%;
+}
+
+.portfolio-item {
+    width: 100vw; /* Full viewport width, accounting for centering */
+    margin-left: calc(-50vw + 50%); /* Correct centering */
+    padding: 0; /* Remove padding that may cause margins */
+    background-color: transparent;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    box-sizing: border-box;
+	display: block;
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Keep the same text color */
+    cursor: pointer;
+}
+
+.portfolio-item::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: rgba(0, 200, 255, 0.2); /* Light blue with transparency */
+    transform: translateY(-50%);
+    transition: height 0.3s ease, top 0.3s ease;
+    z-index: 0;
+}
+
+.portfolio-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.portfolio-item:hover {
+    transform: scale(1.05); /* Minor scaling */
+    z-index: 10; /* Brings the hovered item to the front */
+    background-color: #00c8ff; /* Light blue color */
+	opacity: 0.8;
+}
+
+.portfolio-info {
+    z-index: 1;
+    width: calc(100% - 80px); /* Ensure content width matches padding */
+    max-width: 1100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    padding: 20px 40px; /* Adjust padding inside the content area */
+    margin: 0 auto; /* Center the content */
+}
+
+.portfolio-info h3 {
+    font-size: 4rem; /* Initial font size for static view */
+    font-weight: 600;
+    color: #fff; /* White when not hovered */
+    text-transform: uppercase;
+    margin: 0;
+    transition: color 0.3s ease, font-size 0.3s ease; /* Smooth transition */
+}
+
+.portfolio-item:hover .portfolio-info h3 {
+    color: #000; /* Change to black on hover */
+    font-size: 6rem; /* Increase size on hover */
+}
+
+.portfolio-info p {
+    font-size: 1.2rem;
+    color: #ccc; /* Initial color */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0s 0.3s, color 0.3s ease; /* Smooth transition */
+    margin: 0;
+}
+
+.portfolio-item:hover .portfolio-info p {
+    color: #000; /* Change to black on hover */
+    opacity: 1; 
+    visibility: visible;
+    font-size: 1.2rem; /* Maintain consistent size */
+}
+
+@keyframes colorFade {
+    0% {
+        color: #ccc;
+    }
+    100% {
+        color: #00c8ff; /* Light blue */
+    }
+}
+
+.big-companies {
+    color: #ccc; /* Initial color */
+    animation: none; /* Start without animation */
+}
+
+.highlight-color {
+    animation: colorFade 1s forwards; /* 1s duration */
+}
+
+.video-section {
+    height: 100vh; /* Tall section for scrolling effect */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0f0f0f; /* Your chosen background color */
+    overflow: hidden;
+    position: relative;
+	z-index: 1; /* Lower than the LinkedIn icon */
+}
+
+#scroll-video {
+    width: 50vw; /* Default size */
+    height: auto;
+    transition: width 0.5s ease-out;
+    cursor: pointer; /* Indicate interactivity */
+    position: relative;
+    z-index: 2;
+}
+
+/* Motto Section */
+.motto-section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    padding: 0 20px;
+}
+
+.motto-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(0, 200, 255, 0.2), transparent);
+    animation: backgroundPulse 4s infinite alternate ease-in-out;
+    z-index: 0;
+}
+
+@keyframes backgroundPulse {
+    from {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    to {
+        transform: scale(1.2);
+        opacity: 0.8;
+    }
+}
+
+.motto-content {
+    position: relative;
+    text-align: center;
+    display: inline-block;
+    z-index: 1;
+}
+
+.motto-text {
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    line-height: 1.5;
+    position: relative;
+}
+
+.motto-text span {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    color: #fff;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    animation: fadeInWord 0.5s ease forwards;
+    animation-delay: var(--delay, 0s);
+}
+
+.motto-text span:hover {
+    transform: scale(1.8) rotate(5deg);
+    text-shadow: 0 0 15px rgba(0, 200, 255, 0.8);
+    transition: transform 0.2s ease, text-shadow 0.2s ease;
+}
+
+.motto-text span:not(:hover) {
+    opacity: 0.7;
+}
+
+@keyframes fadeInWord {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+    .motto-section {
+        height: auto; /* Allow content height to adapt on smaller screens */
+        padding: 20px;
+    }
+
+    .motto-text {
+        font-size: 2rem; /* Reduce font size for smaller screens */
+        line-height: 1.3;
+        letter-spacing: 2px;
+    }
+
+    .motto-text span {
+        font-size: 1.8rem; /* Adjust span size */
+    }
+
+    .motto-text span:hover {
+        transform: scale(1.4) rotate(3deg); /* Adjust hover effect for smaller screens */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .motto-section {
+        padding: 15px;
+    }
+
+    .motto-text {
+        font-size: 1.rem; /* Further reduce font size for extra small screens */
+        line-height: 1.2;
+        letter-spacing: 1px;
+    }
+
+    .motto-text span:hover {
+        transform: scale(1.3) rotate(2deg); /* Less dramatic hover effect */
+    }
+}
+
+#custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80px;
+    height: 80px;
+    background-color: rgba(0, 200, 255, 0.7);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+    opacity: 0;
+}
+
+#custom-cursor span {
+    pointer-events: none;
+}
+
+.video-section video:hover ~ #custom-cursor {
+    transform: scale(1);
+    opacity: 1;
+    background-color: rgba(0, 200, 255, 1);
+}
+
+.video-section video:hover {
+    cursor: none; /* Hide the default cursor */
+}
+
+/* Custom Cursor */
+#custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80px;
+    height: 80px;
+    background-color: rgba(0, 200, 255, 0.7);
+    border-radius: 50%;
+    pointer-events: none;
+    display: flex; /* Centers the text */
+    justify-content: center; /* Horizontal centering */
+    align-items: center; /* Vertical centering */
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: scale(0); /* Start hidden */
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    z-index: 9999;
+}
+
+#custom-cursor span {
+    pointer-events: none; /* Prevent pointer events on text */
+    text-align: center;
+}
+
+/* Hide the real cursor when over the video */
+#scroll-video {
+    cursor: none; /* Hide the default cursor */
+}
+
+/* Connect Section */
+.connect-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh; /* Balanced height */
+    background: linear-gradient(135deg, #121212, #0f0f0f); /* Subtle gradient */
+    color: #fff;
+    text-align: center;
+    padding: 60px 20px;
+    position: relative;
+    overflow: hidden; /* Prevent overflow issues */
+	opacity: 1;
+    transform: none;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* Visible state */
+.connect-section.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Section Title */
+.section-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #00c8ff;
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+    animation: fadeIn 0.8s ease-in-out; /* Smooth fade-in */
+}
+
+/* Content Layout */
+.connect-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1000px;
+    width: 100%;
+    gap: 50px;
+    flex-wrap: wrap; /* Ensures responsiveness */
+}
+
+/* Social Links */
+.social-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.social-links ul li {
+    margin-bottom: 15px;
+}
+
+.social-links ul li a {
+    font-size: 1.4rem;
+    color: #d3cfcf;
+    text-transform: uppercase;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.social-links ul li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0;
+    height: 2px;
+    background: #00c8ff;
+    transition: width 0.3s ease;
+}
+
+.social-links ul li a:hover {
+    color: #00c8ff;
+    transform: translateX(5px); /* Subtle movement on hover */
+}
+
+.social-links ul li a:hover::after {
+    width: 100%; /* Full underline effect */
+}
+
+/* Email Styling */
+.contact-info {
+    text-align: left;
+}
+
+.contact-info p {
+    font-size: 1rem;
+    color: #fff;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.contact-info a {
+    font-size: 1.2rem;
+    color: #d3cfcf;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease, text-shadow 0.2s ease;
+}
+
+.contact-info a:hover {
+    color: #00c8ff;
+    text-shadow: 0 0 10px #00c8ff;
+}
+
+/* Decorative Accent */
+.connect-section::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -20%;
+    width: 500px;
+    height: 500px;
+    background: rgba(0, 200, 255, 0.1);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    pointer-events: none; /* Prevent interaction */
+    animation: pulse 6s infinite alternate ease-in-out;
+}
+
+.connect-section::after {
+    content: '';
+    position: absolute;
+    bottom: -20%;
+    right: -20%;
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    transform: translate(50%, 50%);
+    z-index: 0;
+    pointer-events: none;
+    animation: float 10s infinite alternate ease-in-out;
+}
+
+/* Animations */
+@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.3);
+        opacity: 0.4;
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translate(50%, 50%) scale(1);
+    }
+    100% {
+        transform: translate(60%, 60%) scale(1.2);
+    }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .connect-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .social-links ul li a {
+        font-size: 1.2rem;
+    }
+
+    .contact-info a {
+        font-size: 1.1rem;
+    }
+}
+
+@media (hover: none) {
+    #custom-cursor {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+	    body {
+        font-size: 14px;
+    }
+    .what-i-do-item h3 {
+        font-size: 1.2rem;
+    }
+	    .navbar-links {
+        display: none;
+    }
+    .hero-text h2 {
+        font-size: 1.8rem; /* Adjust font size for medium-sized screens */
+        line-height: 1.2; /* Improve spacing for readability */
+    }
+    .hero-content {
+        padding: 0 10px; /* Add padding to prevent text from touching edges */
+    }
+	.hamburger-menu {
+        display: flex;
+    }
+    .navbar {
+        display: none; /* Hide regular navbar on mobile */
+    }
+	.about-container {
+        padding: 20px; /* Add padding for better spacing on smaller screens */
+        text-align: center; /* Center-align content */
+    }
+
+    .about-title {
+        font-size: 1.5rem; /* Adjust title font size */
+    }
+
+    .about-description {
+        font-size: 1rem; /* Adjust description font size */
+        line-height: 1.4; /* Improve readability */
+        margin: 0 auto; /* Center content */
+        max-width: 90%; /* Limit width for smaller screens */
+    }
+	.experience-container {
+        padding: 20px; /* Add spacing for smaller screens */
+        text-align: center; /* Center-align content */
+    }
+
+    .experience-title {
+        font-size: 1.5rem; /* Adjust title size for medium screens */
+        margin-bottom: 15px; /* Reduce bottom margin */
+    }
+
+    .experience-description {
+        font-size: 1rem; /* Adjust font size for better readability */
+        line-height: 1.4;
+        margin: 0 auto; /* Center the content */
+        max-width: 90%; /* Limit width for smaller screens */
+    }
+
+    .experience-history {
+        font-size: 1rem; /* Reduce the size of the history title */
+        margin-top: 10px; /* Add spacing at the top */
+    }
+
+    .history-item {
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center items */
+        padding: 15px 0; /* Add vertical spacing */
+    }
+
+    .history-item .year {
+        font-size: 1.2rem; /* Reduce font size */
+        margin-bottom: 5px; /* Add spacing below the year */
+    }
+
+    .history-item .text {
+        font-size: 1rem; /* Adjust text size */
+        text-align: center; /* Center-align text */
+    }
+	    .portfolio-container {
+        padding: 20px; /* Add padding for better spacing */
+        text-align: center; /* Center-align content */
+    }
+
+    .portfolio-title {
+        font-size: 1.5rem; /* Adjust title size for medium screens */
+        margin-bottom: 20px; /* Add spacing below the title */
+    }
+
+    .portfolio-description {
+        font-size: 1rem; /* Adjust description font size */
+        line-height: 1.4; /* Improve readability */
+        margin: 0 auto; /* Center content */
+        max-width: 90%; /* Limit width for smaller screens */
+    }
+
+    .portfolio-grid {
+        display: grid;
+        grid-template-columns: 1fr; /* Single column for mobile */
+        gap: 20px; /* Add space between items */
+    }
+
+    .portfolio-item {
+        margin-left: 0; /* Remove negative margin */
+        width: 100%; /* Full width for mobile */
+        padding: 10px; /* Add padding for spacing */
+        background-color: transparent; /* Remove background for clean look */
+    }
+
+    .portfolio-info h3 {
+        font-size: 1.2rem; /* Adjust project name size */
+    }
+
+    .portfolio-info p {
+        font-size: 0.9rem; /* Adjust description size */
+        line-height: 1.3; /* Improve spacing */
+    }
+}
+
+
+@media (max-width: 480px) {
+    .hero-text h2 {
+        font-size: 1.4rem; /* Adjust font size for smaller screens */
+        line-height: 1.1;
+    }
+    .hero-heading {
+        font-size: 0.8rem; /* Smaller heading size for compact screens */
+    }
+    .hero-content {
+        padding: 0 5px; /* Narrow padding for extra-small screens */
+    }
+	    .about-title {
+        font-size: 1.2rem; /* Further adjust title font size */
+    }
+
+    .about-description {
+        font-size: 0.9rem; /* Reduce font size for very small screens */
+        line-height: 1.3; /* Adjust line height for compact spacing */
+        padding: 0 10px; /* Add horizontal padding */
+    }
+	    .experience-title {
+        font-size: 1.2rem; /* Further adjust title font size */
+    }
+
+    .experience-description {
+        font-size: 0.9rem; /* Reduce description font size for smaller screens */
+        line-height: 1.3; /* Compact line height */
+        padding: 0 10px; /* Add horizontal padding */
+    }
+
+    .history-item .year {
+        font-size: 1rem; /* Further reduce year font size */
+    }
+
+    .history-item .text {
+        font-size: 0.8rem; /* Reduce text size */
+    }
+	    .portfolio-title {
+        font-size: 1.2rem; /* Reduce title size for smaller screens */
+    }
+
+    .portfolio-description {
+        font-size: 0.9rem; /* Reduce description size */
+        padding: 0 10px; /* Add padding to prevent touching screen edges */
+    }
+
+    .portfolio-info h3 {
+        font-size: 1rem; /* Further reduce project name size */
+    }
+
+    .portfolio-info p {
+        font-size: 0.8rem; /* Further reduce description size */
+    }
+}
+
+/* Page transition overlay */
+.page-transition {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0s 0.5s;
+}
+
+.page-transition.active {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s ease;
+}
+
+/* Page Transition */
+.page-transition {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0s 0.5s;
+}
+
+.page-transition.active {
+    opacity: 1;
+    visibility: visible;
+}
+

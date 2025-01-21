@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aalborg Kommune Project</title>
+    <link rel="stylesheet" href="ak-styles.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="project-header">
+        <div class="logo">
+            <a href="index.html">
+                <img src="logo.png" alt="JTDesign Logo">
+            </a>
+        </div>
+        <nav class="navbar">
+            <div class="hamburger-menu" id="hamburger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="navbar-links" id="navbar-links">
+                <li><a href="index.html#about" class="navbar-link">ABOUT</a></li>
+                <li><a href="index.html#experience" class="navbar-link">WORK</a></li>
+                <li><a href="index.html#connect" class="navbar-link">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-left">
+            <p class="year">22'</p>
+        </div>
+        <div class="hero-center">
+            <h1 class="hero-title">AALBORG KOMMUNE</h1>
+        </div>
+        <div class="hero-right">
+            <p class="description">
+                Motion Graphics, <br>
+                Advertisement, <br>
+                Posters
+            </p>
+        </div>
+    </section>
+
+    <!-- Big Picture Section -->
+    <section class="big-picture-section">
+        <div class="big-picture-wrapper">
+        </div>
+    </section>
+
+<!-- Project Overview Section -->
+<section class="project-overview-section">
+    <h2 class="section-title">Project Overview</h2>
+    <div class="divider"></div>
+    <p class="project-overview-text">
+        This case study project for Aalborg Kommune involved creating a poster in both an animated digital format and a printed A3 version. The goal was to convey a warm "Merry Christmas" message to internationals living in or moving to the region, fostering a welcoming atmosphere to encourage them to continue living in Nordjylland.
+    </p>
+</section>
+
+
+<section class="image-layout-section">
+    <div class="image-row">
+        <div class="vertical-image">
+            <img src="ak/posterak.jpg" alt="Vertical Image 1">
+        </div>
+        <div class="vertical-image">
+            <img src="ak/posterak2.jpg" alt="Vertical Image 2">
+        </div>
+    </div>
+    <div class="wide-image">
+        <img src="ak/pos3.jpg" alt="Wide Image">
+    </div>
+</section>
+
+<!-- Vertical Video Section -->
+<section class="vertical-video-section">
+    <div class="video-container">
+        <video autoplay muted loop playsinline>
+            <source src="ak/poster.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+</section>
+
+<section class="values-section">
+    <h2 class="section-title">Values</h2>
+    <div class="values-grid">
+        <div class="value-item">
+            <div class="value-icon">
+                <img src="ak/gear.svg" alt="Functionality Icon">
+            </div>
+            <h3 class="value-title">Functionality</h3>
+            <p class="value-description">Ensuring seamless and effective solutions for everyday needs.</p>
+        </div>
+        <div class="value-item">
+            <div class="value-icon">
+                <img src="ak/speed.svg" alt="Effectiveness Icon">
+            </div>
+            <h3 class="value-title">Effectiveness</h3>
+            <p class="value-description">Striving for results with optimal resource utilization.</p>
+        </div>
+        <div class="value-item">
+            <div class="value-icon">
+                <img src="ak/group.svg"" alt="Fællesskab Icon">
+            </div>
+            <h3 class="value-title">Fællesskab</h3>
+            <p class="value-description">Building a strong sense of community and mutual support.</p>
+        </div>
+        <div class="value-item">
+            <div class="value-icon">
+                <img src="ak/together.svg" alt="Togetherness Icon">
+            </div>
+            <h3 class="value-title">Togetherness</h3>
+            <p class="value-description">Fostering connections and unity among people.</p>
+        </div>
+    </div>
+</section>
+
+    <!-- Next Project Section -->
+    <section class="next-project-section">
+        <div class="next-project-content">
+            <div class="next-project-image">
+                <img src="ak/akintro.png" alt="Next Project Preview">
+            </div>
+            <div class="next-project-details">
+                <span class="next-project-label">Back to homepage</span>
+                <a href="index.html" class="next-project-title">Home</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer-section">
+        <div class="divider"></div>
+        <h2 class="footer-let-create">LET'S CREATE</h2>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>SOCIALS</h3>
+                <ul>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>EMAIL</h3>
+                <a href="mailto:hello@example.com">jevgenidesign@gmail.com</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2025 JTDesign
+        </div>
+    </footer>
+	<script>document.addEventListener('DOMContentLoaded', () => {
+    const hamburgerMenu = document.getElementById('hamburger-menu');
+    const navbarLinks = document.getElementById('navbar-links');
+
+    hamburgerMenu.addEventListener('click', () => {
+        navbarLinks.classList.toggle('open');
+    });
+});</script>
+	<script>
+	// Animation Trigger for Project Overview Section
+document.addEventListener("DOMContentLoaded", () => {
+    const observerOptions = {
+        threshold: 0.2,
+    };
+
+    const animateOnScroll = (entries, observer) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.style.animationPlayState = "running";
+                observer.unobserve(entry.target);
+            }
+        });
+    };
+
+    const observer = new IntersectionObserver(animateOnScroll, observerOptions);
+
+    const animatedElements = document.querySelectorAll(".project-overview-section .section-title, .project-overview-text");
+    animatedElements.forEach((element) => {
+        observer.observe(element);
+    });
+});
+	</script>
+</body>
+</html>

@@ -1,0 +1,786 @@
+:root {
+    --primary-color: #ff5733;
+    --text-color: #fff;
+    --background-dark: #1a1a1a;
+    --background-light: #333;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    background-color: var(--background-dark);
+    color: var(--text-color);
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Navbar */
+header.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px 40px; /* Keep spacing consistent */
+    background: transparent;
+    z-index: 1000;
+    box-sizing: border-box; /* Ensure consistent box model */
+}
+
+.project-header .logo img {
+    width: 30px; /* Match logo size */
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.project-header .logo img:hover {
+    transform: scale(1.1);
+    filter: brightness(1.5);
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-links {
+    list-style: none;
+    display: flex;
+    gap: 20px; /* Spacing between links */
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.navbar-links li {
+    display: inline-block; /* Ensure horizontal layout */
+}
+
+.navbar-link {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 1rem;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.navbar-link:hover {
+    color: var(--primary-color);
+}
+
+/* Hero Section */
+.hero-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    padding: 0 40px;
+}
+
+.hero-left {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.hero-left .year {
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--text-color);
+}
+
+.hero-center {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-center .hero-title {
+    font-size: 8rem;
+    font-weight: bold;
+    line-height: 1;
+    color: var(--text-color);
+    text-transform: uppercase;
+    letter-spacing: -2px;
+}
+
+.hero-right {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    text-align: right;
+}
+
+.hero-right .description {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+/* Fullscreen Image Section */
+.fullscreen-image {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background-image: url('dolle/stair.png'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Fixes the image in place while scrolling */
+}
+
+.image-wrapper {
+    display: none; /* Remove the image wrapper since the image is now a background */
+}
+
+@media screen and (max-width: 768px) {
+    .fullscreen-image {
+        background-attachment: scroll; /* Allow scrolling on mobile */
+    }
+}
+
+/* Text Section */
+.text-section {
+    padding: 100px 20px;
+    background: var(--background-color); /* Matches the page background */
+    text-align: center;
+}
+
+.text-content {
+    max-width: 800px; /* Limit the width of the section */
+    margin: 0 auto; /* Center the content horizontally */
+    padding: 0 20px; /* Add inner padding for spacing */
+}
+
+.section-title {
+    font-size: 2rem; /* Title size */
+    font-weight: 700; /* Bold for emphasis */
+    line-height: 1.5;
+    color: var(--text-color);
+    margin-bottom: 20px; /* Space below the title */
+}
+
+.text-paragraph {
+    font-size: 1rem; /* Paragraph text size */
+    line-height: 1.8;
+    color: var(--text-color);
+    margin-bottom: 30px; /* Add spacing below the paragraph */
+}
+
+.divider {
+    width: 100px;
+    height: 2px;
+    background: var(--primary-color);
+    margin: 0 auto 20px auto;
+}
+
+@media screen and (max-width: 768px) {
+    .text-content {
+        padding: 0 15px;
+    }
+}
+
+/* Gallery Section */
+.gallery-section {
+    padding: 100px 20px;
+    background-color: var(--background-light); /* Adjust to your page's theme */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gallery-container {
+    display: flex;
+    flex-direction: column; /* Ensure rows stack vertically */
+    gap: 20px; /* Space between rows */
+    max-width: 800px; /* Limit overall gallery width */
+    width: 100%;
+}
+
+.gallery-row {
+    display: flex;
+    justify-content: space-between; /* Space between images in a row */
+    gap: 20px; /* Space between images in the same row */
+}
+
+.gallery-item {
+    flex: 1;
+}
+
+.gallery-item img {
+    width: 100%; /* Each image fills its container */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px; /* Optional: Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Optional: Subtle shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add hover animation */
+}
+
+.gallery-item img:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5); /* Enhance shadow on hover */
+}
+
+@media screen and (max-width: 768px) {
+    .gallery-row {
+        flex-direction: column; /* Stack images vertically */
+        gap: 15px; /* Reduce spacing on mobile */
+    }
+}
+
+/* Scrolling Titles Section */
+.scrolling-titles-section {
+    position: relative;
+    background-color: var(--background-light);
+    padding: 40px 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+.scrolling-titles {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    animation: scrollTitles 10s linear infinite;
+}
+
+.scrolling-titles span {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--text-color);
+    white-space: nowrap;
+    text-align: center;
+    display: block;
+}
+
+@keyframes scrollTitles {
+    0% {
+        transform: translateY(100%);
+    }
+    50% {
+        transform: translateY(0%);
+    }
+    100% {
+        transform: translateY(-100%);
+    }
+}
+
+/* Scrolling Titles Section */
+.scrolling-titles-section {
+    position: relative;
+    background-color: var(--background-dark);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px; /* Height of the scrolling text section */
+	padding-top: 100px;
+}
+
+.scrolling-titles {
+    display: flex;
+    align-items: center;
+    white-space: nowrap; /* Prevents wrapping */
+    animation: scrollHorizontal 20s linear infinite;
+}
+
+.scrolling-titles span {
+    font-size: 8rem;
+    font-weight: bold;
+    color: var(--text-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Horizontal scrolling animation */
+@keyframes scrollHorizontal {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+/* Video Section */
+.video-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-dark);
+    padding: 50px;
+    height: 70vh; /* Larger video section height */
+	margin-bottom: 50px;
+}
+
+.video-wrapper {
+    width: 80%; /* Takes 90% of the section width */
+    max-width: 1100px; /* Limits the max width */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6); /* Subtle shadow */
+}
+
+video {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Keywords Section */
+.keywords-section {
+    padding: 80px 20px;
+    background: var(--background-light); /* Light contrast background */
+    text-align: center;
+}
+
+.keywords-content {
+    max-width: 800px;
+    margin: 50px auto;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: var(--text-color);
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+}
+
+.section-title::after {
+    content: "";
+    display: block;
+    width: 100px;
+    height: 2px;
+    background: var(--primary-color);
+    margin: 10px auto;
+}
+
+.keywords-overview {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 50px;
+    color: var(--text-color);
+    text-align: center;
+}
+
+/* Grid for Keywords */
+.keywords-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive grid */
+    gap: 20px;
+    text-align: center;
+}
+
+/* Individual Keyword Styles */
+.keywords-list li {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 20px;
+    background: var(--background-dark);
+    border-radius: 5px;
+    color: var(--text-color);
+    display: flex;
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+    height: 100px; /* Ensure uniform height */
+    transition: transform 0.3s, background 0.3s, opacity 0.5s ease, transform 0.5s ease;
+    opacity: 0; /* Start hidden */
+    transform: translateY(20px); /* Start slightly off-screen */
+}
+
+/* Hover Effect */
+.keywords-list li:hover {
+    background: var(--primary-color);
+    transform: scale(1.1); /* Slight zoom on hover */
+}
+
+/* Animation Keyframes */
+@keyframes fadeSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Start slightly below */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Settle in place */
+    }
+}
+
+/* Apply Animation to Each List Item with Delay */
+.keywords-list li:nth-child(1) {
+    animation: fadeSlideIn 0.6s ease-out 0.2s forwards;
+}
+.keywords-list li:nth-child(2) {
+    animation: fadeSlideIn 0.6s ease-out 0.4s forwards;
+}
+.keywords-list li:nth-child(3) {
+    animation: fadeSlideIn 0.6s ease-out 0.6s forwards;
+}
+.keywords-list li:nth-child(4) {
+    animation: fadeSlideIn 0.6s ease-out 0.8s forwards;
+}
+.keywords-list li:nth-child(5) {
+    animation: fadeSlideIn 0.6s ease-out 1s forwards;
+}
+.keywords-list li:nth-child(6) {
+    animation: fadeSlideIn 0.6s ease-out 1.2s forwards;
+}
+.keywords-list li:nth-child(7) {
+    animation: fadeSlideIn 0.6s ease-out 1.4s forwards;
+}
+
+
+/* Next Project Section */
+.next-project-section {
+    height: 80vh;
+    background: var(--background-dark); /* Dark background */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding-top: 10px;
+}
+
+/* Content Layout */
+.next-project-content {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    max-width: 1200px;
+    width: 100%;
+    padding: 20px;
+}
+
+.next-project-image img {
+    width: 400px;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.next-project-image img:hover {
+    transform: scale(1.05);
+}
+
+.next-project-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.next-project-label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.next-project-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.next-project-title:hover {
+    color: var(--primary-color);
+}
+
+/* Scrolling Text */
+.scrolling-wrapper {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    overflow: hidden;
+    background: var(--background-dark);
+    padding: 10px 0; /* Space for the scrolling text */
+}
+
+.scrolling-text {
+    display: flex;
+    animation: scroll-text 17s linear infinite;
+    white-space: nowrap;
+    gap: 30px; /* Add spacing between text repeats */
+}
+
+.scrolling-text span {
+    font-size: 8rem; /* Adjust text size */
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+@keyframes scroll-text {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+/* Footer Section */
+.footer-section {
+    background-color: var(--background-dark); /* Matches the site theme */
+    color: var(--text-color);
+    padding: 50px 20px;
+    text-align: center;
+    position: relative;
+}
+
+.divider {
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-color);
+    margin-bottom: 40px;
+}
+
+/* Footer Title with Hover Animation */
+.footer-title {
+    font-size: 3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    -webkit-text-stroke: 0px var(--text-color); /* Default filled text */
+    color: var(--text-color); /* Default white filled */
+    transition: color 0.4s ease, -webkit-text-stroke 0.4s ease;
+}
+
+.footer-title:hover {
+    -webkit-text-stroke: 2px #ff5733; /* White outline */
+    color: transparent; /* Transparent fill */
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 100px;
+    margin-bottom: 40px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    flex-wrap: wrap; /* For mobile responsiveness */
+}
+
+.footer-column {
+    flex: 1;
+    text-align: center;
+    min-width: 200px; /* Ensures columns don't collapse */
+}
+
+.footer-column h3 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 5px;
+}
+
+.footer-column ul li a {
+    text-decoration: none;
+    font-size: 1rem;
+    color: var(--text-color); /* Default white text */
+    transition: color 0.3s ease; /* Smooth hover effect */
+}
+
+.footer-column ul li a:hover {
+    color: var(--primary-color); /* Highlight on hover */
+}
+
+.footer-column a {
+    text-decoration: none;
+    font-size: 1rem;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+    color: var(--primary-color); /* Highlight on hover */
+}
+
+/* Footer Bottom Section */
+.footer-bottom {
+    font-size: 0.8rem;
+    opacity: 0.8;
+    margin-top: 40px;
+    text-align: center;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Mobile Optimization */
+@media screen and (max-width: 768px) {
+    /* Navbar */
+    header.project-header {
+        padding: 20px 20px; /* Reduce padding on smaller screens */
+    }
+
+    .navbar-links {
+        flex-direction: column;
+        position: absolute;
+        top: 70px; /* Adjust position below header */
+        right: 15px; /* Align with right edge */
+        background: var(--background-light);
+        padding: 10px 15px;
+        border-radius: 5px;
+        display: none; /* Hidden by default */
+    }
+
+    .navbar-links.open {
+        display: flex;
+    }
+
+    .navbar-link {
+        padding: 10px 0;
+    }
+
+    .hamburger-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+    }
+
+    .hamburger-menu span {
+        width: 25px;
+        height: 3px;
+        background: var(--text-color);
+    }
+
+    /* Hero Section */
+    .hero-section {
+        flex-direction: column; /* Stack content vertically */
+        padding: 0 15px;
+        text-align: center; /* Center-align text */
+    }
+
+    .hero-center .hero-title {
+        font-size: 4rem; /* Reduce title size for smaller screens */
+        line-height: 1.2;
+        letter-spacing: -1px;
+    }
+
+    .hero-right .description {
+        font-size: 1rem; /* Reduce description size */
+        line-height: 1.5;
+    }
+
+    /* Fullscreen Image Section */
+    .fullscreen-image {
+        background-attachment: scroll; /* Allow scrolling for mobile */
+    }
+
+    /* Text Section */
+    .text-section {
+        padding: 50px 15px; /* Adjust padding for smaller screens */
+    }
+
+    .text-content {
+        max-width: 90%; /* Use more of the screen width */
+        padding: 0;
+    }
+
+    /* Gallery Section */
+    .gallery-row {
+        flex-direction: column; /* Stack images vertically */
+        gap: 15px;
+    }
+
+    .gallery-item img {
+        width: 100%; /* Make images fully responsive */
+        height: auto;
+    }
+
+    /* Keywords Section */
+    .keywords-list {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Adjust grid for smaller screens */
+        gap: 15px; /* Reduce gap for compact layout */
+    }
+
+    .keywords-list li {
+        height: auto; /* Allow dynamic height */
+        padding: 15px;
+    }
+
+    /* Scrolling Titles Section */
+    .scrolling-titles-section {
+        height: 60px; /* Reduce height for smaller screens */
+    }
+
+    .scrolling-titles span {
+        font-size: 5rem; /* Reduce font size for scrolling text */
+    }
+
+    /* Video Section */
+    .video-section {
+        height: auto; /* Allow dynamic height */
+        padding: 20px 15px;
+    }
+
+    .video-wrapper {
+        width: 100%; /* Use full width for smaller screens */
+    }
+
+    /* Next Project Section */
+    .next-project-content {
+        flex-direction: column; /* Stack content vertically */
+        text-align: center;
+    }
+
+    .next-project-image img {
+        width: 80%; /* Scale down the image */
+    }
+
+    .scrolling-text span {
+        font-size: 5rem; /* Reduce font size for scrolling text */
+    }
+
+    /* Footer Section */
+    .footer-content {
+        flex-direction: column; /* Stack footer content vertically */
+        text-align: center;
+        gap: 20px;
+    }
+
+    .footer-title {
+        font-size: 2rem; /* Reduce title size */
+    }
+
+    .footer-bottom {
+        font-size: 0.7rem; /* Adjust font size */
+    }
+}

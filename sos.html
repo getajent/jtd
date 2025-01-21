@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sol og Strand Project</title>
+    <link rel="stylesheet" href="sos-styles.css">
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header class="project-header">
+        <div class="logo">
+            <a href="index.html">
+                <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=78,fit=crop,q=95/YX4NKRXWNvhkKRJZ/asset-1-AMqpbOMXk1I14kxA.png" alt="JTDesign Logo">
+            </a>
+        </div>
+        <nav class="navbar">
+            <div class="hamburger-menu" id="hamburger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="navbar-links" id="navbar-links">
+                <li><a href="index.html#about" class="navbar-link">ABOUT</a></li>
+                <li><a href="index.html#experience" class="navbar-link">WORK</a></li>
+                <li><a href="index.html#connect" class="navbar-link">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-left">
+            <p class="year">21'</p>
+        </div>
+        <div class="hero-center">
+            <h1 class="hero-title">Sol og Strand</h1>
+        </div>
+        <div class="hero-right">
+            <p class="description">
+                Brochure design, <br>
+                Advertisement, <br>
+                Marketing
+            </p>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="text-section">
+        <div class="text-content">
+            <h2 class="section-title">Project Overview</h2>
+            <p class="text-paragraph">
+                This school project focuses on capturing people's attention during their holidays at private rental houses across Denmark. 
+				The goal is to design a rack card that is both engaging and easy to read, encouraging people to explore it effortlessly
+            </p>
+        </div>
+    </section>
+
+    <!-- Fullscreen Image -->
+    <section class="fullscreen-image">
+        <div class="image-wrapper">
+            <img src="sos/intro.png" alt="Sol og Strand Fullscreen Image">
+        </div>
+    </section>
+
+<!-- Gallery Section -->
+<section class="gallery-section">
+    <div class="gallery-title">
+        <h2>Explore the Collection</h2>
+    </div>
+    <div class="gallery-grid">
+        <div class="gallery-item wide">
+            <img src="sos/z-fold.jpg" alt="Wide Image">
+        </div>
+        <div class="gallery-item small">
+            <img src="sos/mockupfront.png" alt="Small Image 1">
+        </div>
+        <div class="gallery-item small">
+            <img src="sos/mockupback.png" alt="Small Image 2">
+        </div>
+    </div>
+</section>
+
+    <!-- Keywords Section -->
+    <section class="keywords-section">
+        <div class="keywords-content">
+            <h2 class="section-title">Keywords and Values</h2>
+            <p class="keywords-overview">
+                The core principles driving Sol og Strand’s mission include innovation, community connection, and eco-conscious practices.
+            </p>
+            <ul class="keywords-list">
+                <li><strong>Holidays</strong></li>
+                <li><strong>Housing</strong></li>
+                <li><strong>Informative</strong></li>
+                <li><strong>Sustainability</strong></li>
+                <li><strong>Eye-catching</strong></li>
+				<li><strong>Nature</strong></li>
+            </ul>
+        </div>
+    </section>
+
+<!-- Next Project Section -->
+<section class="next-project-section">
+    <div class="next-project-content">
+        <div class="next-project-image">
+            <img src="greeninvest/mockup.png" alt="Next Project Preview">
+        </div>
+        <div class="next-project-details">
+            <span class="next-project-label">Next Project</span>
+            <a href="greeninvest.html" class="next-project-title">GreenInvest B.V.</a>
+        </div>
+    </div>
+    <div class="scrolling-wrapper">
+        <div class="scrolling-text">
+            <span>UP NEXT — UP NEXT — UP NEXT — UP NEXT</span>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Footer Section -->
+    <footer class="footer-section">
+						    <hr class="divider">
+        <h2 class="footer-title">LET’S CREATE</h2>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Socials</h3>
+                <ul>
+                    <li><a href="https://www.linkedin.com/in/jevgenitupitson/" target="_blank">LinkedIn</a></li>
+                    <li><a href="https://www.instagram.com/hagryn/" target="_blank">Instagram</a></li>
+                </ul>
+            </div>
+<div class="footer-column">
+    <h3>Email</h3>
+    <a href="mailto:jevgenidesign@gmail.com" class="email-link">jevgenidesign@gmail.com</a>
+</div>
+        </div>
+        <p class="footer-bottom">© 2025 JTDesign. All rights reserved.</p>
+    </footer>
+	
+	<script>
+	document.querySelectorAll('.gallery-item').forEach(item => {
+    item.addEventListener('mousemove', e => {
+        const rect = item.getBoundingClientRect();
+        const x = e.clientX - rect.left; // Mouse X position
+        const y = e.clientY - rect.top;  // Mouse Y position
+        item.style.transformOrigin = `${x}px ${y}px`; // Set origin dynamically
+    });
+});
+</script>
+
+</body>
+
+</html>

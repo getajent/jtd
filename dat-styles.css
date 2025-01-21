@@ -1,0 +1,738 @@
+:root {
+    --background-color: #1a1a1a;
+    --text-color: #fff;
+}
+
+/* General Reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit; /* Ensure box model consistency */
+}
+
+/* Navbar */
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px 40px; /* Increased padding for more spacing */
+    background: var(--background-light);
+    z-index: 1000;
+    box-shadow: none;
+}
+
+.project-header .logo img {
+    width: 30px;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease, filter 0.3s ease; /* Smooth transition */
+}
+
+.project-header .logo img:hover {
+    transform: scale(1.1); /* Slightly enlarge the logo on hover */
+    filter: brightness(1.5); /* Make it appear brighter */
+}
+
+/* Navbar Links */
+.navbar-links {
+    list-style: none;
+    display: flex; /* Ensure the menu stays horizontal */
+    gap: 20px; /* Spacing between links */
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-link {
+    text-decoration: none;
+    color: var(--text-color); /* Keep existing text color */
+    font-size: 1rem; /* Keep existing font size */
+    position: relative; /* Needed for hover effect */
+    transition: color 0.3s ease; /* Smooth text color change */
+    display: inline-block; /* Ensure links stay horizontal */
+}
+
+.navbar-link:hover {
+    color: var(--primary-color); /* Change text color on hover */
+}
+
+/* Underline Animation Effect */
+.navbar-link::before {
+    content: '';
+    position: absolute;
+    bottom: -5px; /* Position the underline below the text */
+    left: 50%; /* Start underline from the center */
+    width: 0; /* Initially hidden */
+    height: 2px; /* Height of the underline */
+    background: var(--primary-color); /* Color of the underline */
+    transition: width 0.3s ease, left 0.3s ease; /* Smooth animation */
+}
+
+.navbar-link:hover::before {
+    width: 100%; /* Full width on hover */
+    left: 0; /* Start underline from the left */
+}
+
+/* Text Lift Effect */
+.navbar-link:hover {
+    transform: translateY(-2px); /* Slight upward movement on hover */
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Hero Section */
+.hero-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    padding: 0 40px;
+}
+
+.hero-left {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.hero-left .year {
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--text-color);
+}
+
+.hero-center {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-center .hero-title {
+    font-size: 8rem;
+    font-weight: bold;
+    line-height: 1;
+    color: var(--text-color);
+    text-transform: uppercase;
+    letter-spacing: -2px;
+}
+
+.hero-right {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    text-align: right;
+}
+
+.hero-right .description {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+/* Text Section */
+.text-section {
+    padding: 100px 20px;
+    background: var(--background-color); /* Matches the page background */
+    text-align: center;
+}
+
+.text-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.divider {
+    width: 100px;
+    height: 1px;
+    background: var(--text-color);
+    margin: 0 auto 50px auto; /* Centered with space below */
+    border: none;
+}
+
+.section-title {
+    font-size: 2rem; /* Title size */
+    font-weight: 700; /* Bold for emphasis */
+    line-height: 1.5;
+    color: var(--text-color);
+    margin-bottom: 20px; /* Space below the title */
+}
+
+.text-paragraph {
+    font-size: 1rem; /* Paragraph text size */
+    line-height: 1.8;
+    color: var(--text-color);
+    margin-bottom: 30px; /* Add spacing below each paragraph */
+}
+
+.keywords-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px auto; /* Space around the list */
+    text-align: left; /* Align items for readability */
+    max-width: 800px; /* Keep the list aligned with the text */
+}
+
+.keywords-list li {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+.keywords-list li strong {
+    color: var(--primary-color); /* Highlight important points */
+}
+
+/* Big Image Section */
+.big-image-section {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Full-screen height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+.background-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-wrapper {
+    position: relative;
+    width: 80%; /* Width of the image container */
+    height: 80%; /* Height of the image container */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1); /* Subtle background behind the image */
+    border-radius: 20px; /* Rounded corners */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6); /* Subtle shadow */
+    overflow: hidden;
+}
+
+.big-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image scales without distortion */
+}
+
+/* Section Base Layout */
+.custom-section {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px;
+    height: 100vh; /* Fullscreen height */
+    background-color: var(--background-color);
+    position: relative;
+    overflow: hidden; /* Prevent overflow during animation */
+}
+
+/* Image Containers */
+.large-image-container, .small-image-container {
+    transition: transform 1s ease, opacity 1s ease, width 1s ease; /* Smooth animations */
+}
+
+.large-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.small-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 1s ease; /* Smooth scaling */
+}
+
+/* Circle Icon */
+.circle-icon-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circle-icon {
+    width: 100px;
+    height: 100px;
+    border: 2px solid var(--text-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circle-icon .arrow-down {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: solid var(--text-color);
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+    animation: bounce 1.5s infinite;
+}
+
+/* Swapping Positions */
+.custom-section.swapped #image1-container {
+    transform: translateX(100%) translateY(0); /* Moves large image to the right */
+    opacity: 0; /* Fade out */
+}
+
+.custom-section.swapped #image2-container {
+    transform: translateX(-100%) translateY(0); /* Moves small image to the left */
+    opacity: 1; /* Fade in */
+}
+
+/* Second Image Expansion */
+.custom-section.swapped #image2-container .small-image {
+    transform: scale(1.5); /* Larger scale (from 1 to 2) */
+}
+
+/* Animation for the arrow */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0) rotate(45deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(45deg);
+    }
+}
+
+/* Animation for the arrow */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0) rotate(45deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(45deg);
+    }
+}
+
+/* Divider */
+.footer-divider {
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-color);
+    margin: 20px 0;
+}
+
+/* Footer Section */
+.footer-section {
+    background-color: var(--background-dark); /* Matches the overall site theme */
+    color: var(--text-color);
+    padding: 50px 40px;
+    text-align: center;
+}
+
+/* Footer Title with Hover Animation (Transparent Fill + Outline Effect) */
+.footer-title {
+    font-size: 3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    -webkit-text-stroke: 0px var(--text-color); /* Default filled text */
+    color: var(--text-color); /* Default white filled */
+    transition: color 0.4s ease, -webkit-text-stroke 0.4s ease;
+}
+
+.footer-title:hover {
+    -webkit-text-stroke: 2px var(--text-color); /* White outline */
+    color: transparent; /* Transparent fill */
+}
+
+/* Footer Content */
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 100px;
+    margin-top: 40px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer-column {
+    text-align: center;
+}
+
+.footer-column h3 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 5px;
+}
+
+.footer-column ul li a {
+    text-decoration: none;
+    font-size: 1rem;
+    color: var(--text-color); /* Default white text */
+    -webkit-text-stroke: 0px var(--text-color); /* No outline by default */
+    transition: color 0.3s ease, -webkit-text-stroke 0.3s ease; /* Smooth hover effect */
+}
+
+.footer-column ul li a:hover {
+    -webkit-text-stroke: 1px var(--text-color); /* Outline on hover */
+    color: transparent; /* Transparent fill on hover */
+}
+
+/* Email Link */
+.footer-column a {
+    text-decoration: none;
+    font-size: 1rem;
+    color: var(--text-color);
+    -webkit-text-stroke: 0px var(--text-color);
+    transition: color 0.3s ease, -webkit-text-stroke 0.3s ease;
+}
+
+.footer-column a:hover {
+    -webkit-text-stroke: 1px var(--text-color); /* Outline on hover */
+    color: transparent; /* Transparent fill */
+}
+
+/* Footer Bottom Section */
+.footer-bottom {
+    font-size: 0.8rem;
+    color: var(--text-color);
+    opacity: 0.8;
+    margin-top: 40px;
+}
+
+
+/* Parallax Section */
+.parallax-section {
+    position: relative;
+    height: 100vh; /* Fullscreen height for the section */
+    overflow: hidden;
+}
+
+.parallax-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 150%; /* Larger height for movement */
+    background-image: url('abstract.png'); /* Replace with your image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: translateY(0); /* Initial position */
+    transition: transform 0.1s linear; /* Smooth transition */
+}
+
+/* Adjusted Text Section */
+.text-section {
+    padding: 80px 20px; /* Reduce top and bottom padding */
+    background: var(--background-dark); /* Matches the page theme */
+    text-align: center;
+    margin-top: 0; /* Remove any additional margin at the top */
+}
+
+.text-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 2rem; /* Title size */
+    font-weight: 700; /* Bold for emphasis */
+    line-height: 1.5;
+    color: var(--text-color);
+    margin-bottom: 30px; /* Space below the title */
+}
+
+.text-paragraph {
+    font-size: 1rem; /* Paragraph text size */
+    line-height: 1.8;
+    color: var(--text-color);
+    margin-bottom: 40px; /* Add slight space below the paragraph */
+}
+
+.keywords-list {
+    list-style: none;
+    padding: 0;
+    margin: 0; /* Remove any top margin from the list */
+    text-align: left;
+}
+
+.keywords-list li {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 15px; /* Space between each keyword */
+    color: var(--text-color);
+}
+
+/* Canvas Section Styling */
+.canvas-section {
+    height: auto; /* Adjust based on content */
+    min-height: 200vh; /* Ensures enough space for scrolling */
+    display: flex;
+    align-items: flex-start; /* Align items to the top */
+    justify-content: center;
+    background-color: var(--background-dark); /* Matches the theme */
+    position: relative;
+}
+
+.canvas-wrapper {
+    width: 90%; /* Canvas takes up 80% of the section's width */
+    background-color: #2e2e2e; /* Slightly darker gray */
+    border-radius: 20px; /* Rounded edges for modern design */
+    display: flex;
+    flex-direction: column; /* Stack screenshots vertically */
+    align-items: center;
+    justify-content: flex-start; /* Align screenshots to the top */
+    padding: 50px 20px; /* Add padding for the canvas */
+    position: relative;
+}
+
+.canvas-slide {
+    width: 100%; /* Screenshots fill the canvas width */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 40px; /* Space between screenshots */
+}
+
+.first-slide {
+    margin-top: 60px; /* Additional padding for the first screenshot */
+}
+
+.canvas-image {
+    width: 80%; /* Larger screenshot size */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: contain; /* Ensure images look good */
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    opacity: 0.95; /* Slight transparency for a modern look */
+}
+
+.canvas-image:hover {
+    transform: scale(1.05); /* Subtle zoom on hover */
+    opacity: 1; /* Full visibility on hover */
+}
+
+/* Next Project Section */
+.next-project-section {
+    height: 100vh;
+    background: var(--background-dark); /* Dark background */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    padding-top: 50px; /* Adds space above the section */
+}
+
+/* Content Layout */
+.next-project-content {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    max-width: 1200px;
+    width: 100%;
+    padding: 20px;
+}
+
+.next-project-image img {
+    width: 400px;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.next-project-image img:hover {
+    transform: scale(1.05);
+}
+
+.next-project-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.next-project-label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.next-project-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.next-project-title:hover {
+    color: var(--primary-color);
+}
+
+/* Scrolling Text Section */
+.scrolling-text {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--background-light); /* Optional background color */
+    padding: 10px 0;
+}
+
+.scrolling-wrapper {
+    display: flex;
+    animation: scroll-seamless 15s linear infinite;
+    white-space: nowrap;
+}
+
+.scrolling-wrapper span {
+    font-size: 8rem; /* Adjust the size as needed */
+    font-weight: bold;
+    color: var(--text-color);
+    margin-right: 30px; /* Space between repeating text */
+}
+
+@keyframes scroll-seamless {
+    from {
+        transform: translateX(0%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    /* Navbar Adjustments for Mobile */
+    .project-header {
+        padding: 20px 20px; /* Reduce padding for mobile */
+    }
+
+    .hamburger-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        position: absolute;
+        right: 25px; /* Move the hamburger menu to the right */
+        top: 25px;
+        z-index: 2000;
+    }
+
+    .hamburger-menu span {
+        width: 25px;
+        height: 3px;
+        background: var(--text-color);
+        border-radius: 3px;
+        transition: transform 0.3s ease;
+    }
+
+    .navbar-links {
+        display: none; /* Hide links by default */
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0; /* Align with the right edge */
+        background: var;
+        width: 100%;
+        padding: 20px 25px;
+        text-align: right;
+    }
+
+    .navbar-links.open {
+        display: flex; /* Show links when open */
+    }
+
+    .navbar-link {
+        font-size: 1.2rem; /* Increase font size for mobile readability */
+        padding: 10px 0; /* Add spacing for touch devices */
+    }
+
+    /* Hero Section for Mobile */
+    .hero-section {
+        flex-direction: column;
+        padding: 20px;
+        text-align: center; /* Center-align for smaller screens */
+    }
+
+    .hero-title {
+        font-size: 2.5rem; /* Adjust font size for smaller screens */
+    }
+
+    /* Text Section for Mobile */
+    .text-section {
+        padding: 40px 20px;
+    }
+
+    .section-title {
+        font-size: 1.8rem; /* Slightly smaller for mobile */
+    }
+
+    /* Canvas Section for Mobile */
+    .canvas-section {
+        padding: 40px 20px;
+    }
+
+    .canvas-slide {
+        margin-bottom: 30px;
+    }
+
+    .canvas-image {
+        width: 90%; /* Make images fit better on mobile */
+    }
+
+    /* Footer for Mobile */
+    .footer-content {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .footer-column {
+        margin-bottom: 20px;
+    }
+}
+
