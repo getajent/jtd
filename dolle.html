@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOLLE Project | Jevgeni Tupitson</title>
+    <meta name="description" content="DOLLE flyer design and branding project by Jevgeni Tupitson, showcasing product development and promotional materials for the FORMLAND fair.">
+    <meta name="keywords" content="DOLLE project, flyer design, branding, product development, graphic design">
+    <meta name="author" content="Jevgeni Tupitson">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- GSAP and ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Project-specific styles */
+        :root {
+            /* Красноватая цветовая палитра для DOLLE проекта */
+            --primary: #FF4A6B;
+            --primary-dark: #E54B75;
+            --secondary: #FF7676;
+            --secondary-dark: #E54B4B;
+            --accent: #FF8B7E;
+            
+            /* Градиенты */
+            --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            --gradient-secondary: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-dark) 100%);
+        }
+        
+        .project-hero {
+            position: relative;
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background-color: var(--darker);
+            background-size: 200% 200%;
+            background-position: 0% 0%;
+            background-image: linear-gradient(135deg, rgba(15, 15, 34, 0.9) 0%, rgba(80, 20, 40, 0.9) 100%);
+        }
+        
+        .project-hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('dolle/stair.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.2;
+            filter: blur(5px);
+            z-index: var(--z-negative);
+        }
+        
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(15, 15, 23, 0.9), var(--darker));
+            z-index: var(--z-low);
+        }
+        
+        .project-content {
+            position: relative;
+            z-index: var(--z-medium);
+            display: grid;
+            grid-template-columns: 1fr 3fr 1fr;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .project-year {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            color: var(--primary);
+            text-align: left;
+            font-weight: 600;
+            text-shadow: 0 0 10px rgba(255, 74, 107, 0.3);
+            padding-left: 0;
+        }
+        
+        .project-title {
+            font-size: clamp(3rem, 10vw, 8rem);
+            font-weight: 800;
+            background-image: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+            background-size: 200% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: var(--spacing-sm);
+            animation: gradientShift 8s linear infinite;
+            letter-spacing: -2px;
+            text-shadow: 0 5px 30px rgba(255, 74, 107, 0.3);
+            text-align: center;
+        }
+        
+        .project-categories {
+            font-size: clamp(0.875rem, 2vw, 1.25rem);
+            color: var(--gray);
+            text-align: right;
+            line-height: 1.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding-right: 0;
+        }
+        
+        .project-section {
+            position: relative;
+            padding: var(--spacing-xl) 0;
+            overflow: hidden;
+            transition: background-position 0.5s ease;
+            border-bottom: 1px solid rgba(255, 74, 107, 0.1);
+        }
+        
+        .project-section:hover {
+            background-position: right center;
+        }
+        
+        .project-section:nth-child(odd)::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle at 10% 10%, rgba(255, 74, 107, 0.05) 0%, transparent 70%);
+            z-index: -1;
+        }
+        
+        .project-intro {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .project-intro p {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            line-height: 1.6;
+            color: var(--gray);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .fullwidth-image {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: var(--radius-md);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), 0 0 30px rgba(255, 74, 107, 0.2);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+        
+        .fullwidth-image:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.25), 0 0 40px rgba(255, 74, 107, 0.3);
+        }
+        
+        .grid-gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-md);
+            margin: var(--spacing-lg) 0;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .grid-gallery-item {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1), 0 0 10px rgba(255, 74, 107, 0.1);
+            transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+            max-width: 250px;
+            margin: 0 auto;
+        }
+        
+        .grid-gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15), 0 0 20px rgba(255, 74, 107, 0.3);
+        }
+        
+        .grid-gallery-item img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            transition: transform var(--transition-slow);
+            display: block;
+        }
+        
+        .grid-gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .video-text-banner {
+            width: 100%;
+            background-color: var(--primary-dark);
+            padding: var(--spacing-sm) 0;
+            overflow: hidden;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .project-section .section-tag {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        .project-section .section-line {
+            height: 3px;
+            width: 80px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 3px;
+        }
+        
+        .next-project-title {
+            font-size: clamp(2rem, 6vw, 4rem);
+            font-weight: 700;
+            background-image: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            background-size: 200% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: var(--spacing-md);
+            display: inline-block;
+            transition: transform var(--transition-medium);
+        }
+        
+        .next-project:hover .next-project-title {
+            transform: translateY(-5px);
+        }
+        
+        .keywords-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+            justify-content: center;
+            margin: var(--spacing-lg) 0;
+        }
+        
+        .keyword-item {
+            padding: var(--spacing-sm) var(--spacing-md);
+            background: rgba(144, 96, 255, 0.1);
+            border: 1px solid rgba(144, 96, 255, 0.2);
+            border-radius: var(--radius-pill);
+            color: var(--light);
+            font-weight: 600;
+            font-size: var(--font-size-medium);
+            transition: all var(--transition-medium);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .keyword-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: opacity var(--transition-medium);
+            z-index: -1;
+        }
+        
+        .keyword-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-primary);
+            border-color: var(--primary);
+        }
+        
+        .keyword-item:hover::before {
+            opacity: 1;
+        }
+        
+        .next-project {
+            padding: var(--spacing-xl) 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .next-project h3 {
+            font-size: var(--font-size-small);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gray);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .next-project-preview {
+            max-width: 400px;
+            margin: 0 auto;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            transition: transform var(--transition-medium);
+        }
+        
+        .next-project:hover .next-project-preview {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-primary);
+        }
+        
+        .next-project-preview img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+        
+        /* Scrolling text */
+        .scrolling-text {
+            width: 100%;
+            overflow: hidden;
+            background-color: var(--dark);
+            padding: var(--spacing-sm) 0;
+        }
+        
+        .scrolling-wrapper {
+            display: inline-block;
+            white-space: nowrap;
+            animation: scroll 20s linear infinite;
+        }
+        
+        .scrolling-wrapper span {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-right: var(--spacing-xl);
+            color: var(--light);
+        }
+        
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .project-content {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto auto;
+                gap: var(--spacing-md);
+            }
+            
+            .project-year, .project-categories {
+                text-align: center;
+            }
+            
+            .grid-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .grid-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section.contact .section-header {
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        .section.contact .section-title,
+        .section.contact .section-tag,
+        .section.contact .section-line {
+            opacity: 1 !important;
+            transform: none !important;
+        }
+
+        .contact-section-title {
+            color: var(--light);
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            margin: var(--spacing-xl) 0;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), 0 0 30px rgba(255, 74, 107, 0.2);
+            aspect-ratio: 16/9;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-text-content {
+            white-space: nowrap;
+            display: inline-block;
+            animation: scroll 20s linear infinite;
+            color: var(--light);
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .video-text-content span {
+            margin-right: var(--spacing-xl);
+        }
+
+        .cursor-dot {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            pointer-events: none;
+            z-index: var(--z-highest);
+            transition: transform 0.1s ease, opacity 0.3s ease;
+        }
+
+        .cursor-outline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            pointer-events: none;
+            z-index: var(--z-highest);
+            transform: translate(-50%, -50%);
+            transition: transform 0.15s ease, opacity 0.3s ease, width 0.3s ease, height 0.3s ease;
+        }
+
+        body.cursor-hover .cursor-dot {
+            transform: scale(0.5);
+            opacity: 0.5;
+        }
+
+        body.cursor-hover .cursor-outline {
+            transform: translate(-50%, -50%) scale(1.5);
+            border-color: var(--primary);
+            opacity: 0.5;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Loader -->
+    <div class="loader">
+        <div class="loader-inner"></div>
+    </div>
+
+    <!-- Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+    <div class="logo">
+                <a href="index.html" aria-label="JTDesign Logo">
+                    <img src="logo.png" alt="JTDesign Logo">
+        </a>
+    </div>
+            
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html#about" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="index.html#services" class="nav-link">Services</a></li>
+                    <li class="nav-item"><a href="index.html#work" class="nav-link">Work</a></li>
+                    <li class="nav-item"><a href="index.html#portfolio" class="nav-link">Portfolio</a></li>
+                    <li class="nav-item"><a href="index.html#contact" class="nav-link">Contact</a></li>
+        </ul>
+            </nav>
+            
+            <button class="menu-toggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+            </button>
+        </div>
+</header>
+
+    <!-- Project Hero Section -->
+    <section class="project-hero">
+        <div class="project-hero-bg"></div>
+        <div class="project-overlay"></div>
+        <div class="container">
+            <div class="project-content">
+                <div class="project-year">2021'</div>
+                <h1 class="project-title">DOLLE</h1>
+                <div class="project-categories">
+                    Flyer Design<br>
+                    Brochure<br>
+                    Marketing
+                </div>
+            </div>
+        </div>
+        
+        <div class="hero-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+    </section>
+
+    <!-- Project Overview Section -->
+    <section class="project-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Overview</span>
+                <h2 class="section-title">Project Details</h2>
+                <span class="section-line"></span>
+            </div>
+            
+            <div class="project-intro">
+                <p>
+                    DOLLE will participate in a housing and interior fair called FORMLAND, and in this connection, 
+                    the employees need you to design a material. The guests at the fair can fill in the material 
+                    to participate in a competition when they visit the company's stand at the fair.
+                </p>
+            </div>
+        </div>
+        
+        <div class="section-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+        </div>
+    </section>
+
+    <!-- Full Width Image Section -->
+    <section class="project-section">
+        <div class="container">
+            <img src="dolle/stair.png" alt="DOLLE Project Hero Image" class="fullwidth-image">
+        </div>
+    </section>
+
+    <!-- Gallery Grid Section -->
+    <section class="project-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Flyer Design</span>
+                <h2 class="section-title">Design Deliverables</h2>
+                <span class="section-line"></span>
+            </div>
+            
+            <div class="grid-gallery">
+                <div class="grid-gallery-item">
+                    <img src="dolle/front.png" alt="DOLLE Flyer Front">
+                </div>
+                <div class="grid-gallery-item">
+                    <img src="dolle/back.png" alt="DOLLE Flyer Back">
+            </div>
+                <div class="grid-gallery-item">
+                    <img src="dolle/rackcard1.png" alt="DOLLE Rack Card Design 1">
+        </div>
+                <div class="grid-gallery-item">
+                    <img src="dolle/rackcard2.png" alt="DOLLE Rack Card Design 2">
+            </div>
+            </div>
+        </div>
+        
+        <div class="section-shapes">
+            <div class="shape shape-3"></div>
+    </div>
+</section>
+
+    <!-- Video Section -->
+    <section class="project-section">
+        <div class="container">
+            <div class="video-text-banner">
+                <div class="video-text-content">
+                    <span>VIDEO PREVIEW</span>
+                    <span>VIDEO PREVIEW</span>
+                    <span>VIDEO PREVIEW</span>
+                    <span>VIDEO PREVIEW</span>
+                </div>
+    </div>
+
+            <div class="video-container">
+        <video autoplay muted loop playsinline>
+            <source src="dolle/shortvideo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+            </div>
+    </div>
+</section>
+
+<!-- Keywords Section -->
+    <section class="project-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Philosophy</span>
+                <h2 class="section-title">Keywords & Values</h2>
+                <span class="section-line"></span>
+            </div>
+            
+            <div class="project-intro">
+                <p>
+            These keywords represent the essence of Dolle's philosophy: a blend of safety, creativity, and history, 
+            combined with global and free delivery to ensure exceptional customer satisfaction worldwide.
+        </p>
+    </div>
+            
+            <div class="keywords-grid">
+                <div class="keyword-item">Safety</div>
+                <div class="keyword-item">Staircase</div>
+                <div class="keyword-item">Leading</div>
+                <div class="keyword-item">Creativity</div>
+                <div class="keyword-item">History</div>
+                <div class="keyword-item">Worldwide Delivery</div>
+                <div class="keyword-item">Free Delivery</div>
+            </div>
+        </div>
+        
+        <div class="section-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+        </div>
+    </section>
+
+    <!-- Scrolling Text Section -->
+    <div class="scrolling-text">
+    <div class="scrolling-wrapper">
+            <span>UP NEXT — UP NEXT — UP NEXT — UP NEXT</span>
+            <span>UP NEXT — UP NEXT — UP NEXT — UP NEXT</span>
+            <span>UP NEXT — UP NEXT — UP NEXT — UP NEXT</span>
+        </div>
+    </div>
+
+    <!-- Next Project Section -->
+    <section class="next-project">
+        <div class="container">
+            <h3>Next Project</h3>
+            <a href="sos.html" class="next-project-title">SOL OG STRAND</a>
+            <div class="next-project-preview">
+                <img src="sos/mockupback.png" alt="SOL OG STRAND Project Preview">
+        </div>
+    </div>
+</section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Contact</span>
+                <h2 class="section-title">Connect</h2>
+                <span class="section-line"></span>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-social">
+                    <h3>Social</h3>
+                    <ul class="social-links">
+                        <li><a href="https://www.linkedin.com/in/jevgenitupitson/" target="_blank">LinkedIn</a></li>
+                        <li><a href="https://www.instagram.com/hagryn/" target="_blank">Instagram</a></li>
+            </ul>
+                </div>
+                
+                <div class="contact-email">
+                    <h3>Email</h3>
+                    <a href="mailto:jevgenidesign@gmail.com" class="email-link">jevgenidesign@gmail.com</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; <span id="current-year"></span> Jevgeni Tupitson. All rights reserved.</p>
+    </div>
+</footer>
+	
+    <!-- Page Transition -->
+    <div class="page-transition"></div>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+<script>
+        // Additional project-specific scripts
+        document.addEventListener('DOMContentLoaded', () => {
+            // Register GSAP plugins
+            gsap.registerPlugin(ScrollTrigger);
+            
+            // Simple animation for project title
+            const projectTitle = document.querySelector('.project-title');
+            if (projectTitle) {
+                gsap.from(projectTitle, {
+                    y: 50,
+                    opacity: 0,
+                    duration: 1.2,
+                    ease: 'power3.out',
+                    delay: 0.3
+                });
+            }
+            
+            // Text animations for section titles and tags
+            const sectionHeaders = document.querySelectorAll('.section-header');
+            sectionHeaders.forEach(header => {
+                const tag = header.querySelector('.section-tag');
+                const title = header.querySelector('.section-title');
+                const line = header.querySelector('.section-line');
+                
+                ScrollTrigger.create({
+                    trigger: header,
+                    start: 'top 85%',
+                    onEnter: () => {
+                        gsap.from(tag, {
+                            y: 20,
+                            opacity: 0,
+                            duration: 0.7,
+                            ease: 'power3.out'
+                        });
+                        
+                        gsap.from(title, {
+                            y: 30,
+                            opacity: 0,
+                            duration: 0.8,
+                            delay: 0.2,
+                            ease: 'power3.out'
+                        });
+                        
+                        gsap.from(line, {
+                            scaleX: 0,
+                            transformOrigin: 'left center',
+                            duration: 1,
+                            delay: 0.4,
+                            ease: 'power3.inOut'
+                        });
+                    },
+                    once: true
+                });
+            });
+            
+            // Animate paragraph text
+            const paragraphs = document.querySelectorAll('.project-intro p');
+            paragraphs.forEach(paragraph => {
+                ScrollTrigger.create({
+                    trigger: paragraph,
+                    start: 'top 85%',
+                    onEnter: () => {
+                        gsap.from(paragraph, {
+                            y: 20,
+                            opacity: 0,
+                            duration: 0.9,
+                            ease: 'power2.out'
+                        });
+                    },
+                    once: true
+                });
+            });
+            
+            // Animate gallery items on scroll
+            const galleryItems = document.querySelectorAll('.grid-gallery-item');
+            galleryItems.forEach((item, index) => {
+                ScrollTrigger.create({
+                    trigger: item,
+                    start: 'top 80%',
+                    onEnter: () => {
+                        gsap.from(item, {
+                            opacity: 0,
+                            y: 50,
+                            duration: 0.8,
+                            delay: index * 0.2,
+                            ease: 'power3.out'
+                        });
+                    },
+                    once: true
+                });
+            });
+            
+            // Animate section shapes
+            const shapes = document.querySelectorAll('.shape');
+            shapes.forEach(shape => {
+                const xMovement = Math.random() * 40 - 20; // Random movement between -20 and 20
+                const yMovement = Math.random() * 40 - 20;
+                const duration = 3 + Math.random() * 5; // Random duration between 3 and 8 seconds
+                
+                gsap.to(shape, {
+                    x: xMovement,
+                    y: yMovement,
+                    rotation: Math.random() * 20 - 10,
+                    duration: duration,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: 'sine.inOut'
+                });
+            });
+            
+            // Animate keywords on scroll
+            const keywordItems = document.querySelectorAll('.keyword-item');
+            keywordItems.forEach((item, index) => {
+                ScrollTrigger.create({
+                    trigger: item,
+                    start: 'top bottom',
+                    onEnter: () => {
+                        gsap.from(item, {
+                            opacity: 0,
+                            y: 30,
+                            duration: 0.8,
+                            delay: index * 0.1,
+                            ease: 'back.out(1.4)',
+                            onComplete: () => {
+                                gsap.set(item, { opacity: 1, clearProps: "y" });
+                            }
+                        });
+                    },
+                    once: true
+                });
+            });
+            
+            // Parallax effect for project images
+            const projectImages = document.querySelectorAll('.fullwidth-image');
+            projectImages.forEach(image => {
+                ScrollTrigger.create({
+                    trigger: image,
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: 1,
+                    onUpdate: (self) => {
+                        const moveY = (self.progress * -50);
+                        gsap.set(image, {
+                            y: moveY
+                        });
+                    }
+                });
+            });
+            
+            // Animated gradient background for project hero
+            const projectHero = document.querySelector('.project-hero');
+            if (projectHero) {
+                gsap.to(projectHero, {
+                    backgroundPosition: '100% 50%',
+                    duration: 15,
+                    ease: 'sine.inOut',
+                    repeat: -1,
+                    yoyo: true
+                });
+            }
+            
+            // Custom cursor effects for specific elements
+            const cursorDot = document.querySelector('.cursor-dot');
+            const cursorOutline = document.querySelector('.cursor-outline');
+            
+            if (cursorDot && cursorOutline && window.innerWidth > 768 && !('ontouchstart' in window)) {
+                const cursorElements = [cursorDot, cursorOutline];
+                let mouseX = 0;
+                let mouseY = 0;
+                let dotX = 0;
+                let dotY = 0;
+                let outlineX = 0;
+                let outlineY = 0;
+                let lastMouseMoveTime = 0;
+                const throttleDelay = 10; // Throttle to once per 10ms
+                
+                // Cursor movement with throttling
+                window.addEventListener('mousemove', (e) => {
+                    const currentTime = Date.now();
+                    if (currentTime - lastMouseMoveTime < throttleDelay) return;
+                    
+                    lastMouseMoveTime = currentTime;
+                    mouseX = e.clientX;
+                    mouseY = e.clientY;
+                });
+                
+                // Use requestAnimationFrame for smoother animation
+                function animateCursor() {
+                    // Smooth movement for dot
+                    const dotEasing = 0.2;
+                    dotX += (mouseX - dotX) * dotEasing;
+                    dotY += (mouseY - dotY) * dotEasing;
+                    
+                    // Slower movement for outline
+                    const outlineEasing = 0.1;
+                    outlineX += (mouseX - outlineX) * outlineEasing;
+                    outlineY += (mouseY - outlineY) * outlineEasing;
+                    
+                    // Apply transforms directly (more efficient than GSAP for this purpose)
+                    cursorDot.style.transform = `translate3d(${outlineX}px, ${outlineY}px, 0) translate3d(-50%, -50%, 0)`;
+                    cursorOutline.style.transform = `translate3d(${outlineX}px, ${outlineY}px, 0) translate3d(-50%, -50%, 0)`;
+                    
+                    requestAnimationFrame(animateCursor);
+                }
+                
+                // Start the animation loop
+                requestAnimationFrame(animateCursor);
+                
+                // Hide cursor when leaving window
+                document.addEventListener('mouseleave', () => {
+                    gsap.to(cursorElements, {
+                        opacity: 0,
+                        duration: 0.3
+                    });
+                });
+                
+                document.addEventListener('mouseenter', () => {
+                    gsap.to(cursorElements, {
+                        opacity: 1,
+                        duration: 0.3
+                    });
+                });
+            } else if (cursorDot && cursorOutline) {
+                // Hide cursor elements on mobile/touch devices or smaller screens
+                cursorDot.style.display = 'none';
+                cursorOutline.style.display = 'none';
+            }
+
+            const hoverableElements = document.querySelectorAll('a, button, .grid-gallery-item, .next-project-title, .keyword-item');
+            hoverableElements.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    document.body.classList.add('cursor-hover');
+                    // Still use GSAP for hover effect as it's not called frequently
+                    if (cursorDot && cursorOutline) {
+                        gsap.to(cursorOutline, {
+                            scale: 1.5,
+                            duration: 0.3,
+                            ease: 'back.out(1.7)'
+                        });
+                    }
+                });
+                
+                el.addEventListener('mouseleave', () => {
+                    document.body.classList.remove('cursor-hover');
+                    if (cursorDot && cursorOutline) {
+                        gsap.to(cursorOutline, {
+                            scale: 1,
+                            duration: 0.3,
+                            ease: 'back.out(1.7)'
+                        });
+                    }
+                });
+            });
+            
+            // Image tilt effect
+            document.querySelectorAll('.grid-gallery-item').forEach(item => {
+                item.addEventListener('mousemove', (e) => {
+                    const imgEl = item.querySelector('img');
+                    if (!imgEl) return;
+                    
+                    const rect = item.getBoundingClientRect();
+                    const x = (e.clientX - rect.left) / rect.width - 0.5;
+                    const y = (e.clientY - rect.top) / rect.height - 0.5;
+                    
+                    gsap.to(imgEl, {
+                        rotationY: x * 10,
+                        rotationX: -y * 10,
+                        duration: 0.5,
+                        ease: 'power2.out',
+                        transformPerspective: 1000
+                    });
+                });
+                
+                item.addEventListener('mouseleave', () => {
+                    const imgEl = item.querySelector('img');
+                    if (!imgEl) return;
+                    
+                    gsap.to(imgEl, {
+                        rotationY: 0,
+                        rotationX: 0,
+                        duration: 0.5,
+                        ease: 'power2.out'
+                    });
+                });
+            });
+            
+            // Subtle header animation on scroll
+            const header = document.querySelector('.header');
+            if (header) {
+                ScrollTrigger.create({
+                    start: 'top top',
+                    end: 'bottom bottom',
+                    onUpdate: (self) => {
+                        const scrollProgress = self.progress;
+                        const blurAmount = Math.min(scrollProgress * 20, 10);
+                        const bgOpacity = Math.min(0.2 + scrollProgress * 0.8, 0.9);
+                        
+                        gsap.set(header, {
+                            backdropFilter: `blur(${blurAmount}px)`,
+                            backgroundColor: `rgba(15, 15, 23, ${bgOpacity})`
+                        });
+                    }
+                });
+            }
+            
+            // Reveal animation for video container
+            const videoContainer = document.querySelector('.video-container');
+            if (videoContainer) {
+                ScrollTrigger.create({
+                    trigger: videoContainer,
+                    start: 'top 80%',
+                    onEnter: () => {
+                        gsap.from(videoContainer, {
+                            clipPath: 'inset(10% 10% 10% 10% round 10px)',
+                            opacity: 0,
+                            duration: 1,
+                            ease: 'power3.out'
+                        });
+                    },
+                    once: true
+                });
+            }
+            
+            // Connect section animations
+            const contactSection = document.querySelector('.contact');
+            if (contactSection) {
+                // Force visibility of section header elements
+                const contactHeader = contactSection.querySelector('.section-header');
+                const contactTag = contactHeader.querySelector('.section-tag');
+                const contactTitle = contactHeader.querySelector('.section-title');
+                const contactLine = contactHeader.querySelector('.section-line');
+                
+                // Set initial visible state before animations
+                gsap.set([contactHeader, contactTag, contactTitle, contactLine], {
+                    opacity: 1,
+                    visibility: 'visible'
+                });
+                
+                // Animate section header (Connect title)
+                ScrollTrigger.create({
+                    trigger: contactHeader,
+                    start: 'top 85%',
+                    onEnter: () => {
+                        gsap.from(contactTag, {
+                            y: 20,
+                            opacity: 0,
+                            duration: 0.7,
+                            ease: 'power3.out'
+                        });
+                        
+                        gsap.from(contactTitle, {
+                            y: 30,
+                            opacity: 0,
+                            duration: 0.8,
+                            delay: 0.2,
+                            ease: 'power3.out'
+                        });
+                        
+                        gsap.from(contactLine, {
+                            scaleX: 0,
+                            transformOrigin: 'left center',
+                            duration: 1,
+                            delay: 0.4,
+                            ease: 'power3.inOut'
+                        });
+                    },
+                    once: true
+                });
+                
+                // Animate social links
+                const socialLinks = contactSection.querySelectorAll('.social-links li');
+                ScrollTrigger.create({
+                    trigger: '.contact-social',
+                    start: 'top 80%',
+                    onEnter: () => {
+                        gsap.from(socialLinks, {
+                            opacity: 0,
+                            x: -30,
+                            stagger: 0.15,
+                            duration: 0.8,
+                            ease: 'power2.out'
+                        });
+                    },
+                    once: true
+                });
+                
+                // Animate email
+                const emailLink = contactSection.querySelector('.email-link');
+                ScrollTrigger.create({
+                    trigger: '.contact-email',
+                    start: 'top 80%',
+                    onEnter: () => {
+                        gsap.from(emailLink, {
+                            opacity: 0,
+                            x: 30,
+                            duration: 0.8,
+                            ease: 'power2.out'
+                        });
+                    },
+                    once: true
+                });
+                
+                // Animate section headers
+                const contactHeaders = contactSection.querySelectorAll('h3');
+                ScrollTrigger.create({
+                    trigger: '.contact-grid',
+                    start: 'top 85%',
+                    onEnter: () => {
+                        gsap.from(contactHeaders, {
+                            opacity: 0,
+                            y: 20,
+                            stagger: 0.2,
+                            duration: 0.8,
+                            ease: 'power2.out'
+                        });
+                    },
+                    once: true
+                });
+            }
+    });
+</script>
+</body>
+
+</html>

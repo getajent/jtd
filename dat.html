@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAT Project | Jevgeni Tupitson</title>
+    <meta name="description" content="DAT cross-media advertisement campaign project by Jevgeni Tupitson, featuring print media, digital designs, and comprehensive advertising solutions.">
+    <meta name="keywords" content="DAT project, graphic design, advertisement campaign, print media, digital media">
+    <meta name="author" content="Jevgeni Tupitson">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- GSAP and ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Project-specific styles */
+        :root {
+            /* Красноватая цветовая палитра для DAT проекта */
+            --primary: #FF4A6B;
+            --primary-dark: #E54B75;
+            --secondary: #FF7676;
+            --secondary-dark: #E54B4B;
+            --accent: #FF8B7E;
+            
+            /* Градиенты */
+            --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            --gradient-secondary: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-dark) 100%);
+        }
+        
+        .project-hero {
+            position: relative;
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background-color: var(--darker);
+            background-size: 200% 200%;
+            background-position: 0% 0%;
+            background-image: linear-gradient(135deg, rgba(15, 15, 34, 0.9) 0%, rgba(80, 20, 40, 0.9) 100%);
+        }
+        
+        .project-hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('dat2.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.2;
+            filter: blur(5px);
+            z-index: var(--z-negative);
+        }
+        
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(15, 15, 23, 0.9), var(--darker));
+            z-index: var(--z-low);
+        }
+        
+        .project-content {
+            position: relative;
+            z-index: var(--z-medium);
+            display: grid;
+            grid-template-columns: 1fr 3fr 1fr;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .project-year {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            color: var(--primary);
+            text-align: left;
+            font-weight: 600;
+            text-shadow: 0 0 10px rgba(255, 74, 107, 0.3);
+            padding-left: 0;
+        }
+        
+        .project-title {
+            font-size: clamp(3rem, 10vw, 8rem);
+            font-weight: 800;
+            background-image: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+            background-size: 200% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: var(--spacing-sm);
+            animation: gradientShift 8s linear infinite;
+            letter-spacing: -2px;
+            text-shadow: 0 5px 30px rgba(255, 74, 107, 0.3);
+            text-align: center;
+        }
+        
+        .project-categories {
+            font-size: clamp(0.875rem, 2vw, 1.25rem);
+            color: var(--gray);
+            text-align: right;
+            line-height: 1.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding-right: 0;
+        }
+        
+        .project-section {
+            position: relative;
+            padding: var(--spacing-xl) 0;
+            overflow: hidden;
+            transition: background-position 0.5s ease;
+        }
+        
+        .project-section:hover {
+            background-position: right center;
+        }
+        
+        .project-intro {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .project-intro p {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            line-height: 1.6;
+            color: var(--gray);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .fullwidth-image {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: var(--radius-md);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), 0 0 30px rgba(255, 74, 107, 0.2);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+        
+        .fullwidth-image:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.25), 0 0 40px rgba(255, 74, 107, 0.3);
+        }
+        
+        .split-section {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: var(--spacing-lg);
+            padding: var(--spacing-xl) 0;
+        }
+        
+        .split-section.reversed {
+            grid-template-columns: 1fr 2fr;
+        }
+        
+        .split-section img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: var(--radius-md);
+            transition: transform var(--transition-slow);
+        }
+        
+        .split-section:hover img {
+            transform: scale(1.02);
+        }
+        
+        .project-details {
+            padding: var(--spacing-md);
+        }
+        
+        .project-details h3 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            margin-bottom: var(--spacing-md);
+            color: var(--primary);
+        }
+        
+        .project-details p {
+            color: var(--gray);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .project-details ul {
+            list-style: none;
+            padding: 0;
+            margin: var(--spacing-md) 0;
+        }
+        
+        .project-details ul li {
+            margin-bottom: var(--spacing-sm);
+            padding-left: var(--spacing-md);
+            position: relative;
+            color: var(--gray);
+        }
+        
+        .project-details ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.7em;
+            width: 10px;
+            height: 2px;
+            background: var(--primary);
+        }
+        
+        .project-details ul li strong {
+            color: var(--light);
+            font-weight: 600;
+        }
+        
+        .gallery {
+            display: flex;
+            gap: var(--spacing-xl);
+            width: 100%;
+            overflow-x: auto;
+            padding: var(--spacing-lg) 0;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary) var(--darker);
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .gallery:after {
+            content: '';
+            flex: 0 0 20px;
+            /* Add padding at the end for better scrolling */
+        }
+        
+        .gallery-item {
+            flex: 0 0 auto;
+            width: 80%;
+            max-width: 700px;
+            min-width: 300px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: transform var(--transition-medium);
+            margin-right: 20px;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-primary);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            display: block;
+        }
+        
+        .next-project {
+            padding: var(--spacing-xl) 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .next-project h3 {
+            font-size: var(--font-size-small);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gray);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .next-project-title {
+            font-size: clamp(2rem, 6vw, 4rem);
+            font-weight: 700;
+            background-image: var(--gradient-secondary);
+            background-size: 200% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: var(--spacing-md);
+            display: inline-block;
+            transition: transform var(--transition-medium);
+        }
+        
+        .next-project:hover .next-project-title {
+            transform: translateY(-5px);
+        }
+        
+        .next-project-preview {
+            max-width: 400px;
+            margin: 0 auto;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            transition: transform var(--transition-medium);
+        }
+        
+        .next-project:hover .next-project-preview {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-primary);
+        }
+        
+        .next-project-preview img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+        
+        /* Scrolling text */
+        .scrolling-text {
+            width: 100%;
+            overflow: hidden;
+            background-color: var(--dark);
+            padding: var(--spacing-sm) 0;
+        }
+        
+        .scrolling-wrapper {
+            display: inline-block;
+            white-space: nowrap;
+            animation: scroll 20s linear infinite;
+        }
+        
+        .scrolling-wrapper span {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-right: var(--spacing-xl);
+            color: var(--light);
+        }
+        
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .project-content {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto auto;
+                gap: var(--spacing-md);
+            }
+            
+            .project-year, .project-categories {
+                text-align: center;
+            }
+            
+            .split-section, .split-section.reversed {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Animated underline effect for links */
+        .nav-link, .email-link, .social-links a {
+            position: relative;
+        }
+        
+        .nav-link::after, .email-link::after, .social-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-image: var(--gradient-primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after, .email-link:hover::after, .social-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Smooth reveal transition for images */
+        .fullwidth-image, .gallery-item img, .next-project-preview img {
+            transition: filter 0.5s ease, transform 0.5s ease;
+        }
+        
+        /* Stagger animation for keywords */
+        .keywords-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+            justify-content: center;
+            margin: var(--spacing-lg) 0;
+        }
+
+        .keyword-item {
+            padding: var(--spacing-sm) var(--spacing-md);
+            background: rgba(255, 74, 107, 0.1);
+            border: 1px solid rgba(255, 74, 107, 0.3);
+            border-radius: var(--radius-pill);
+            color: var(--light);
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1), 0 0 10px rgba(255, 74, 107, 0.1);
+            margin: 10px;
+        }
+
+        .keyword-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15), 0 0 20px rgba(255, 74, 107, 0.3);
+            border-color: var(--primary);
+            color: white;
+            background: rgba(255, 74, 107, 0.2);
+        }
+
+        .next-project-title {
+            color: var(--primary);
+        }
+
+        .section.contact .section-header {
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        .section.contact .section-title,
+        .section.contact .section-tag,
+        .section.contact .section-line {
+            opacity: 1 !important;
+            transform: none !important;
+        }
+
+        .contact-section-title {
+            color: var(--light);
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .project-section .section-tag {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        .project-section .section-line {
+            height: 3px;
+            width: 80px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 3px;
+        }
+
+        .cursor-dot {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            pointer-events: none;
+            z-index: var(--z-highest);
+            transition: transform 0.1s ease, opacity 0.3s ease;
+        }
+
+        .cursor-outline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            pointer-events: none;
+            z-index: var(--z-highest);
+            transition: transform 0.15s ease, opacity 0.3s ease, width 0.3s ease, height 0.3s ease;
+        }
+
+        body.cursor-hover .cursor-dot {
+            transform: scale(0.5);
+            opacity: 0.5;
+        }
+
+        body.cursor-hover .cursor-outline {
+            transform: translate3d(-50%, -50%, 0) scale(1.5);
+            opacity: 0.5;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Loader -->
+    <div class="loader">
+        <div class="loader-inner"></div>
+    </div>
+
+    <!-- Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+        <div class="logo">
+                <a href="index.html" aria-label="JTDesign Logo">
+                    <img src="logo.png" alt="JTDesign Logo">
+            </a>
+        </div>
+            
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html#about" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="index.html#services" class="nav-link">Services</a></li>
+                    <li class="nav-item"><a href="index.html#work" class="nav-link">Work</a></li>
+                    <li class="nav-item"><a href="index.html#portfolio" class="nav-link">Portfolio</a></li>
+                    <li class="nav-item"><a href="index.html#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            </div>
+    </header>
+
+    <!-- Project Hero Section -->
+    <section class="project-hero">
+        <div class="project-hero-bg"></div>
+        <div class="project-overlay"></div>
+        <div class="container">
+            <div class="project-content">
+                <div class="project-year">2023'</div>
+                <h1 class="project-title">DAT</h1>
+                <div class="project-categories">
+                    Advertising<br>
+                    Campaign<br>
+                    Visual Identity
+                </div>
+            </div>
+        </div>
+        
+        <div class="hero-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+    </section>
+
+    <!-- Project Overview Section -->
+    <section class="project-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Overview</span>
+                <h2 class="section-title">Project Details</h2>
+                <span class="section-line"></span>
+            </div>
+            
+            <div class="project-intro">
+                <p>
+                The DAT cross-media advertisement campaign delivered a cohesive and innovative branding solution,
+                    encompassing a range of print and digital materials that effectively communicated the brand's values.
+                </p>
+            </div>
+        </div>
+        
+        <div class="section-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+        </div>
+    </section>
+
+    <!-- Full Width Image Section -->
+    <section class="project-section">
+        <div class="container">
+            <img src="dat2.png" alt="DAT Project Overview" class="fullwidth-image">
+        </div>
+    </section>
+
+    <!-- Split Content Section -->
+    <section class="project-section">
+        <div class="container split-section">
+            <img src="datposter.png" alt="DAT Poster Design">
+            <div class="project-details">
+                <h3>Design Approach</h3>
+                <p>
+                    The design approach for DAT focused on creating a bold, recognizable visual language that works across multiple platforms while maintaining brand consistency and impact.
+                </p>
+                <p>
+                    Using a vibrant color palette and strong typography, we developed a system that stands out in both digital and print environments.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reversed Split Content Section -->
+    <section class="project-section">
+        <div class="container split-section reversed">
+            <div class="project-details">
+                <h3>Keywords and Effectiveness</h3>
+                <p>
+                    The following keywords represent the core values and emotions we aim to evoke through our design and messaging:
+                </p>
+                <ul>
+                <li><strong>Joyful:</strong> Inspiring happiness and delight in every interaction.</li>
+                <li><strong>Passionate:</strong> Driven by enthusiasm and dedication to excellence.</li>
+                <li><strong>Importance:</strong> Highlighting significance and meaning in every detail.</li>
+                <li><strong>Comfortable:</strong> Creating a sense of ease and accessibility for users.</li>
+                <li><strong>Caring:</strong> Emphasizing empathy and consideration in all our work.</li>
+                    <li><strong>Stress-free:</strong> Simplifying complexities to provide a smooth experience.</li>
+            </ul>
+            </div>
+            <img src="dat1.png" alt="DAT Supporting Design">
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="project-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Gallery</span>
+                <h2 class="section-title">Project Visuals</h2>
+                <span class="section-line"></span>
+            </div>
+            
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="dat3.png" alt="DAT Visual 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="dat4.jpg" alt="DAT Visual 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="dat5.jpg" alt="DAT Visual 3">
+            </div>
+            </div>
+        </div>
+        
+        <div class="section-shapes">
+            <div class="shape shape-3"></div>
+        </div>
+    </section>
+	
+	<!-- Scrolling Text Section -->
+<div class="scrolling-text">
+    <div class="scrolling-wrapper">
+            <span>FOR MORE PROJECTS — LET'S CONNECT —</span>
+            <span>SCROLL FOR MORE PROJECTS — LET'S CONNECT —</span>
+            <span>FOR MORE PROJECTS — LET'S CONNECT —</span>
+        </div>
+    </div>
+
+    <!-- Next Project Section -->
+    <section class="next-project">
+        <div class="container">
+            <h3>Next Project</h3>
+            <a href="dolle.html" class="next-project-title">DOLLE</a>
+            <div class="next-project-preview">
+                <img src="dolle/mockup.png" alt="DOLLE Project Preview">
+</div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Contact</span>
+                <h2 class="section-title">Connect</h2>
+                <span class="section-line"></span>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-social">
+                    <h3>Social</h3>
+                    <ul class="social-links">
+                    <li><a href="https://www.linkedin.com/in/jevgenitupitson/" target="_blank">LinkedIn</a></li>
+                    <li><a href="https://www.instagram.com/hagryn/" target="_blank">Instagram</a></li>
+                </ul>
+            </div>
+                
+                <div class="contact-email">
+                    <h3>Email</h3>
+                    <a href="mailto:jevgenidesign@gmail.com" class="email-link">jevgenidesign@gmail.com</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; <span id="current-year"></span> Jevgeni Tupitson. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Page Transition -->
+    <div class="page-transition"></div>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+    <script>
+        // Additional project-specific scripts
+        document.addEventListener('DOMContentLoaded', () => {
+            // Register GSAP plugins
+            gsap.registerPlugin(ScrollTrigger);
+            
+            // Simple animation for project title
+            const projectTitle = document.querySelector('.project-title');
+            if (projectTitle) {
+                gsap.from(projectTitle, {
+                    y: 50,
+                    opacity: 0,
+                    duration: 1.2,
+                    ease: 'power3.out',
+                    delay: 0.3
+                });
+            }
+            
+            // Text animations for section titles and tags
+            const sectionHeaders = document.querySelectorAll('.section-header');
+            sectionHeaders.forEach(header => {
+                const tag = header.querySelector('.section-tag');
+                const title = header.querySelector('.section-title');
+                const line = header.querySelector('.section-line');
+                
+                ScrollTrigger.create({
+                    trigger: header,
+                    start: 'top 85%',
+                    onEnter: () => {
+                        gsap.from(tag, {
+                            y: 20,
+                            opacity: 0,
+                            duration: 0.7,
+                            ease: 'power3.out'
+                        });
+                        
+                        gsap.from(title, {
+                            y: 30,
+                            opacity: 0,
+                            duration: 0.8,
+                            delay: 0.2,
+                            ease: 'power3.out'
+                        });
+                        
+                        gsap.from(line, {
+                            scaleX: 0,
+                            transformOrigin: 'left center',
+                            duration: 1,
+                            delay: 0.4,
+                            ease: 'power3.inOut'
+                        });
+                    },
+                    once: true
+                });
+            });
+            
+            // Animate paragraph text
+            const paragraphs = document.querySelectorAll('.project-intro p');
+            paragraphs.forEach(paragraph => {
+                ScrollTrigger.create({
+                    trigger: paragraph,
+                    start: 'top 85%',
+                    onEnter: () => {
+                        gsap.from(paragraph, {
+                            y: 20,
+                            opacity: 0,
+                            duration: 0.9,
+                            ease: 'power2.out'
+                        });
+                    },
+                    once: true
+                });
+            });
+            
+            // Animate gallery items on scroll
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            galleryItems.forEach((item, index) => {
+                ScrollTrigger.create({
+                    trigger: item,
+                    start: 'top 80%',
+                    onEnter: () => {
+                        gsap.from(item, {
+                            opacity: 0,
+                            x: index % 2 === 0 ? -50 : 50,
+                            duration: 0.8,
+                            delay: index * 0.15,
+                            ease: 'power3.out'
+                        });
+                    },
+                    once: true
+                });
+            });
+            
+            // Animate section shapes
+            const shapes = document.querySelectorAll('.shape');
+            shapes.forEach(shape => {
+                const xMovement = Math.random() * 40 - 20; // Random movement between -20 and 20
+                const yMovement = Math.random() * 40 - 20;
+                const duration = 3 + Math.random() * 5; // Random duration between 3 and 8 seconds
+                
+                gsap.to(shape, {
+                    x: xMovement,
+                    y: yMovement,
+                    rotation: Math.random() * 20 - 10,
+                    duration: duration,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: 'sine.inOut'
+                });
+            });
+            
+            // Animate keywords on scroll
+            const keywordItems = document.querySelectorAll('.keyword-item');
+            keywordItems.forEach((item, index) => {
+                ScrollTrigger.create({
+                    trigger: item,
+                    start: 'top bottom',
+                    onEnter: () => {
+                        gsap.from(item, {
+                            opacity: 0,
+                            y: 30,
+                            duration: 0.8,
+                            delay: index * 0.1,
+                            ease: 'back.out(1.4)',
+                            onComplete: () => {
+                                gsap.set(item, { opacity: 1, clearProps: "y" });
+                            }
+                        });
+                    },
+                    once: true
+                });
+            });
+            
+            // Parallax effect for project images
+            const projectImages = document.querySelectorAll('.fullwidth-image');
+            projectImages.forEach(image => {
+                ScrollTrigger.create({
+                    trigger: image,
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: 1,
+                    onUpdate: (self) => {
+                        const moveY = (self.progress * -50);
+                        gsap.set(image, {
+                            y: moveY
+                        });
+                    }
+                });
+            });
+            
+            // Animated gradient background for project hero
+            const projectHero = document.querySelector('.project-hero');
+            if (projectHero) {
+                gsap.to(projectHero, {
+                    backgroundPosition: '100% 50%',
+                    duration: 15,
+                    ease: 'sine.inOut',
+                    repeat: -1,
+                    yoyo: true
+                });
+            }
+            
+            // Custom cursor effects for specific elements
+            const cursorDot = document.querySelector('.cursor-dot');
+            const cursorOutline = document.querySelector('.cursor-outline');
+            
+            if (cursorDot && cursorOutline && window.innerWidth > 768 && !('ontouchstart' in window)) {
+                const cursorElements = [cursorDot, cursorOutline];
+                let mouseX = 0;
+                let mouseY = 0;
+                let dotX = 0;
+                let dotY = 0;
+                let outlineX = 0;
+                let outlineY = 0;
+                let lastMouseMoveTime = 0;
+                const throttleDelay = 10; // Throttle to once per 10ms
+                
+                // Cursor movement with throttling
+                window.addEventListener('mousemove', (e) => {
+                    const currentTime = Date.now();
+                    if (currentTime - lastMouseMoveTime < throttleDelay) return;
+                    
+                    lastMouseMoveTime = currentTime;
+                    mouseX = e.clientX;
+                    mouseY = e.clientY;
+                });
+                
+                // Use requestAnimationFrame for smoother animation
+                function animateCursor() {
+                    // Smooth movement for dot
+                    const dotEasing = 0.2;
+                    dotX += (mouseX - dotX) * dotEasing;
+                    dotY += (mouseY - dotY) * dotEasing;
+                    
+                    // Slower movement for outline
+                    const outlineEasing = 0.1;
+                    outlineX += (mouseX - outlineX) * outlineEasing;
+                    outlineY += (mouseY - outlineY) * outlineEasing;
+                    
+                    // Apply transforms directly (more efficient than GSAP for this purpose)
+                    cursorDot.style.transform = `translate3d(${outlineX}px, ${outlineY}px, 0) translate3d(-50%, -50%, 0)`;
+                    cursorOutline.style.transform = `translate3d(${outlineX}px, ${outlineY}px, 0) translate3d(-50%, -50%, 0)`;
+                    
+                    requestAnimationFrame(animateCursor);
+                }
+                
+                // Start the animation loop
+                requestAnimationFrame(animateCursor);
+                
+                // Hide cursor when leaving window
+                document.addEventListener('mouseleave', () => {
+                    gsap.to(cursorElements, {
+                        opacity: 0,
+                        duration: 0.3
+                    });
+                });
+                
+                document.addEventListener('mouseenter', () => {
+                    gsap.to(cursorElements, {
+                        opacity: 1,
+                        duration: 0.3
+                    });
+                });
+            } else if (cursorDot && cursorOutline) {
+                // Hide cursor elements on mobile/touch devices or smaller screens
+                cursorDot.style.display = 'none';
+                cursorOutline.style.display = 'none';
+            }
+
+            const hoverableElements = document.querySelectorAll('a, button, .gallery-item, .next-project-title, .keyword-item');
+            hoverableElements.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    document.body.classList.add('cursor-hover');
+                    // Still use GSAP for hover effect as it's not called frequently
+                    if (cursorDot && cursorOutline) {
+                        gsap.to(cursorOutline, {
+                            scale: 1.5,
+                            duration: 0.3,
+                            ease: 'back.out(1.7)'
+                        });
+                    }
+                });
+                
+                el.addEventListener('mouseleave', () => {
+                    document.body.classList.remove('cursor-hover');
+                    if (cursorDot && cursorOutline) {
+                        gsap.to(cursorOutline, {
+                            scale: 1,
+                            duration: 0.3,
+                            ease: 'back.out(1.7)'
+                        });
+                    }
+                });
+            });
+            
+            // Image tilt effect
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                item.addEventListener('mousemove', (e) => {
+                    const imgEl = item.querySelector('img');
+                    if (!imgEl) return;
+                    
+                    const rect = item.getBoundingClientRect();
+                    const x = (e.clientX - rect.left) / rect.width - 0.5;
+                    const y = (e.clientY - rect.top) / rect.height - 0.5;
+                    
+                    gsap.to(imgEl, {
+                        rotationY: x * 10,
+                        rotationX: -y * 10,
+                        duration: 0.5,
+                        ease: 'power2.out',
+                        transformPerspective: 1000
+                    });
+                });
+                
+                item.addEventListener('mouseleave', () => {
+                    const imgEl = item.querySelector('img');
+                    if (!imgEl) return;
+                    
+                    gsap.to(imgEl, {
+                        rotationY: 0,
+                        rotationX: 0,
+                        duration: 0.5,
+                        ease: 'power2.out'
+                    });
+                });
+            });
+            
+            // Subtle header animation on scroll
+            const header = document.querySelector('.header');
+            if (header) {
+                ScrollTrigger.create({
+                    start: 'top top',
+                    end: 'bottom bottom',
+                    onUpdate: (self) => {
+                        const scrollProgress = self.progress;
+                        const blurAmount = Math.min(scrollProgress * 20, 10);
+                        const bgOpacity = Math.min(0.2 + scrollProgress * 0.8, 0.9);
+                        
+                        gsap.set(header, {
+                            backdropFilter: `blur(${blurAmount}px)`,
+                            backgroundColor: `rgba(15, 15, 23, ${bgOpacity})`
+                        });
+                    }
+                });
+            }
+            
+            // Connect section animations
+            const contactSection = document.querySelector('.contact');
+            if (contactSection) {
+                // Force visibility of section header elements
+                const contactHeader = contactSection.querySelector('.section-header');
+                const contactTag = contactHeader.querySelector('.section-tag');
+                const contactTitle = contactHeader.querySelector('.section-title');
+                const contactLine = contactHeader.querySelector('.section-line');
+                
+                // Set initial visible state before animations
+                gsap.set([contactHeader, contactTag, contactTitle, contactLine], {
+                    opacity: 1,
+                    visibility: 'visible'
+                });
+                
+                // Animate section header (Connect title)
+                ScrollTrigger.create({
+                    trigger: contactHeader,
+                    start: 'top 85%',
+                    onEnter: () => {
+                        gsap.from(contactTag, {
+                            y: 20,
+                            opacity: 0,
+                            duration: 0.7,
+                            ease: 'power3.out'
+                        });
+                        
+                        gsap.from(contactTitle, {
+                            y: 30,
+                            opacity: 0,
+                            duration: 0.8,
+                            delay: 0.2,
+                            ease: 'power3.out'
+                        });
+                        
+                        gsap.from(contactLine, {
+                            scaleX: 0,
+                            transformOrigin: 'left center',
+                            duration: 1,
+                            delay: 0.4,
+                            ease: 'power3.inOut'
+                        });
+                    },
+                    once: true
+                });
+                
+                // Animate social links
+                const socialLinks = contactSection.querySelectorAll('.social-links li');
+                ScrollTrigger.create({
+                    trigger: '.contact-social',
+                    start: 'top 80%',
+                    onEnter: () => {
+                        gsap.from(socialLinks, {
+                            opacity: 0,
+                            x: -30,
+                            stagger: 0.15,
+                            duration: 0.8,
+                            ease: 'power2.out'
+                        });
+                    },
+                    once: true
+                });
+                
+                // Animate email
+                const emailLink = contactSection.querySelector('.email-link');
+                ScrollTrigger.create({
+                    trigger: '.contact-email',
+                    start: 'top 80%',
+                    onEnter: () => {
+                        gsap.from(emailLink, {
+                            opacity: 0,
+                            x: 30,
+                            duration: 0.8,
+                            ease: 'power2.out'
+                        });
+                    },
+                    once: true
+                });
+                
+                // Animate section headers
+                const contactHeaders = contactSection.querySelectorAll('h3');
+                ScrollTrigger.create({
+                    trigger: '.contact-grid',
+                    start: 'top 85%',
+                    onEnter: () => {
+                        gsap.from(contactHeaders, {
+                            opacity: 0,
+                            y: 20,
+                            stagger: 0.2,
+                            duration: 0.8,
+                            ease: 'power2.out'
+                        });
+                    },
+                    once: true
+                });
+            }
+});
+    </script>
+</body>
+
+</html>
