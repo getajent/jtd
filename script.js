@@ -9,32 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Set current year for footer
     document.getElementById('current-year').textContent = new Date().getFullYear();
 
-    // ==========================================
-    // Theme toggle
-    // ==========================================
-    const themeToggleBtn = document.querySelector('.theme-toggle');
 
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (savedTheme === 'light' || (!savedTheme && !prefersDark)) {
-        document.body.classList.add('light-theme');
-    }
-
-    function updateThemeIcon() {
-        if (!themeToggleBtn) return;
-        const isLight = document.body.classList.contains('light-theme');
-        themeToggleBtn.innerHTML = `<i class="fa ${isLight ? 'fa-sun' : 'fa-moon'}"></i>`;
-    }
-    updateThemeIcon();
-
-    if (themeToggleBtn) {
-        themeToggleBtn.addEventListener('click', () => {
-            document.body.classList.toggle('light-theme');
-            const isLight = document.body.classList.contains('light-theme');
-            localStorage.setItem('theme', isLight ? 'light' : 'dark');
-            updateThemeIcon();
-        });
-    }
     
     // ==========================================
     // Logo click - back to top or navigate to home
