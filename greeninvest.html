@@ -778,7 +778,9 @@
             background-color: var(--primary);
             pointer-events: none;
             z-index: var(--z-highest);
-            transition: transform 0.1s ease, opacity 0.3s ease;
+            transition: transform 0.15s ease, opacity 0.3s ease;
+            mix-blend-mode: difference;
+            box-shadow: 0 0 6px var(--primary-dark);
         }
 
         .cursor-outline {
@@ -793,15 +795,17 @@
             z-index: var(--z-highest);
             transform: translate(-50%, -50%);
             transition: transform 0.15s ease, opacity 0.3s ease, width 0.3s ease, height 0.3s ease;
+            mix-blend-mode: difference;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         }
 
         body.cursor-hover .cursor-dot {
-            transform: scale(0.5);
+            transform: scale(0.6);
             opacity: 0.5;
         }
 
         body.cursor-hover .cursor-outline {
-            transform: translate(-50%, -50%) scale(1.5);
+            transform: translate(-50%, -50%) scale(1.4);
             border-color: var(--primary);
             opacity: 0.5;
         }

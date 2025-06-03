@@ -920,8 +920,8 @@
             pointer-events: none;
             z-index: var(--z-highest);
             opacity: 0;
-            transition: opacity 0.3s ease;
-            will-change: transform;
+            transition: opacity 0.3s ease, transform 0.15s ease;
+            will-change: transform, opacity;
             top: 0;
             left: 0;
             transform: translate3d(0, 0, 0);
@@ -931,6 +931,8 @@
             border-radius: 50%;
             opacity: 0.8;
             will-change: transform, opacity, scale;
+            mix-blend-mode: difference;
+            box-shadow: 0 0 6px var(--primary-dark);
         }
 
         .cursor-outline {
@@ -938,8 +940,8 @@
             pointer-events: none;
             z-index: var(--z-highest);
             opacity: 0;
-            transition: opacity 0.3s ease;
-            will-change: transform;
+            transition: opacity 0.3s ease, transform 0.15s ease;
+            will-change: transform, opacity, scale, width, height;
             top: 0;
             left: 0;
             transform: translate3d(-50%, -50%, 0);
@@ -948,7 +950,8 @@
             border: 2px solid var(--primary);
             border-radius: 50%;
             opacity: 0.5;
-            will-change: transform, opacity, scale, width, height;
+            mix-blend-mode: difference;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         }
 
         body:hover .cursor-dot,
@@ -957,12 +960,12 @@
         }
 
         body.cursor-hover .cursor-dot {
-            transform: translate3d(0, 0, 0) scale(0.5);
+            transform: translate3d(0, 0, 0) scale(0.6);
             opacity: 0.5;
         }
 
         body.cursor-hover .cursor-outline {
-            transform: translate3d(-50%, -50%, 0) scale(1.5);
+            transform: translate3d(-50%, -50%, 0) scale(1.4);
             opacity: 0.5;
         }
 
