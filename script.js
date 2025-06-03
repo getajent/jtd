@@ -230,8 +230,11 @@ document.addEventListener('DOMContentLoaded', () => {
             ScrollTrigger.create({
                 trigger: section,
                 start: 'top 80%',
+                end: 'bottom 20%',
                 onEnter: () => section.classList.add('in-view'),
-                once: true
+                onEnterBack: () => section.classList.add('in-view'),
+                onLeave: () => section.classList.remove('in-view'),
+                onLeaveBack: () => section.classList.remove('in-view')
             });
         });
         
