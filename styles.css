@@ -370,6 +370,31 @@ body.cursor-hover .cursor-outline {
   align-items: center;
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: var(--light);
+  border: 2px solid var(--light);
+  border-radius: var(--radius-pill);
+  background: none;
+  cursor: pointer;
+  transition: background-color var(--transition-medium), color var(--transition-medium);
+}
+
+.theme-toggle:hover {
+  background-color: var(--primary);
+  color: var(--darker);
+}
+
 .logo {
   position: relative;
   z-index: var(--z-medium);
@@ -718,6 +743,11 @@ body.cursor-hover .cursor-outline {
   
   .menu-toggle {
     display: flex;
+  }
+
+  .theme-toggle {
+    width: 28px;
+    height: 28px;
   }
   
   .hero-content {
@@ -1767,5 +1797,22 @@ body.cursor-hover .cursor-outline {
 ::selection {
   background-color: rgba(144, 96, 255, 0.2);
   color: var(--light);
+}
+
+/* ==========================================
+   Light Theme Overrides
+   ========================================== */
+body.light-theme {
+  --dark: #f4f4f9;
+  --darker: #ffffff;
+  --light: #0f0f17;
+  --gray: #444444;
+  --gray-dark: #666666;
+  background-color: var(--darker);
+  color: var(--light);
+}
+
+body.light-theme .header.scrolled {
+  background-color: rgba(255, 255, 255, 0.95);
 }
 
