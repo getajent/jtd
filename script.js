@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
             outlineY += (mouseY - outlineY) * outlineEasing;
             
             // Apply transforms directly (more efficient than GSAP for this purpose)
-            cursorDot.style.transform = `translate3d(${outlineX}px, ${outlineY}px, 0) translate3d(-50%, -50%, 0)`;
+            cursorDot.style.transform = `translate3d(${dotX}px, ${dotY}px, 0) translate3d(-50%, -50%, 0)`;
             cursorOutline.style.transform = `translate3d(${outlineX}px, ${outlineY}px, 0) translate3d(-50%, -50%, 0)`;
             
             requestAnimationFrame(animateCursor);
