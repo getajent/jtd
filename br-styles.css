@@ -1,0 +1,652 @@
+/* BR Project - Quantum Reality Design System */
+
+:root {
+    /* Core Colors */
+    --quantum-black: #000000;
+    --electric-yellow: #FFFF00;
+    --reality-white: #FFFFFF;
+    --void-grey: #1a1a1a;
+    --neural-grey: #333333;
+    
+    /* BR Project Specific Colors */
+    --br-primary: #FF4A6B;
+    --br-accent: #FF7676;
+    --br-highlight: #FF607E;
+    --br-light: #FFB3C1;
+    --br-dark: #CC3856;
+    
+    /* Typography */
+    --font-main: 'Inter', sans-serif;
+    --font-code: 'Space Mono', monospace;
+    
+    /* Spacing */
+    --space-1: 0.5rem;
+    --space-2: 1rem;
+    --space-3: 1.5rem;
+    --space-4: 2rem;
+    --space-5: 3rem;
+    
+    /* Animation */
+    --ease-quantum: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background: var(--quantum-black);
+    color: var(--reality-white);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Quantum Navigation */
+.quantum-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: var(--space-3) var(--space-4);
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(20px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 74, 107, 0.2);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.nav-identity {
+    text-decoration: none;
+    display: flex;
+    align-items: baseline;
+    gap: 0.2em;
+}
+
+.identity-fragment {
+    font-family: var(--font-code);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--reality-white);
+    letter-spacing: -0.02em;
+}
+
+.identity-quantum {
+    font-family: var(--font-code);
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--br-primary);
+    letter-spacing: 0.05em;
+}
+
+.nav-links {
+    display: flex;
+    gap: var(--space-4);
+}
+
+.nav-link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    transition: all 0.3s var(--ease-quantum);
+}
+
+.link-code {
+    font-family: var(--font-code);
+    font-size: 0.8rem;
+    color: var(--br-primary);
+    opacity: 0.7;
+}
+
+.link-text {
+    font-family: var(--font-main);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--reality-white);
+    letter-spacing: 0.05em;
+}
+
+.nav-link:hover .link-text {
+    color: var(--br-primary);
+}
+
+.nav-link:hover .link-code {
+    opacity: 1;
+}
+
+/* Project Hero */
+.project-hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    background: linear-gradient(135deg, var(--quantum-black) 0%, var(--void-grey) 100%);
+    overflow: hidden;
+}
+
+.project-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(255, 74, 107, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 118, 118, 0.2) 0%, transparent 50%);
+    z-index: 1;
+}
+
+.hero-matrix {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-5);
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--space-4);
+    position: relative;
+    z-index: 2;
+}
+
+.fragment-identity {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.project-meta {
+    display: flex;
+    gap: var(--space-2);
+    align-items: center;
+}
+
+.meta-year {
+    font-family: var(--font-code);
+    font-size: 0.9rem;
+    color: var(--br-primary);
+    opacity: 0.8;
+}
+
+.meta-type {
+    font-family: var(--font-code);
+    font-size: 0.9rem;
+    color: var(--reality-white);
+    opacity: 0.6;
+    letter-spacing: 0.1em;
+}
+
+.project-title {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 700;
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+}
+
+.title-fragment {
+    display: block;
+    color: var(--reality-white);
+    text-shadow: 0 0 30px rgba(255, 74, 107, 0.5);
+}
+
+.title-quantum {
+    display: block;
+    background: linear-gradient(135deg, var(--br-primary) 0%, var(--br-accent) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    text-shadow: none;
+}
+
+.identity-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: var(--space-2);
+}
+
+.quantum-tag {
+    font-family: var(--font-code);
+    font-size: 0.8rem;
+    padding: 0.5em 1em;
+    background: rgba(255, 74, 107, 0.1);
+    border: 1px solid rgba(255, 74, 107, 0.3);
+    color: var(--br-primary);
+    letter-spacing: 0.05em;
+    transition: all 0.3s var(--ease-quantum);
+}
+
+.quantum-tag:hover {
+    background: rgba(255, 74, 107, 0.2);
+    border-color: var(--br-primary);
+    transform: translateY(-2px);
+}
+
+.fragment-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.project-showcase {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 4/3;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.showcase-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s var(--ease-quantum);
+}
+
+.project-showcase:hover .showcase-image {
+    transform: scale(1.05);
+}
+
+.showcase-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: var(--space-3);
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    transform: translateY(100%);
+    transition: transform 0.3s var(--ease-quantum);
+}
+
+.project-showcase:hover .showcase-overlay {
+    transform: translateY(0);
+}
+
+.overlay-code {
+    font-family: var(--font-code);
+    font-size: 0.9rem;
+    color: var(--br-primary);
+    letter-spacing: 0.1em;
+}
+
+/* Project Overview */
+.project-overview {
+    padding: var(--space-5) var(--space-4);
+    background: var(--void-grey);
+}
+
+.overview-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-disruptor {
+    font-family: var(--font-code);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    color: var(--electric-yellow);
+    text-align: center;
+    margin-bottom: var(--space-3);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.quantum-description {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: var(--space-5);
+    max-width: 800px;
+}
+
+.project-principles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-4);
+    margin-top: var(--space-4);
+}
+
+.principle-node {
+    padding: var(--space-4);
+    background: rgba(255, 74, 107, 0.05);
+    border: 1px solid rgba(255, 74, 107, 0.2);
+    border-radius: 8px;
+    transition: all 0.3s var(--ease-quantum);
+}
+
+.principle-node:hover {
+    background: rgba(255, 74, 107, 0.1);
+    border-color: var(--br-primary);
+    transform: translateY(-5px);
+}
+
+.principle-node h3 {
+    font-family: var(--font-code);
+    font-size: 1.1rem;
+    color: var(--br-primary);
+    margin-bottom: var(--space-2);
+    letter-spacing: 0.05em;
+}
+
+.principle-node p {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+}
+
+/* Project Gallery */
+.project-gallery {
+    padding: var(--space-5) var(--space-4);
+    background: var(--quantum-black);
+}
+
+.gallery-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.quantum-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--space-3);
+    margin-top: var(--space-4);
+}
+
+.gallery-portal {
+    position: relative;
+    aspect-ratio: 4/3;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.5s var(--ease-quantum);
+    border: 1px solid rgba(255, 74, 107, 0.2);
+}
+
+.gallery-portal.hero {
+    grid-column: span 2;
+    aspect-ratio: 16/9;
+}
+
+.gallery-portal:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(255, 74, 107, 0.3);
+}
+
+.portal-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s var(--ease-quantum);
+}
+
+.gallery-portal:hover .portal-image {
+    transform: scale(1.1);
+}
+
+.portal-meta {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: var(--space-3);
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+    transform: translateY(100%);
+    transition: transform 0.3s var(--ease-quantum);
+}
+
+.gallery-portal:hover .portal-meta {
+    transform: translateY(0);
+}
+
+.meta-tag {
+    font-family: var(--font-code);
+    font-size: 0.8rem;
+    color: var(--br-primary);
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: 0.5em;
+}
+
+.meta-desc {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Navigation Matrix */
+.navigation-matrix {
+    padding: var(--space-5) var(--space-4);
+    background: var(--void-grey);
+}
+
+.project-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: var(--space-4) auto 0;
+}
+
+.nav-portal {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    text-decoration: none;
+    color: var(--reality-white);
+    font-family: var(--font-code);
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    transition: all 0.3s var(--ease-quantum);
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid rgba(255, 74, 107, 0.3);
+    border-radius: 4px;
+}
+
+.nav-portal:hover {
+    color: var(--br-primary);
+    border-color: var(--br-primary);
+    transform: translateY(-2px);
+}
+
+.portal-icon {
+    font-size: 1.2rem;
+    color: var(--br-primary);
+}
+
+/* Footer */
+.reality-footer {
+    padding: var(--space-4);
+    background: var(--quantum-black);
+    border-top: 1px solid rgba(255, 74, 107, 0.2);
+}
+
+.footer-essence {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    font-family: var(--font-code);
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.copyright {
+    color: var(--reality-white);
+}
+
+.footer-meta {
+    color: var(--br-primary);
+    opacity: 0.8;
+}
+
+/* Particle System */
+.particle-universe {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: var(--br-primary);
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: float-particle var(--duration, 8s) var(--delay, 0s) infinite linear;
+}
+
+@keyframes float-particle {
+    0% {
+        transform: translateY(100vh) translateX(0) scale(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.6;
+    }
+    90% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateY(-10vh) translateX(100px) scale(1);
+        opacity: 0;
+    }
+}
+
+/* Lightbox */
+.lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s var(--ease-quantum);
+}
+
+.lightbox-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox-image {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: var(--space-3);
+    right: var(--space-3);
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 74, 107, 0.2);
+    border: 1px solid var(--br-primary);
+    color: var(--br-primary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s var(--ease-quantum);
+}
+
+.lightbox-close:hover {
+    background: var(--br-primary);
+    color: var(--reality-white);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        gap: var(--space-2);
+    }
+    
+    .nav-links {
+        gap: var(--space-2);
+    }
+    
+    .hero-matrix {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+        text-align: center;
+    }
+    
+    .fragment-identity {
+        order: 2;
+    }
+    
+    .fragment-visual {
+        order: 1;
+    }
+    
+    .project-navigation {
+        flex-direction: column;
+        gap: var(--space-3);
+    }
+    
+    .nav-portal {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .quantum-gallery {
+        grid-template-columns: 1fr;
+    }
+    
+    .gallery-portal.hero {
+        grid-column: span 1;
+    }
+    
+    .footer-essence {
+        flex-direction: column;
+        gap: var(--space-2);
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .quantum-nav {
+        padding: var(--space-2);
+    }
+    
+    .project-overview,
+    .project-gallery,
+    .navigation-matrix {
+        padding: var(--space-4) var(--space-2);
+    }
+    
+    .principle-node {
+        padding: var(--space-3);
+    }
+    
+    .quantum-gallery {
+        gap: var(--space-2);
+    }
+}

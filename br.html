@@ -3,1286 +3,232 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BR Danmark Project | Jevgeni Tupitson</title>
-    <meta name="description" content="BR Danmark branding, packaging and visual identity project by Jevgeni Tupitson, showcasing creative retail design solutions.">
-    <meta name="keywords" content="BR Danmark, branding, packaging design, visual identity, retail design, graphic design">
-    <meta name="author" content="Jevgeni Tupitson">
+    <title>BR.PROJECT | JEVGENI.REALITY</title>
+    <meta name="description" content="BR Danmark retail branding project - Revolutionary visual identity in quantum reality">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- GSAP and ScrollTrigger -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css">
-    
-    <style>
-        /* Project-specific styles */
-        .project-hero {
-            position: relative;
-            height: 100vh;
-            min-height: 700px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            background-color: var(--darker);
-            background-size: 200% 200%;
-            background-position: 0% 0%;
-            background-image: linear-gradient(135deg, rgba(15, 15, 34, 0.9) 0%, rgba(60, 10, 35, 0.9) 100%);
-        }
-        
-        .project-hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('br/MAGAZINE.png');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.15;
-            filter: blur(5px);
-            z-index: var(--z-negative);
-        }
-        
-        .project-hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0iI0ZGNzY3NiIgZmlsbC1ydWxlPSJldmVub2RkIiBvcGFjaXR5PSIuMSI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiLz48L2c+PC9zdmc+');
-            opacity: 0.3;
-            z-index: var(--z-negative);
-        }
-        
-        .project-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(15, 15, 23, 0.9), var(--darker));
-            z-index: var(--z-low);
-        }
-        
-        .project-content {
-            position: relative;
-            z-index: var(--z-medium);
-            display: grid;
-            grid-template-columns: 1fr 3fr 1fr;
-            align-items: center;
-            width: 100%;
-        }
-        
-        .project-year {
-            font-size: clamp(1rem, 3vw, 1.5rem);
-            color: #FF7676;
-            text-align: left;
-            font-weight: 600;
-            text-shadow: 0 0 10px rgba(255, 107, 149, 0.3);
-            padding-left: 0;
-        }
-        
-        .project-title {
-            font-size: clamp(3rem, 10vw, 8rem);
-            font-weight: 800;
-            background-image: linear-gradient(135deg, #FF7676 0%, #FF4A6B 50%, #FF607E 100%);
-            background-size: 200% auto;
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            margin-bottom: var(--spacing-sm);
-            animation: gradientShift 8s linear infinite;
-            letter-spacing: -2px;
-            text-shadow: 0 5px 30px rgba(255, 107, 149, 0.3);
-            text-align: center;
-        }
-        
-        .project-categories {
-            font-size: clamp(0.875rem, 2vw, 1.25rem);
-            color: var(--gray);
-            text-align: right;
-            line-height: 1.8;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding-right: 0;
-        }
-        
-        .project-section {
-            position: relative;
-            padding: var(--spacing-xl) 0;
-            overflow: hidden;
-            border-bottom: 1px solid rgba(255, 107, 149, 0.1);
-        }
-        
-        .project-section:nth-child(odd)::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: radial-gradient(circle at 10% 10%, rgba(255, 107, 149, 0.05) 0%, transparent 70%);
-            z-index: -1;
-        }
-        
-        .section-header {
-            position: relative;
-            margin-bottom: var(--spacing-lg);
-        }
-        
-        .section-tag {
-            background: linear-gradient(135deg, #FF7676 0%, #FF4A6B 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            font-weight: 600;
-            letter-spacing: 2px;
-        }
-        
-        .section-title {
-            margin-top: var(--spacing-xs);
-            margin-bottom: var(--spacing-sm);
-            font-size: clamp(1.5rem, 5vw, 2.5rem);
-            font-weight: 700;
-        }
-        
-        .section-line {
-            height: 3px;
-            width: 80px;
-            background: linear-gradient(to right, #FF7676, #FF4A6B);
-            border-radius: 3px;
-        }
-        
-        .project-intro p {
-            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
-            line-height: 1.7;
-            color: var(--gray);
-            margin-bottom: var(--spacing-md);
-        }
-        
-        .fullwidth-image {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            border-radius: var(--radius-md);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), 0 0 30px rgba(255, 107, 149, 0.2);
-            transition: transform 0.5s ease, box-shadow 0.5s ease;
-        }
-        
-        .fullwidth-image:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.25), 0 0 40px rgba(255, 107, 149, 0.3);
-        }
-        
-        .split-section {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: var(--spacing-lg);
-            padding: var(--spacing-xl) 0;
-        }
-        
-        .split-section.reversed {
-            grid-template-columns: 1fr 2fr;
-        }
-        
-        .split-section img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: var(--radius-md);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15), 0 0 20px rgba(255, 107, 149, 0.15);
-            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.5s ease;
-        }
-        
-        .split-section:hover img {
-            transform: scale(1.03) translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), 0 0 30px rgba(255, 107, 149, 0.2);
-        }
-        
-        .project-details {
-            padding: var(--spacing-md);
-            background: rgba(21, 21, 32, 0.3);
-            backdrop-filter: blur(10px);
-            border-radius: var(--radius-md);
-            border: 1px solid rgba(255, 107, 149, 0.1);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .project-details h3 {
-            font-size: clamp(1.5rem, 3vw, 2rem);
-            margin-bottom: var(--spacing-md);
-            color: #FF4A6B;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .project-details h3::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(to right, #FF4A6B, transparent);
-        }
-        
-        .project-details p {
-            color: var(--gray);
-            margin-bottom: var(--spacing-sm);
-            line-height: 1.7;
-        }
-        
-        .project-details ul {
-            list-style: none;
-            padding: 0;
-            margin: var(--spacing-md) 0;
-        }
-        
-        .project-details ul li {
-            margin-bottom: var(--spacing-sm);
-            padding-left: var(--spacing-md);
-            position: relative;
-            color: var(--gray);
-        }
-        
-        .project-details ul li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0.7em;
-            width: 10px;
-            height: 2px;
-            background: linear-gradient(to right, #FF7676, #FF4A6B);
-        }
-        
-        .project-details ul li strong {
-            color: var(--light);
-            font-weight: 600;
-        }
-        
-        .gallery {
-            display: flex;
-            gap: var(--spacing-lg);
-            width: 100%;
-            overflow-x: auto;
-            padding: var(--spacing-lg) 0;
-            scrollbar-width: thin;
-            scrollbar-color: #FF4A6B var(--darker);
-            -webkit-overflow-scrolling: touch;
-        }
-        
-        .gallery:after {
-            content: '';
-            flex: 0 0 20px;
-        }
-        
-        .gallery-item {
-            flex: 0 0 auto;
-            width: 80%;
-            max-width: 700px;
-            min-width: 300px;
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15), 0 0 20px rgba(255, 107, 149, 0.15);
-            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.5s ease;
-            position: relative;
-            border: 1px solid rgba(255, 107, 149, 0.1);
-        }
-        
-        .gallery-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(255, 107, 149, 0.1), transparent);
-            z-index: 1;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .gallery-item:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), 0 0 30px rgba(255, 107, 149, 0.3);
-        }
-        
-        .gallery-item:hover::before {
-            opacity: 1;
-        }
-        
-        .gallery-item img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
-        
-        .keywords-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--spacing-md);
-            justify-content: center;
-            margin: var(--spacing-lg) 0;
-            perspective: 800px;
-        }
-        
-        .keyword-item {
-            padding: var(--spacing-sm) var(--spacing-md);
-            background: rgba(255, 107, 149, 0.1);
-            border: 1px solid rgba(255, 107, 149, 0.2);
-            border-radius: var(--radius-pill);
-            color: var(--light);
-            font-weight: 600;
-            font-size: var(--font-size-medium);
-            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1), 0 0 10px rgba(255, 107, 149, 0.1);
-        }
-        
-        .keyword-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #FF7676 0%, #FF4A6B 100%);
-            opacity: 0;
-            transition: opacity 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            z-index: -1;
-        }
-        
-        .keyword-item:hover {
-            transform: translateY(-5px) scale(1.05) rotateX(10deg);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15), 0 0 20px rgba(255, 107, 149, 0.3);
-            border-color: #FF4A6B;
-            color: white;
-        }
-        
-        .keyword-item:hover::before {
-            opacity: 1;
-        }
-        
-        .scrolling-text {
-            background: linear-gradient(90deg, var(--darker) 0%, rgba(21, 21, 50, 0.9) 50%, var(--darker) 100%);
-            border-top: 1px solid rgba(255, 107, 149, 0.1);
-            border-bottom: 1px solid rgba(255, 107, 149, 0.1);
-            overflow: hidden;
-            padding: var(--spacing-md) 0;
-        }
-        
-        .scrolling-wrapper {
-            display: inline-flex;
-            white-space: nowrap;
-            animation: scroll 20s linear infinite;
-        }
-        
-        .scrolling-wrapper span {
-            display: inline-block;
-            font-size: clamp(1rem, 3vw, 1.5rem);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-right: var(--spacing-xl);
-            background: linear-gradient(90deg, #FF7676 0%, #FF4A6B 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            opacity: 0.8;
-        }
-        
-        .next-project {
-            padding: var(--spacing-xl) 0;
-            text-align: center;
-            position: relative;
-            background: linear-gradient(to bottom, var(--darker), rgba(21, 21, 50, 0.9));
-        }
-        
-        .next-project h3 {
-            font-size: var(--font-size-small);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--gray);
-            margin-bottom: var(--spacing-sm);
-        }
-        
-        .next-project-title {
-            font-size: clamp(2rem, 6vw, 4rem);
-            font-weight: 700;
-            background-image: linear-gradient(135deg, #FF7676 0%, #FF4A6B 100%);
-            background-size: 200% auto;
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            margin-bottom: var(--spacing-md);
-            display: inline-block;
-            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            text-decoration: none;
-        }
-        
-        .next-project:hover .next-project-title {
-            transform: translateY(-5px);
-        }
-        
-        .next-project-preview {
-            max-width: 400px;
-            margin: 0 auto;
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15), 0 0 20px rgba(255, 107, 149, 0.15);
-            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease;
-            border: 1px solid rgba(255, 107, 149, 0.1);
-        }
-        
-        .next-project:hover .next-project-preview {
-            transform: scale(1.05);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), 0 0 30px rgba(255, 107, 149, 0.3);
-        }
-        
-        .next-project-preview img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        
-        .next-project:hover .next-project-preview img {
-            transform: scale(1.05);
-        }
-        
-        .section.contact {
-            background: linear-gradient(to bottom, var(--darker), rgba(21, 21, 50, 0.9));
-            border-top: 1px solid rgba(255, 107, 149, 0.1);
-            padding: var(--spacing-xl) 0;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .section.contact .section-header {
-            margin-bottom: var(--spacing-lg);
-            opacity: 1;
-            visibility: visible;
-            transform: none;
-            text-align: center;
-        }
-        
-        .section.contact .section-tag {
-            background: linear-gradient(135deg, #FF7676 0%, #FF4A6B 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            opacity: 1;
-            font-weight: 600;
-            letter-spacing: 2px;
-            display: inline-block;
-            transform: none !important;
-        }
-        
-        .section.contact .section-title {
-            color: var(--light);
-            margin-top: var(--spacing-xs);
-            margin-bottom: var(--spacing-sm);
-            font-size: clamp(1.5rem, 5vw, 2.5rem);
-            font-weight: 700;
-            opacity: 1;
-            transform: none !important;
-        }
-        
-        .section.contact .section-line {
-            height: 3px;
-            width: 80px;
-            background: linear-gradient(to right, #FF7676, #FF4A6B);
-            border-radius: 3px;
-            margin: 0 auto;
-            display: block;
-            opacity: 1;
-            transform: none !important;
-            transform-origin: center !important;
-        }
-        
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: var(--spacing-lg);
-            max-width: 800px;
-            margin: 0 auto;
-            margin-top: var(--spacing-lg);
-        }
-        
-        .contact-social,
-        .contact-email {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            text-align: left;
-        }
-        
-        .contact-social h3,
-        .contact-email h3 {
-            font-size: 1.25rem;
-            color: #FF4A6B;
-            margin-bottom: var(--spacing-md);
-            position: relative;
-            display: inline-block;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .contact-social h3::after,
-        .contact-email h3::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 50%;
-            height: 2px;
-            background: linear-gradient(to right, #FF4A6B, transparent);
-        }
-        
-        .social-links {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .social-links li {
-            margin-bottom: var(--spacing-sm);
-            border-bottom: none;
-        }
-        
-        .social-links a,
-        .email-link {
-            position: relative;
-            display: inline-block;
-            color: var(--light);
-            text-decoration: none;
-            font-size: 1.125rem;
-            transition: color 0.3s ease;
-        }
-        
-        .social-links a::after,
-        .email-link::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(to right, #FF7676, #FF4A6B);
-            transform: scaleX(1);
-            transform-origin: left;
-            transition: transform 0.3s ease;
-        }
-        
-        .social-links a:hover,
-        .email-link:hover {
-            color: #FF4A6B;
-        }
-        
-        .social-links a:hover::after,
-        .email-link:hover::after {
-            transform: scaleX(1.1);
-        }
-        
-        .shape {
-            position: absolute;
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-            z-index: -1;
-            filter: blur(30px);
-        }
-        
-        .shape-1 {
-            width: 300px;
-            height: 300px;
-            top: -10%;
-            right: -5%;
-            background: rgba(255, 118, 118, 0.1);
-            animation: floating 10s ease infinite alternate;
-        }
-        
-        .shape-2 {
-            width: 200px;
-            height: 200px;
-            bottom: 5%;
-            left: -5%;
-            background: rgba(255, 74, 107, 0.1);
-            animation: floating 15s ease-in-out infinite alternate-reverse;
-        }
-        
-        .shape-3 {
-            width: 150px;
-            height: 150px;
-            bottom: 15%;
-            right: 10%;
-            background: rgba(255, 96, 126, 0.1);
-            animation: floating 12s ease-in-out infinite alternate;
-        }
-        
-        @keyframes floating {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            50% { transform: translate(15px, 15px) rotate(5deg); }
-            100% { transform: translate(-15px, 15px) rotate(-5deg); }
-        }
-        
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-        
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        .hero-shapes .shape {
-            opacity: 0.5;
-        }
-        
-        @media (max-width: 768px) {
-            .split-section, .split-section.reversed {
-                grid-template-columns: 1fr;
-            }
-            
-            .project-content {
-                grid-template-columns: 1fr;
-                gap: var(--spacing-md);
-            }
-            
-            .project-year, .project-categories {
-                text-align: center;
-            }
-            
-            .gallery-item {
-                min-width: 250px;
-            }
-            
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: var(--spacing-lg);
-            }
-            
-            .contact-email {
-                margin-top: var(--spacing-md);
-            }
-        }
-        
-        /* Более специфичные селекторы для социальных ссылок */
-        .section.contact .social-links a,
-        .section.contact .email-link {
-            position: relative;
-            display: inline-block;
-            color: var(--light);
-            text-decoration: none;
-            font-size: 1.125rem;
-            transition: color 0.3s ease;
-            border-bottom: none;
-        }
-        
-        .section.contact .social-links a::after,
-        .section.contact .email-link::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(to right, #FF7676, #FF4A6B) !important;
-            transform: scaleX(1);
-            transform-origin: left;
-            transition: transform 0.3s ease;
-        }
-        
-        .section.contact .social-links a:hover,
-        .section.contact .email-link:hover {
-            color: #FF4A6B !important;
-        }
-        
-        .section.contact .social-links a:hover::after,
-        .section.contact .email-link:hover::after {
-            transform: scaleX(1.1);
-        }
-
-        .cursor-dot {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background-color: var(--primary);
-            pointer-events: none;
-            z-index: var(--z-highest);
-            transition: transform 0.1s ease, opacity 0.3s ease;
-        }
-
-        .cursor-outline {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: 2px solid var(--primary);
-            pointer-events: none;
-            z-index: var(--z-highest);
-            transform: translate(-50%, -50%);
-            transition: transform 0.15s ease, opacity 0.3s ease, width 0.3s ease, height 0.3s ease;
-        }
-
-        body.cursor-hover .cursor-dot {
-            transform: scale(0.5);
-            opacity: 0.5;
-        }
-
-        body.cursor-hover .cursor-outline {
-            transform: translate(-50%, -50%) scale(1.5);
-            border-color: var(--primary);
-            opacity: 0.5;
-        }
-    </style>
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="br-styles.css">
 </head>
-<body>
-    <!-- Loader -->
-    <div class="loader">
-        <div class="loader-inner"></div>
-    </div>
-
-    <!-- Cursor -->
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
-
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-    <div class="logo">
-                <a href="index.html" aria-label="JTDesign Logo">
-                    <img src="logo.png" alt="JTDesign Logo">
-    </a>
-	</div>
+<body class="project-quantum">
+    
+    <!-- Quantum Navigation -->
+    <nav class="quantum-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-identity">
+                <span class="identity-fragment">JEVGENI</span>
+                <span class="identity-quantum">.REALITY</span>
+            </a>
             
-            <nav class="nav">
-                <ul class="nav-list">
-                    <li class="nav-item"><a href="index.html#about" class="nav-link">About</a></li>
-                    <li class="nav-item"><a href="index.html#services" class="nav-link">Services</a></li>
-                    <li class="nav-item"><a href="index.html#work" class="nav-link">Work</a></li>
-                    <li class="nav-item"><a href="index.html#portfolio" class="nav-link">Portfolio</a></li>
-                    <li class="nav-item"><a href="index.html#contact" class="nav-link">Contact</a></li>
-            </ul>
-        </nav>
-            
-            <button class="menu-toggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+            <div class="nav-links">
+                <a href="index.html#creations" class="nav-link">
+                    <span class="link-code">01</span>
+                    <span class="link-text">PORTFOLIO</span>
+                </a>
+                <a href="index.html#collaboration" class="nav-link">
+                    <span class="link-code">02</span>
+                    <span class="link-text">CONTACT</span>
+                </a>
+            </div>
         </div>
-    </header>
+    </nav>
 
-    <!-- Project Hero Section -->
+    <!-- Project Hero -->
     <section class="project-hero">
-        <div class="project-hero-bg"></div>
-        <div class="project-overlay"></div>
-        <div class="container">
-            <div class="project-content">
-                <div class="project-year">2020'</div>
-                <h1 class="project-title">BR DANMARK</h1>
-                <div class="project-categories">
-                    Branding<br>
-                    Packaging<br>
-                    Visual Identity
-                </div>
-            </div>
-        </div>
-        
-        <div class="hero-shapes">
-            <div class="shape shape-1"></div>
-            <div class="shape shape-2"></div>
-            <div class="shape shape-3"></div>
-    </div>
-</section>
-
-    <!-- Project Overview Section -->
-    <section class="project-section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Overview</span>
-                <h2 class="section-title">Project Details</h2>
-                <span class="section-line"></span>
-            </div>
-            
-            <div class="project-intro">
-                <p>
-                    BR Danmark is a comprehensive retail branding project that includes packaging design and visual identity. 
-                    The project focused on creating a dynamic and family-friendly identity for this retail company, with an emphasis 
-                    on colorful and engaging design elements catered to their target audience.
-                </p>
-            </div>
-        </div>
-        
-        <div class="section-shapes">
-            <div class="shape shape-1"></div>
-            <div class="shape shape-2"></div>
-        </div>
-    </section>
-
-    <!-- Full Width Image Section -->
-    <section class="project-section">
-        <div class="container">
-            <img src="br/MAGAZINE.png" alt="BR Danmark Magazine Design" class="fullwidth-image">
-        </div>
-    </section>
-
-    <!-- Split Content Section -->
-    <section class="project-section">
-        <div class="container split-section">
-            <img src="br/img1.webp" alt="BR Danmark Visual Identity">
-            <div class="project-details">
-                <h3>Brand Identity</h3>
-                <p>
-                    The BR Danmark project focused on creating a vibrant and appealing identity that resonates with families and children while 
-                    maintaining a professional appearance for the retail industry.
-                </p>
-                <p>
-                    Using a bright and energetic color palette along with playful typography, we developed a system that embodies 
-                    fun and excitement without compromising on brand recognition.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Reversed Split Content Section -->
-    <section class="project-section">
-        <div class="container split-section reversed">
-            <div class="project-details">
-                <h3>Design Strategy</h3>
-                <p>
-                    The design strategy was built around these core principles that guide all visual decisions:
-                </p>
-                <ul>
-                    <li><strong>Family-Friendly:</strong> Creating a welcoming and accessible experience for families.</li>
-                    <li><strong>Playful:</strong> Incorporating elements that inspire joy and imagination.</li>
-                    <li><strong>Vibrant:</strong> Using bold colors and dynamic compositions to capture attention.</li>
-                    <li><strong>Consistency:</strong> Ensuring a cohesive look across all touchpoints and materials.</li>
-                </ul>
-            </div>
-            <img src="br/img2.webp" alt="BR Danmark Design Strategy">
-        </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section class="project-section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Gallery</span>
-                <h2 class="section-title">Visual Applications</h2>
-                <span class="section-line"></span>
-            </div>
-            
-            <div class="gallery">
-                <div class="gallery-item">
-                    <img src="br/img3.webp" alt="BR Danmark Application 1">
-                </div>
-                <div class="gallery-item">
-                    <img src="br/img4.webp" alt="BR Danmark Application 2">
-                </div>
-            <div class="gallery-item">
-                    <img src="br/img5.webp" alt="BR Danmark Application 3">
-            </div>
-            <div class="gallery-item">
-                    <img src="br/img6.webp" alt="BR Danmark Application 4">
-                </div>
-            </div>
-        </div>
-        
-        <div class="section-shapes">
-            <div class="shape shape-3"></div>
-    </div>
-</section>
-
-    <!-- Keywords Section -->
-    <section class="project-section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Philosophy</span>
-                <h2 class="section-title">Core Values</h2>
-                <span class="section-line"></span>
-    </div>
-            
-            <div class="project-intro">
-                <p>
-                    These keywords reflect the essence of the BR Danmark brand: playful, vibrant, family-friendly, and consistent across all touchpoints.
-                </p>
-        </div>
-
-            <div class="keywords-grid">
-                <div class="keyword-item">Playful</div>
-                <div class="keyword-item">Vibrant</div>
-                <div class="keyword-item">Family-Friendly</div>
-                <div class="keyword-item">Consistent</div>
-        </div>
-        </div>
-
-        <div class="section-shapes">
-            <div class="shape shape-1"></div>
-            <div class="shape shape-2"></div>
-        </div>
-    </section>
-	
-	<!-- Scrolling Text Section -->
-    <div class="scrolling-text">
-        <div class="scrolling-wrapper">
-            <span>RETAIL DESIGN — BRAND STRATEGY —</span>
-            <span>RETAIL DESIGN — BRAND STRATEGY —</span>
-            <span>RETAIL DESIGN — BRAND STRATEGY —</span>
-        </div>
-    </div>
-
-<!-- Next Project Section -->
-    <section class="next-project">
-        <div class="container">
-            <h3>Next Project</h3>
-            <a href="ak.html" class="next-project-title">Aalborg Kommune</a>
-            <div class="next-project-preview">
-                <img src="ak/pos3.jpg" alt="Aalborg Kommune Project Preview">
-        </div>
-    </div>
-</section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section contact">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Contact</span>
-                <h2 class="section-title">Connect</h2>
-                <span class="section-line"></span>
-            </div>
-            
-            <div class="contact-grid">
-                <div class="contact-social">
-                    <h3>Social</h3>
-                    <ul class="social-links">
-                        <li><a href="https://www.linkedin.com/in/jevgenitupitson/" target="_blank">LinkedIn</a></li>
-                        <li><a href="https://www.instagram.com/hagryn/" target="_blank">Instagram</a></li>
-                    </ul>
+        <div class="hero-matrix">
+            <div class="fragment-identity">
+                <div class="project-meta">
+                    <span class="meta-year">2020</span>
+                    <span class="meta-type">RETAIL BRAND</span>
                 </div>
                 
-                <div class="contact-email">
-                <h3>Email</h3>
-                    <a href="mailto:jevgenidesign@gmail.com" class="email-link">jevgenidesign@gmail.com</a>
+                <h1 class="project-title">
+                    <span class="title-fragment">BR</span>
+                    <span class="title-quantum">DANMARK</span>
+                </h1>
+                
+                <div class="identity-tags">
+                    <span class="quantum-tag">BRANDING</span>
+                    <span class="quantum-tag">PACKAGING</span>
+                    <span class="quantum-tag">IDENTITY</span>
+                    <span class="quantum-tag">RETAIL</span>
+                </div>
+            </div>
+            
+            <div class="fragment-visual">
+                <div class="project-showcase">
+                    <img src="br/MAGAZINE.png" alt="BR Danmark Magazine" class="showcase-image">
+                    <div class="showcase-overlay">
+                        <span class="overlay-code">RETAIL.REVOLUTION</span>
+                    </div>
                 </div>
             </div>
         </div>
-        
-        <div class="section-shapes">
-            <div class="shape shape-1"></div>
-            <div class="shape shape-2"></div>
+    </section>
+
+    <!-- Project Overview -->
+    <section class="project-overview">
+        <div class="overview-container">
+            <h2 class="section-disruptor">PROJECT.ESSENCE</h2>
+            
+            <p class="quantum-description">
+                BR Danmark represents a comprehensive retail branding revolution, delivering a cohesive and dynamic 
+                visual identity that transcends traditional retail boundaries. This project focused on creating 
+                vibrant and family-friendly branding that resonates across all touchpoints.
+            </p>
+            
+            <div class="project-principles">
+                <div class="principle-node">
+                    <h3>FAMILY-FRIENDLY DESIGN</h3>
+                    <p>Creating a welcoming and accessible visual experience that appeals to families while maintaining professional retail standards.</p>
+                </div>
+                
+                <div class="principle-node">
+                    <h3>VIBRANT IDENTITY</h3>
+                    <p>Developing a bold and energetic color palette that captures attention and embodies excitement across all brand applications.</p>
+                </div>
+                
+                <div class="principle-node">
+                    <h3>RETAIL INNOVATION</h3>
+                    <p>Establishing a comprehensive design system that ensures consistency and brand recognition across packaging and visual identity.</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; <span id="current-year"></span> Jevgeni Tupitson. All rights reserved.</p>
+    <!-- Project Gallery -->
+    <section class="project-gallery">
+        <div class="gallery-container">
+            <h2 class="section-disruptor">DIMENSION.SHOWCASE</h2>
+            
+            <div class="quantum-gallery">
+                <!-- Hero Magazine -->
+                <div class="gallery-portal hero" data-src="br/MAGAZINE.png">
+                    <img src="br/MAGAZINE.png" alt="BR Danmark Magazine" class="portal-image">
+                    <div class="portal-meta">
+                        <span class="meta-tag">MAGAZINE.DESIGN</span>
+                        <span class="meta-desc">Print media excellence</span>
+                    </div>
+                </div>
+                
+                <!-- Brand Identity -->
+                <div class="gallery-portal identity" data-src="br/img1.webp">
+                    <img src="br/img1.webp" alt="BR Danmark Visual Identity" class="portal-image">
+                    <div class="portal-meta">
+                        <span class="meta-tag">VISUAL.IDENTITY</span>
+                        <span class="meta-desc">Core brand elements</span>
+                    </div>
+                </div>
+                
+                <!-- Design Strategy -->
+                <div class="gallery-portal strategy" data-src="br/img2.webp">
+                    <img src="br/img2.webp" alt="BR Danmark Design Strategy" class="portal-image">
+                    <div class="portal-meta">
+                        <span class="meta-tag">DESIGN.STRATEGY</span>
+                        <span class="meta-desc">Strategic approach</span>
+                    </div>
+                </div>
+                
+                <!-- Applications Set 1 -->
+                <div class="gallery-portal application" data-src="br/img3.webp">
+                    <img src="br/img3.webp" alt="BR Danmark Application 1" class="portal-image">
+                    <div class="portal-meta">
+                        <span class="meta-tag">APPLICATION.01</span>
+                        <span class="meta-desc">Brand implementation</span>
+                    </div>
+                </div>
+                
+                <!-- Applications Set 2 -->
+                <div class="gallery-portal application" data-src="br/img4.webp">
+                    <img src="br/img4.webp" alt="BR Danmark Application 2" class="portal-image">
+                    <div class="portal-meta">
+                        <span class="meta-tag">APPLICATION.02</span>
+                        <span class="meta-desc">Extended usage</span>
+                    </div>
+                </div>
+                
+                <!-- Applications Set 3 -->
+                <div class="gallery-portal application" data-src="br/img5.webp">
+                    <img src="br/img5.webp" alt="BR Danmark Application 3" class="portal-image">
+                    <div class="portal-meta">
+                        <span class="meta-tag">APPLICATION.03</span>
+                        <span class="meta-desc">System consistency</span>
+                    </div>
+                </div>
+                
+                <!-- Applications Set 4 -->
+                <div class="gallery-portal application" data-src="br/img6.webp">
+                    <img src="br/img6.webp" alt="BR Danmark Application 4" class="portal-image">
+                    <div class="portal-meta">
+                        <span class="meta-tag">APPLICATION.04</span>
+                        <span class="meta-desc">Complete integration</span>
+                    </div>
+                </div>
+                
+                <!-- Additional Asset -->
+                <div class="gallery-portal asset" data-src="br/img7.webp">
+                    <img src="br/img7.webp" alt="BR Danmark Asset" class="portal-image">
+                    <div class="portal-meta">
+                        <span class="meta-tag">BRAND.ASSET</span>
+                        <span class="meta-desc">Supporting elements</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Navigation -->
+    <section class="navigation-matrix">
+        <div class="nav-container">
+            <h2 class="section-disruptor">REALITY.NAVIGATION</h2>
+            
+            <div class="project-navigation">
+                <a href="imagogames.html" class="nav-portal prev">
+                    <span class="portal-icon">←</span>
+                    <span class="portal-text">IMAGOGAMES.PROJECT</span>
+                </a>
+                
+                <a href="index.html" class="nav-portal home">
+                    <span class="portal-icon">⌂</span>
+                    <span class="portal-text">REALITY.HUB</span>
+                </a>
+                
+                <a href="ak.html" class="nav-portal next">
+                    <span class="portal-text">AAL.PROJECT</span>
+                    <span class="portal-icon">→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reality Footer -->
+    <footer class="reality-footer">
+        <div class="footer-essence">
+            <span class="copyright">© 2025 JEVGENI.REALITY</span>
+            <span class="footer-meta">BR.PROJECT — RETAIL BRANDING REDEFINED</span>
         </div>
     </footer>
 
-    <!-- Page Transition -->
-    <div class="page-transition"></div>
+    <!-- Particle System -->
+    <div class="particle-universe">
+        <div class="particle" style="--delay: 0s; --duration: 8s;"></div>
+        <div class="particle" style="--delay: 1s; --duration: 6s;"></div>
+        <div class="particle" style="--delay: 2s; --duration: 10s;"></div>
+        <div class="particle" style="--delay: 3s; --duration: 7s;"></div>
+        <div class="particle" style="--delay: 4s; --duration: 9s;"></div>
+    </div>
 
-    <!-- Custom JS -->
-    <script src="script.js"></script>
-    <script>
-        // Register GSAP plugins
-        gsap.registerPlugin(ScrollTrigger);
-        
-        // Project-specific animations
-        document.addEventListener('DOMContentLoaded', () => {
-            // Update copyright year
-            document.getElementById('current-year').textContent = new Date().getFullYear();
-            
-            // Project hero gradient animation
-            const projectHero = document.querySelector('.project-hero');
-            if (projectHero) {
-                gsap.to(projectHero, {
-                    backgroundPosition: '100% 50%',
-                    duration: 15,
-                    ease: 'sine.inOut',
-                    repeat: -1,
-                    yoyo: true
-                });
-            }
-            
-            // Project title animation
-            const projectTitle = document.querySelector('.project-title');
-            if (projectTitle) {
-                gsap.from(projectTitle, {
-                    y: 50,
-                    opacity: 0,
-                    duration: 1.2,
-                    ease: 'power3.out',
-                    delay: 0.3
-                });
-            }
-            
-            // Hero content animation
-            const projectYear = document.querySelector('.project-year');
-            const projectCategories = document.querySelector('.project-categories');
-            
-            if (projectYear && projectCategories) {
-                gsap.from([projectYear, projectCategories], {
-                    opacity: 0,
-                    duration: 1,
-                    delay: 0.5,
-                    stagger: 0.2,
-                    ease: 'power2.out'
-                });
-            }
-            
-            // Section headers animation (исключая секцию контактов)
-            const sectionHeaders = document.querySelectorAll('.section-header:not(.section.contact .section-header)');
-            sectionHeaders.forEach(header => {
-                ScrollTrigger.create({
-                    trigger: header,
-                    start: 'top 80%',
-                    onEnter: () => {
-                        gsap.from(header.querySelector('.section-tag'), {
-                            y: 20,
-                            opacity: 0,
-                            duration: 0.6,
-                            ease: 'power2.out'
-                        });
-                        gsap.from(header.querySelector('.section-title'), {
-                            y: 30,
-                            opacity: 0,
-                            duration: 0.8,
-                            delay: 0.2,
-                            ease: 'power2.out'
-                        });
-                        gsap.from(header.querySelector('.section-line'), {
-                            scaleX: 0,
-                            duration: 0.8,
-                            delay: 0.4,
-                            ease: 'power2.out'
-                        });
-                    },
-                    once: true
-                });
-            });
-            
-            // Gallery items animation
-            const galleryItems = document.querySelectorAll('.gallery-item');
-            galleryItems.forEach((item, index) => {
-                ScrollTrigger.create({
-                    trigger: item,
-                    start: 'top 80%',
-                    onEnter: () => {
-                        gsap.from(item, {
-                            opacity: 0,
-                            x: index % 2 === 0 ? -50 : 50,
-                            duration: 0.8,
-                            delay: index * 0.15,
-                            ease: 'power3.out'
-                        });
-                    },
-                    once: true
-                });
-            });
-            
-            // Split sections animation
-            const splitSections = document.querySelectorAll('.split-section');
-            splitSections.forEach(section => {
-                ScrollTrigger.create({
-                    trigger: section,
-                    start: 'top 70%',
-                    onEnter: () => {
-                        const image = section.querySelector('img');
-                        const details = section.querySelector('.project-details');
-                        
-                        gsap.from(image, {
-                            x: section.classList.contains('reversed') ? 50 : -50,
-                            opacity: 0,
-                            duration: 1,
-                            ease: 'power2.out'
-                        });
-                        
-                        gsap.from(details, {
-                            x: section.classList.contains('reversed') ? -50 : 50,
-                            opacity: 0,
-                            duration: 1,
-                            delay: 0.2,
-                            ease: 'power2.out'
-                        });
-                    },
-                    once: true
-                });
-            });
-            
-            // Keywords animation
-            const keywordItems = document.querySelectorAll('.keyword-item');
-            keywordItems.forEach((item, index) => {
-                ScrollTrigger.create({
-                    trigger: item,
-                    start: 'top bottom',
-                    onEnter: () => {
-                        gsap.from(item, {
-                            opacity: 0,
-                            y: 30,
-                            duration: 0.8,
-                            delay: index * 0.1,
-                            ease: 'back.out(1.4)',
-                            onComplete: () => {
-                                gsap.set(item, { opacity: 1, clearProps: "y" });
-                            }
-                        });
-                    },
-                    once: true
-                });
-            });
-            
-            // Next project animation
-            const nextProject = document.querySelector('.next-project');
-            if (nextProject) {
-                ScrollTrigger.create({
-                    trigger: nextProject,
-                    start: 'top 80%',
-                    onEnter: () => {
-                        gsap.from(nextProject.querySelector('h3'), {
-                            opacity: 0,
-                            y: 20,
-                            duration: 0.8,
-                            ease: 'power2.out'
-                        });
-                        gsap.from(nextProject.querySelector('.next-project-title'), {
-                            opacity: 0,
-                            y: 30,
-                            duration: 0.8,
-                            delay: 0.2,
-                            ease: 'power2.out'
-                        });
-                        gsap.from(nextProject.querySelector('.next-project-preview'), {
-                            opacity: 0,
-                            y: 40,
-                            duration: 0.8,
-                            delay: 0.4,
-                            ease: 'power2.out'
-                        });
-                    },
-                    once: true
-                });
-            }
+    <!-- Lightbox Overlay -->
+    <div class="lightbox-overlay" aria-hidden="true">
+        <button class="lightbox-close" aria-label="Close fullscreen">×</button>
+        <img class="lightbox-image" alt="">
+    </div>
 
-            // Custom cursor effects for specific elements
-            const cursorDot = document.querySelector('.cursor-dot');
-            const cursorOutline = document.querySelector('.cursor-outline');
-            
-            if (cursorDot && cursorOutline && window.innerWidth > 768 && !('ontouchstart' in window)) {
-                const cursorElements = [cursorDot, cursorOutline];
-                let mouseX = 0;
-                let mouseY = 0;
-                let dotX = 0;
-                let dotY = 0;
-                let outlineX = 0;
-                let outlineY = 0;
-                let lastMouseMoveTime = 0;
-                const throttleDelay = 10; // Throttle to once per 10ms
-                
-                // Cursor movement with throttling
-                window.addEventListener('mousemove', (e) => {
-                    const currentTime = Date.now();
-                    if (currentTime - lastMouseMoveTime < throttleDelay) return;
-                    
-                    lastMouseMoveTime = currentTime;
-                    mouseX = e.clientX;
-                    mouseY = e.clientY;
-                });
-                
-                // Use requestAnimationFrame for smoother animation
-                function animateCursor() {
-                    // Smooth movement for dot
-                    const dotEasing = 0.2;
-                    dotX += (mouseX - dotX) * dotEasing;
-                    dotY += (mouseY - dotY) * dotEasing;
-                    
-                    // Slower movement for outline
-                    const outlineEasing = 0.1;
-                    outlineX += (mouseX - outlineX) * outlineEasing;
-                    outlineY += (mouseY - outlineY) * outlineEasing;
-                    
-                    // Apply transforms directly (more efficient than GSAP for this purpose)
-                    cursorDot.style.transform = `translate3d(${outlineX}px, ${outlineY}px, 0) translate3d(-50%, -50%, 0)`;
-                    cursorOutline.style.transform = `translate3d(${outlineX}px, ${outlineY}px, 0) translate3d(-50%, -50%, 0)`;
-                    
-                    requestAnimationFrame(animateCursor);
-                }
-                
-                // Start the animation loop
-                requestAnimationFrame(animateCursor);
-                
-                // Hide cursor when leaving window
-                document.addEventListener('mouseleave', () => {
-                    gsap.to(cursorElements, {
-                        opacity: 0,
-                        duration: 0.3
-                    });
-                });
-                
-                document.addEventListener('mouseenter', () => {
-                    gsap.to(cursorElements, {
-                        opacity: 1,
-                        duration: 0.3
-                    });
-                });
-            } else if (cursorDot && cursorOutline) {
-                // Hide cursor elements on mobile/touch devices or smaller screens
-                cursorDot.style.display = 'none';
-                cursorOutline.style.display = 'none';
-            }
-
-            const hoverableElements = document.querySelectorAll('a, button, .gallery-item, .grid-gallery-item, .next-project-title, .keyword-item');
-            hoverableElements.forEach(el => {
-                el.addEventListener('mouseenter', () => {
-                    document.body.classList.add('cursor-hover');
-                    // Still use GSAP for hover effect as it's not called frequently
-                    if (cursorDot && cursorOutline) {
-                        gsap.to(cursorOutline, {
-                            scale: 1.5,
-                            duration: 0.3,
-                            ease: 'back.out(1.7)'
-                        });
-                    }
-                });
-                
-                el.addEventListener('mouseleave', () => {
-                    document.body.classList.remove('cursor-hover');
-                    if (cursorDot && cursorOutline) {
-                        gsap.to(cursorOutline, {
-                            scale: 1,
-                            duration: 0.3,
-                            ease: 'back.out(1.7)'
-                        });
-                    }
-                });
-            });
-        });
-    </script>
+    <!-- Scripts -->
+    <script src="br-script.js"></script>
 </body>
 </html>

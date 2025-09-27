@@ -3,1501 +3,248 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aalborg Kommune Project | Jevgeni Tupitson</title>
-    <meta name="description" content="Aalborg Kommune branding and marketing materials project by Jevgeni Tupitson, showcasing creative municipal design solutions.">
-    <meta name="keywords" content="Aalborg Kommune, branding, marketing, municipal design, graphic design">
-    <meta name="author" content="Jevgeni Tupitson">
+    <title>AALBORG.KOMMUNE | JEVGENI.REALITY</title>
+    <meta name="description" content="Aalborg Kommune municipal branding project - Government design solutions in quantum reality">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- GSAP and ScrollTrigger -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css">
-    
-    <style>
-        /* Project-specific styles */
-        .project-hero {
-            position: relative;
-            height: 100vh;
-            min-height: 700px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            background-color: var(--darker);
-            background-size: 200% 200%;
-            background-position: 0% 0%;
-            background-image: linear-gradient(135deg, rgba(15, 15, 34, 0.9) 0%, rgba(30, 50, 80, 0.9) 100%);
-        }
-        
-        .project-hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('ak/pos1.jpg');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.15;
-            filter: blur(5px);
-            z-index: var(--z-negative);
-        }
-        
-        .project-hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0iIzM0OEFDNyIgZmlsbC1ydWxlPSJldmVub2RkIiBvcGFjaXR5PSIuMSI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiLz48L2c+PC9zdmc+');
-            opacity: 0.3;
-            z-index: var(--z-negative);
-        }
-        
-        .project-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(15, 15, 23, 0.9), var(--darker));
-            z-index: var(--z-low);
-        }
-        
-        .project-content {
-            position: relative;
-            z-index: var(--z-medium);
-            display: grid;
-            grid-template-columns: 1fr 3fr 1fr;
-            align-items: center;
-            width: 100%;
-        }
-        
-        .project-year {
-            font-size: clamp(1rem, 3vw, 1.5rem);
-            color: var(--primary);
-            text-align: left;
-            font-weight: 600;
-            text-shadow: 0 0 10px rgba(0, 178, 255, 0.3);
-            padding-left: 0;
-        }
-        
-        .project-title {
-            font-size: clamp(3rem, 10vw, 8rem);
-            font-weight: 800;
-            background-image: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
-            background-size: 200% auto;
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            margin-bottom: var(--spacing-sm);
-            animation: gradientShift 8s linear infinite;
-            letter-spacing: -2px;
-            text-shadow: 0 5px 30px rgba(0, 178, 255, 0.3);
-            text-align: center;
-        }
-        
-        .project-categories {
-            font-size: clamp(0.875rem, 2vw, 1.25rem);
-            color: var(--gray);
-            text-align: right;
-            line-height: 1.8;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding-right: 0;
-        }
-        
-        .project-section {
-            position: relative;
-            padding: var(--spacing-xl) 0;
-            overflow: hidden;
-            border-bottom: 1px solid rgba(52, 138, 199, 0.1);
-        }
-        
-        .project-section:nth-child(odd)::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: radial-gradient(circle at 10% 10%, rgba(52, 138, 199, 0.05) 0%, transparent 70%);
-            z-index: -1;
-        }
-        
-        .section-header {
-            position: relative;
-            margin-bottom: var(--spacing-lg);
-        }
-        
-        .section-tag {
-            background: linear-gradient(135deg, #348AC7 0%, #7474BF 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            font-weight: 600;
-            letter-spacing: 2px;
-        }
-        
-        .section-title {
-            margin-top: var(--spacing-xs);
-            margin-bottom: var(--spacing-sm);
-            font-size: clamp(1.5rem, 5vw, 2.5rem);
-            font-weight: 700;
-        }
-        
-        .section-line {
-            height: 3px;
-            width: 80px;
-            background: linear-gradient(to right, #348AC7, #7474BF);
-            border-radius: 3px;
-        }
-        
-        .project-intro p {
-            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
-            line-height: 1.7;
-            color: var(--gray);
-            margin-bottom: var(--spacing-md);
-        }
-        
-        .fullwidth-image {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            border-radius: var(--radius-md);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), 0 0 30px rgba(52, 138, 199, 0.2);
-            transition: transform 0.5s ease, box-shadow 0.5s ease;
-        }
-        
-        .fullwidth-image:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.25), 0 0 40px rgba(52, 138, 199, 0.3);
-        }
-        
-        .split-section {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: var(--spacing-lg);
-            padding: var(--spacing-xl) 0;
-        }
-        
-        .split-section.reversed {
-            grid-template-columns: 1fr 2fr;
-        }
-        
-        .split-section img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: var(--radius-md);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15), 0 0 20px rgba(52, 138, 199, 0.15);
-            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.5s ease;
-        }
-        
-        .split-section:hover img {
-            transform: scale(1.03) translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), 0 0 30px rgba(52, 138, 199, 0.2);
-        }
-        
-        .project-details {
-            padding: var(--spacing-md);
-            background: rgba(21, 21, 32, 0.3);
-            backdrop-filter: blur(10px);
-            border-radius: var(--radius-md);
-            border: 1px solid rgba(52, 138, 199, 0.1);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .project-details h3 {
-            font-size: clamp(1.5rem, 3vw, 2rem);
-            margin-bottom: var(--spacing-md);
-            color: #348AC7;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .project-details h3::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(to right, #348AC7, transparent);
-        }
-        
-        .project-details p {
-            color: var(--gray);
-            margin-bottom: var(--spacing-sm);
-            line-height: 1.7;
-        }
-        
-        .project-details ul {
-            list-style: none;
-            padding: 0;
-            margin: var(--spacing-md) 0;
-        }
-        
-        .project-details ul li {
-            margin-bottom: var(--spacing-sm);
-            padding-left: var(--spacing-md);
-            position: relative;
-            color: var(--gray);
-        }
-        
-        .project-details ul li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0.7em;
-            width: 10px;
-            height: 2px;
-            background: linear-gradient(to right, #348AC7, #7474BF);
-        }
-        
-        .project-details ul li strong {
-            color: var(--light);
-            font-weight: 600;
-        }
-        
-        .gallery {
-            display: flex;
-            gap: var(--spacing-lg);
-            width: 100%;
-            overflow-x: auto;
-            padding: var(--spacing-lg) 0;
-            scrollbar-width: thin;
-            scrollbar-color: #348AC7 var(--darker);
-            -webkit-overflow-scrolling: touch;
-        }
-        
-        .gallery:after {
-            content: '';
-            flex: 0 0 20px;
-        }
-        
-        .gallery-item {
-            flex: 0 0 auto;
-            width: 80%;
-            max-width: 700px;
-            min-width: 300px;
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15), 0 0 20px rgba(52, 138, 199, 0.15);
-            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.5s ease;
-            position: relative;
-            border: 1px solid rgba(52, 138, 199, 0.1);
-        }
-        
-        .gallery-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(52, 138, 199, 0.1), transparent);
-            z-index: 1;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .gallery-item:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), 0 0 30px rgba(52, 138, 199, 0.3);
-        }
-        
-        .gallery-item:hover::before {
-            opacity: 1;
-        }
-        
-        .gallery-item img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
-        
-        .keywords-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--spacing-md);
-            justify-content: center;
-            margin: var(--spacing-lg) 0;
-            perspective: 800px;
-        }
-        
-        .keyword-item {
-            padding: var(--spacing-sm) var(--spacing-md);
-            background: rgba(52, 138, 199, 0.1);
-            border: 1px solid rgba(52, 138, 199, 0.2);
-            border-radius: var(--radius-pill);
-            color: var(--light);
-            font-weight: 600;
-            font-size: var(--font-size-medium);
-            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1), 0 0 10px rgba(52, 138, 199, 0.1);
-        }
-        
-        .keyword-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #348AC7 0%, #7474BF 100%);
-            opacity: 0;
-            transition: opacity 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            z-index: -1;
-        }
-        
-        .keyword-item:hover {
-            transform: translateY(-5px) scale(1.05) rotateX(10deg);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15), 0 0 20px rgba(52, 138, 199, 0.3);
-            border-color: #7474BF;
-            color: white;
-        }
-        
-        .keyword-item:hover::before {
-            opacity: 1;
-        }
-        
-        .scrolling-text {
-            background: linear-gradient(90deg, var(--darker) 0%, rgba(21, 21, 50, 0.9) 50%, var(--darker) 100%);
-            border-top: 1px solid rgba(52, 138, 199, 0.1);
-            border-bottom: 1px solid rgba(52, 138, 199, 0.1);
-            overflow: hidden;
-            padding: var(--spacing-md) 0;
-        }
-        
-        .scrolling-wrapper {
-            display: inline-flex;
-            white-space: nowrap;
-            animation: scroll 20s linear infinite;
-        }
-        
-        .scrolling-wrapper span {
-            display: inline-block;
-            font-size: clamp(1rem, 3vw, 1.5rem);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-right: var(--spacing-xl);
-            background: linear-gradient(90deg, #348AC7 0%, #7474BF 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            opacity: 0.8;
-        }
-        
-        .next-project {
-            padding: var(--spacing-xl) 0;
-            text-align: center;
-            position: relative;
-            background: linear-gradient(to bottom, var(--darker), rgba(21, 21, 50, 0.9));
-        }
-        
-        .next-project h3 {
-            font-size: var(--font-size-small);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--gray);
-            margin-bottom: var(--spacing-sm);
-        }
-        
-        .next-project-title {
-            font-size: clamp(2rem, 6vw, 4rem);
-            font-weight: 700;
-            background-image: linear-gradient(135deg, #348AC7 0%, #7474BF 100%);
-            background-size: 200% auto;
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            margin-bottom: var(--spacing-md);
-            display: inline-block;
-            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            text-decoration: none;
-        }
-        
-        .next-project:hover .next-project-title {
-            transform: translateY(-5px);
-        }
-        
-        .next-project-preview {
-            max-width: 400px;
-            margin: 0 auto;
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15), 0 0 20px rgba(52, 138, 199, 0.15);
-            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease;
-            border: 1px solid rgba(52, 138, 199, 0.1);
-        }
-        
-        .next-project:hover .next-project-preview {
-            transform: scale(1.05);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), 0 0 30px rgba(52, 138, 199, 0.3);
-        }
-        
-        .next-project-preview img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        
-        .next-project:hover .next-project-preview img {
-            transform: scale(1.05);
-        }
-        
-        .section.contact {
-            background: linear-gradient(to bottom, var(--darker), rgba(21, 21, 50, 0.9));
-            border-top: 1px solid rgba(52, 138, 199, 0.1);
-            padding: var(--spacing-xl) 0;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .section.contact .section-header {
-            margin-bottom: var(--spacing-lg);
-            opacity: 1;
-            visibility: visible;
-            transform: none;
-            text-align: center;
-        }
-        
-        .section.contact .section-tag {
-            background: linear-gradient(135deg, #348AC7 0%, #7474BF 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            opacity: 1;
-            font-weight: 600;
-            letter-spacing: 2px;
-            display: inline-block;
-            transform: none !important;
-        }
-        
-        .section.contact .section-title {
-            color: var(--light);
-            margin-top: var(--spacing-xs);
-            margin-bottom: var(--spacing-sm);
-            font-size: clamp(1.5rem, 5vw, 2.5rem);
-            font-weight: 700;
-            opacity: 1;
-            transform: none !important;
-        }
-        
-        .section.contact .section-line {
-            height: 3px;
-            width: 80px;
-            background: linear-gradient(to right, #348AC7, #7474BF);
-            border-radius: 3px;
-            margin: 0 auto;
-            display: block;
-            opacity: 1;
-            transform: none !important;
-            transform-origin: center !important;
-        }
-        
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: var(--spacing-lg);
-            max-width: 800px;
-            margin: 0 auto;
-            margin-top: var(--spacing-lg);
-        }
-        
-        .contact-social,
-        .contact-email {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            text-align: left;
-        }
-        
-        .contact-social h3,
-        .contact-email h3 {
-            font-size: 1.25rem;
-            color: #348AC7;
-            margin-bottom: var(--spacing-md);
-            position: relative;
-            display: inline-block;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .contact-social h3::after,
-        .contact-email h3::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 50%;
-            height: 2px;
-            background: linear-gradient(to right, #348AC7, transparent);
-        }
-        
-        .social-links {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .social-links li {
-            margin-bottom: var(--spacing-sm);
-            border-bottom: none;
-        }
-        
-        .social-links a,
-        .email-link {
-            position: relative;
-            display: inline-block;
-            color: var(--light);
-            text-decoration: none;
-            font-size: 1.125rem;
-            transition: color 0.3s ease;
-        }
-        
-        .social-links a::after,
-        .email-link::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(to right, #348AC7, #7474BF);
-            transform: scaleX(1);
-            transform-origin: left;
-            transition: transform 0.3s ease;
-        }
-        
-        .social-links a:hover,
-        .email-link:hover {
-            color: #348AC7;
-        }
-        
-        .social-links a:hover::after,
-        .email-link:hover::after {
-            transform: scaleX(1.1);
-        }
-        
-        .shape {
-            position: absolute;
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-            z-index: -1;
-            filter: blur(30px);
-        }
-        
-        .shape-1 {
-            width: 300px;
-            height: 300px;
-            top: -10%;
-            right: -5%;
-            background: rgba(52, 138, 199, 0.1);
-            animation: floating 10s ease infinite alternate;
-        }
-        
-        .shape-2 {
-            width: 200px;
-            height: 200px;
-            bottom: 5%;
-            left: -5%;
-            background: rgba(116, 116, 191, 0.1);
-            animation: floating 15s ease-in-out infinite alternate-reverse;
-        }
-        
-        .shape-3 {
-            width: 150px;
-            height: 150px;
-            bottom: 15%;
-            right: 10%;
-            background: rgba(52, 138, 199, 0.1);
-            animation: floating 12s ease-in-out infinite alternate;
-        }
-        
-        @keyframes floating {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            50% { transform: translate(15px, 15px) rotate(5deg); }
-            100% { transform: translate(-15px, 15px) rotate(-5deg); }
-        }
-        
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-        
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        .hero-shapes .shape {
-            opacity: 0.5;
-        }
-        
-        @media (max-width: 768px) {
-            .split-section, .split-section.reversed {
-                grid-template-columns: 1fr;
-            }
-            
-            .project-content {
-                grid-template-columns: 1fr;
-                gap: var(--spacing-md);
-            }
-            
-            .project-year, .project-categories {
-                text-align: center;
-            }
-            
-            .gallery-item {
-                min-width: 250px;
-            }
-            
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: var(--spacing-lg);
-            }
-            
-            .contact-email {
-                margin-top: var(--spacing-md);
-            }
-        }
-        
-        /* Более специфичные селекторы для социальных ссылок */
-        .section.contact .social-links a,
-        .section.contact .email-link {
-            position: relative;
-            display: inline-block;
-            color: var(--light);
-            text-decoration: none;
-            font-size: 1.125rem;
-            transition: color 0.3s ease;
-            border-bottom: none;
-        }
-        
-        .section.contact .social-links a::after,
-        .section.contact .email-link::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(to right, #348AC7, #7474BF) !important;
-            transform: scaleX(1);
-            transform-origin: left;
-            transition: transform 0.3s ease;
-        }
-        
-        .section.contact .social-links a:hover,
-        .section.contact .email-link:hover {
-            color: #348AC7 !important;
-        }
-        
-        .section.contact .social-links a:hover::after,
-        .section.contact .email-link:hover::after {
-            transform: scaleX(1.1);
-        }
-        
-        /* Стили для секции image-layout-section */
-        .image-layout-section {
-            padding: var(--spacing-xl) 0;
-            position: relative;
-            overflow: hidden;
-            border-bottom: 1px solid rgba(52, 138, 199, 0.1);
-        }
-        
-        .image-row {
-            display: flex;
-            gap: var(--spacing-lg);
-            margin-bottom: var(--spacing-lg);
-        }
-        
-        .vertical-image {
-            flex: 1;
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15), 0 0 20px rgba(52, 138, 199, 0.15);
-            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.5s ease;
-            border: 1px solid rgba(52, 138, 199, 0.1);
-        }
-        
-        .vertical-image:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), 0 0 30px rgba(52, 138, 199, 0.3);
-        }
-        
-        .vertical-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        
-        .vertical-image:hover img {
-            transform: scale(1.05);
-        }
-        
-        .wide-image {
-            width: 100%;
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15), 0 0 20px rgba(52, 138, 199, 0.15);
-            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.5s ease;
-            border: 1px solid rgba(52, 138, 199, 0.1);
-        }
-        
-        .wide-image:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), 0 0 30px rgba(52, 138, 199, 0.3);
-        }
-        
-        .wide-image img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        
-        .wide-image:hover img {
-            transform: scale(1.05);
-        }
-        
-        /* Стили для секции vertical-video-section */
-        .vertical-video-section {
-            padding: var(--spacing-xl) 0;
-            position: relative;
-            overflow: visible;
-            border-bottom: 1px solid rgba(52, 138, 199, 0.1);
-        }
-        
-        .vertical-video-section .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .video-container {
-            max-width: 500px;
-            width: 100%;
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15), 0 0 20px rgba(52, 138, 199, 0.15);
-            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.5s ease;
-            border: 1px solid rgba(52, 138, 199, 0.1);
-            margin-top: var(--spacing-md);
-            position: relative;
-            z-index: 1;
-        }
-        
-        .video-container:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), 0 0 30px rgba(52, 138, 199, 0.3);
-        }
-        
-        .video-container video {
-            width: 100%;
-            height: auto;
-            display: block;
-            max-height: none;
-        }
-        
-        @media (max-width: 768px) {
-            .video-container {
-                max-width: 100%;
-            }
-        }
-        
-        /* Стили для секции values-section */
-        .values-section {
-            padding: var(--spacing-xl) 0;
-            position: relative;
-            overflow: hidden;
-            border-bottom: 1px solid rgba(52, 138, 199, 0.1);
-        }
-        
-        .values-section .section-title {
-            text-align: center;
-            margin-bottom: var(--spacing-lg);
-            font-size: clamp(1.5rem, 5vw, 2.5rem);
-            font-weight: 700;
-            color: var(--light);
-        }
-        
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: var(--spacing-lg);
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .value-item {
-            padding: var(--spacing-lg);
-            background: rgba(21, 21, 32, 0.3);
-            backdrop-filter: blur(10px);
-            border-radius: var(--radius-md);
-            border: 1px solid rgba(52, 138, 199, 0.1);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .value-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15), 0 0 20px rgba(52, 138, 199, 0.3);
-        }
-        
-        .value-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto var(--spacing-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background: linear-gradient(135deg, rgba(52, 138, 199, 0.1) 0%, rgba(116, 116, 191, 0.1) 100%);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 0 10px rgba(52, 138, 199, 0.2);
-        }
-        
-        .value-icon img {
-            width: 40px;
-            height: 40px;
-            filter: invert(1);
-            opacity: 0.8;
-        }
-        
-        .value-title {
-            font-size: var(--font-size-medium);
-            font-weight: 600;
-            margin-bottom: var(--spacing-sm);
-            color: #348AC7;
-        }
-        
-        .value-description {
-            color: var(--gray);
-            line-height: 1.6;
-            font-size: var(--font-size-small);
-        }
-        
-        /* Медиа-запросы для адаптивности */
-        @media (max-width: 768px) {
-            .image-row {
-                flex-direction: column;
-            }
-            
-            .values-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .cursor-dot {
-            position: fixed;
-            pointer-events: none;
-            z-index: var(--z-highest);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            will-change: transform;
-            top: 0;
-            left: 0;
-            transform: translate3d(0, 0, 0);
-            width: 8px;
-            height: 8px;
-            background-color: var(--primary);
-            border-radius: 50%;
-            opacity: 0.8;
-            will-change: transform, opacity, scale;
-        }
-
-        .cursor-outline {
-            position: fixed;
-            pointer-events: none;
-            z-index: var(--z-highest);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            will-change: transform;
-            top: 0;
-            left: 0;
-            transform: translate3d(-50%, -50%, 0);
-            width: 40px;
-            height: 40px;
-            border: 2px solid var(--primary);
-            border-radius: 50%;
-            opacity: 0.5;
-            will-change: transform, opacity, scale, width, height;
-        }
-
-        body:hover .cursor-dot,
-        body:hover .cursor-outline {
-            opacity: 1;
-        }
-
-        body.cursor-hover .cursor-dot {
-            transform: translate3d(0, 0, 0) scale(0.5);
-            opacity: 0.5;
-        }
-
-        body.cursor-hover .cursor-outline {
-            transform: translate3d(-50%, -50%, 0) scale(1.5);
-            opacity: 0.5;
-        }
-
-        /* Make cursor invisible on touch devices */
-        @media (hover: none) {
-            .cursor-dot,
-            .cursor-outline {
-                display: none;
-                opacity: 0;
-            }
-        }
-    </style>
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="ak-styles.css">
 </head>
-<body>
-    <!-- Loader -->
-    <div class="loader">
-        <div class="loader-inner"></div>
-    </div>
-
-    <!-- Cursor -->
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
-
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-        <div class="logo">
-                <a href="index.html" aria-label="JTDesign Logo">
-                <img src="logo.png" alt="JTDesign Logo">
+<body class="project-quantum">
+    
+    <!-- Quantum Navigation -->
+    <nav class="quantum-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-identity">
+                <span class="identity-fragment">JEVGENI</span>
+                <span class="identity-quantum">.REALITY</span>
+            </a>
+            
+            <div class="nav-links">
+                <a href="index.html#creations" class="nav-link">
+                    <span class="link-code">01</span>
+                    <span class="link-text">PORTFOLIO</span>
+                </a>
+                <a href="index.html#collaboration" class="nav-link">
+                    <span class="link-code">02</span>
+                    <span class="link-text">CONTACT</span>
             </a>
         </div>
-            
-            <nav class="nav">
-                <ul class="nav-list">
-                    <li class="nav-item"><a href="index.html#about" class="nav-link">About</a></li>
-                    <li class="nav-item"><a href="index.html#services" class="nav-link">Services</a></li>
-                    <li class="nav-item"><a href="index.html#work" class="nav-link">Work</a></li>
-                    <li class="nav-item"><a href="index.html#portfolio" class="nav-link">Portfolio</a></li>
-                    <li class="nav-item"><a href="index.html#contact" class="nav-link">Contact</a></li>
-                </ul>
+        </div>
             </nav>
             
-            <button class="menu-toggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            </div>
-    </header>
-
-    <!-- Project Hero Section -->
+    <!-- Project Hero -->
     <section class="project-hero">
-        <div class="project-hero-bg"></div>
-        <div class="project-overlay"></div>
-        <div class="container">
-            <div class="project-content">
-                <div class="project-year">2022'</div>
-                <h1 class="project-title">AALBORG KOMMUNE</h1>
-                <div class="project-categories">
-                    Packaging<br>
-                    Visual Identity<br>
-                    Branding
+        <div class="hero-matrix">
+            <div class="fragment-identity">
+                <div class="project-meta">
+                    <span class="meta-year">2022</span>
+                    <span class="meta-type">MUNICIPAL DESIGN</span>
+            </div>
+
+                <h1 class="project-title">
+                    <span class="title-fragment">AALBORG</span>
+                    <span class="title-quantum">KOMMUNE</span>
+                </h1>
+                
+                <div class="identity-tags">
+                    <span class="quantum-tag">PACKAGING</span>
+                    <span class="quantum-tag">VISUAL IDENTITY</span>
+                    <span class="quantum-tag">BRANDING</span>
+                    <span class="quantum-tag">ANIMATION</span>
+            </div>
+        </div>
+        
+            <div class="fragment-visual">
+                <div class="project-showcase">
+                    <img src="ak/akintro.png" alt="Aalborg Kommune Campaign Visual" class="showcase-image">
+                    <div class="showcase-overlay">
+                        <span class="overlay-code">MUNICIPAL.REALITY</span>
+                    </div>
                 </div>
             </div>
         </div>
-        
-        <div class="hero-shapes">
-            <div class="shape shape-1"></div>
-            <div class="shape shape-2"></div>
-            <div class="shape shape-3"></div>
-        </div>
     </section>
 
-    <!-- Project Overview Section -->
-    <section class="project-section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Overview</span>
-                <h2 class="section-title">Project Details</h2>
-                <span class="section-line"></span>
-            </div>
+    <!-- Project Overview -->
+    <section class="project-overview">
+        <div class="overview-container">
+            <h2 class="section-disruptor">PROJECT.ESSENCE</h2>
             
-            <div class="project-intro">
-                <p>
-                    Aalborg Kommune project focused on creating a comprehensive design system and marketing materials 
-                    for the municipality. The goal was to establish a consistent visual language that would be 
-                    recognizable, accessible, and effective in communicating with citizens.
-                </p>
-                <p>
-                    Working closely with the municipal administration, we developed a cohesive set of visual assets 
-                    that aligned with the city's values and facilitated clear communication across various platforms.
-                </p>
+            <p class="quantum-description">
+                Aalborg Kommune represents the convergence of municipal communication and premium visual design. 
+                This comprehensive campaign system creates a quantum bridge between local government services 
+                and citizen engagement, establishing warmth and welcome through innovative design solutions.
+            </p>
+            
+            <div class="project-principles">
+                <div class="principle-node">
+                    <h3>MUNICIPAL IDENTITY</h3>
+                    <p>Creating a visual identity that communicates civic values while maintaining professional authority and trustworthiness in government communications.</p>
+        </div>
+                
+                <div class="principle-node">
+                    <h3>WELCOMING DESIGN</h3>
+                    <p>Developing warm and inclusive design solutions that foster community engagement and encourage international residents to stay in Nordjylland.</p>
+        </div>
+                
+                <div class="principle-node">
+                    <h3>CROSS-MEDIA STRATEGY</h3>
+                    <p>Building cohesive campaigns that work seamlessly across digital animation and traditional print media formats.</p>
             </div>
-        </div>
-        
-        <div class="section-shapes">
-            <div class="shape shape-1"></div>
-            <div class="shape shape-2"></div>
-        </div>
-    </section>
-
-    <!-- Full Width Image Section -->
-    <section class="project-section">
-        <div class="container">
-            <img src="ak\akintro.png" alt="Aalborg Kommune Main Campaign Visual" class="fullwidth-image">
-        </div>
-    </section>
-
-    <!-- Project Info Section -->
-    <section class="project-section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">About Project</span>
-                <h2 class="section-title">Project Information</h2>
-                <span class="section-line"></span>
-            </div>
-            <div class="project-intro">
-                <p>
-        This case study project for Aalborg Kommune involved creating a poster in both an animated digital format and a printed A3 version. The goal was to convey a warm "Merry Christmas" message to internationals living in or moving to the region, fostering a welcoming atmosphere to encourage them to continue living in Nordjylland.
-    </p>
             </div>
         </div>
 </section>
 
-    <!-- Poster Images Layout Section -->
-    <section class="image-layout-section project-section">
-        <div class="container">
-    <div class="image-row">
-        <div class="vertical-image">
-                    <img src="ak/posterak.jpg" alt="Aalborg Kommune Christmas Poster 1">
+    <!-- Project Gallery -->
+    <section class="project-gallery">
+        <div class="gallery-container">
+            <h2 class="section-disruptor">DIMENSION.SHOWCASE</h2>
+            
+            <div class="quantum-gallery">
+                <!-- Hero showcase - Main Campaign -->
+                <div class="gallery-portal hero" data-src="ak/akintro.png">
+                    <img src="ak/akintro.png" alt="Aalborg Kommune Main Campaign" class="portal-image">
+                    <div class="portal-meta">
+                        <span class="meta-tag">CAMPAIGN.VISUAL</span>
+                        <span class="meta-desc">Main Christmas welcome campaign</span>
         </div>
-        <div class="vertical-image">
-                    <img src="ak/posterak2.jpg" alt="Aalborg Kommune Christmas Poster 2">
         </div>
+                
+                <!-- Poster Design 1 -->
+                <div class="gallery-portal poster1" data-src="ak/posterak.jpg">
+                    <img src="ak/posterak.jpg" alt="Aalborg Kommune Poster 1" class="portal-image">
+                    <div class="portal-meta">
+                        <span class="meta-tag">POSTER.DESIGN</span>
+                        <span class="meta-desc">A3 print version - Design 1</span>
     </div>
-    <div class="wide-image">
-                <img src="ak/pos3.jpg" alt="Aalborg Kommune Wide Campaign Image">
             </div>
+                
+                <!-- Poster Design 2 -->
+                <div class="gallery-portal poster2" data-src="ak/posterak2.jpg">
+                    <img src="ak/posterak2.jpg" alt="Aalborg Kommune Poster 2" class="portal-image">
+                    <div class="portal-meta">
+                        <span class="meta-tag">POSTER.DESIGN</span>
+                        <span class="meta-desc">A3 print version - Design 2</span>
     </div>
-</section>
-
-    <!-- Animated Poster Video Section -->
-    <section class="vertical-video-section project-section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Animation</span>
-                <h2 class="section-title">Animated Version</h2>
-                <span class="section-line"></span>
+                </div>
+                
+                <!-- Campaign Layout -->
+                <div class="gallery-portal layout" data-src="ak/pos3.jpg">
+                    <img src="ak/pos3.jpg" alt="Aalborg Kommune Campaign Layout" class="portal-image">
+                    <div class="portal-meta">
+                        <span class="meta-tag">CAMPAIGN.LAYOUT</span>
+                        <span class="meta-desc">Extended campaign presentation</span>
             </div>
-    <div class="video-container">
-        <video autoplay muted loop playsinline>
+                </div>
+                
+                <!-- Animated Video -->
+                <div class="gallery-portal video-portal">
+                    <video autoplay muted loop playsinline class="portal-video">
             <source src="ak/poster.mp4" type="video/mp4">
-            Your browser does not support the video tag.
         </video>
+                    <div class="portal-meta">
+                        <span class="meta-tag">MOTION.DESIGN</span>
+                        <span class="meta-desc">Animated digital version</span>
+                    </div>
+                </div>
             </div>
     </div>
 </section>
 
     <!-- Values Section -->
-    <section class="values-section project-section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Values</span>
-                <h2 class="section-title">Core Values</h2>
-                <span class="section-line"></span>
-            </div>
+    <section class="values-showcase">
+        <div class="values-container">
+            <h2 class="section-disruptor">CORE.VALUES</h2>
+            
     <div class="values-grid">
-        <div class="value-item">
+                <div class="value-quantum">
             <div class="value-icon">
-                <img src="ak/gear.svg" alt="Functionality Icon">
+                        <img src="ak/gear.svg" alt="Functionality" class="icon-image">
             </div>
-            <h3 class="value-title">Functionality</h3>
-            <p class="value-description">Ensuring seamless and effective solutions for everyday needs.</p>
+                    <h3 class="value-title">FUNCTIONALITY</h3>
+                    <p class="value-description">Ensuring seamless and effective solutions for everyday municipal needs.</p>
         </div>
-        <div class="value-item">
+                
+                <div class="value-quantum">
             <div class="value-icon">
-                <img src="ak/speed.svg" alt="Effectiveness Icon">
+                        <img src="ak/speed.svg" alt="Effectiveness" class="icon-image">
             </div>
-            <h3 class="value-title">Effectiveness</h3>
-            <p class="value-description">Striving for results with optimal resource utilization.</p>
+                    <h3 class="value-title">EFFECTIVENESS</h3>
+                    <p class="value-description">Striving for results with optimal resource utilization and impact.</p>
         </div>
-        <div class="value-item">
+                
+                <div class="value-quantum">
             <div class="value-icon">
-                        <img src="ak/group.svg" alt="Fællesskab Icon">
+                        <img src="ak/group.svg" alt="Fællesskab" class="icon-image">
             </div>
-            <h3 class="value-title">Fællesskab</h3>
-            <p class="value-description">Building a strong sense of community and mutual support.</p>
+                    <h3 class="value-title">FÆLLESSKAB</h3>
+                    <p class="value-description">Building a strong sense of community and mutual support among citizens.</p>
         </div>
-        <div class="value-item">
+                
+                <div class="value-quantum">
             <div class="value-icon">
-                <img src="ak/together.svg" alt="Togetherness Icon">
+                        <img src="ak/together.svg" alt="Togetherness" class="icon-image">
             </div>
-            <h3 class="value-title">Togetherness</h3>
-            <p class="value-description">Fostering connections and unity among people.</p>
+                    <h3 class="value-title">TOGETHERNESS</h3>
+                    <p class="value-description">Fostering connections and unity among diverse community members.</p>
                 </div>
         </div>
     </div>
 </section>
     
-    <!-- Scrolling Text Section -->
-    <div class="scrolling-text">
-        <div class="scrolling-wrapper">
-            <span>MUNICIPAL DESIGN — CAMPAIGN STRATEGY —</span>
-            <span>MUNICIPAL DESIGN — CAMPAIGN STRATEGY —</span>
-            <span>MUNICIPAL DESIGN — CAMPAIGN STRATEGY —</span>
-        </div>
-    </div>
-
-    <!-- Next Project Section -->
-    <section class="next-project">
-        <div class="container">
-            <h3>Next Project</h3>
-            <a href="dat.html" class="next-project-title">DAT</a>
-            <div class="next-project-preview">
-                <img src="dat2.png" alt="DAT Project Preview">
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section contact">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Contact</span>
-                <h2 class="section-title">Connect</h2>
-                <span class="section-line"></span>
-            </div>
+    <!-- Project Navigation -->
+    <section class="navigation-matrix">
+        <div class="nav-container">
+            <h2 class="section-disruptor">REALITY.NAVIGATION</h2>
             
-            <div class="contact-grid">
-                <div class="contact-social">
-                    <h3>Social</h3>
-                    <ul class="social-links">
-                        <li><a href="https://www.linkedin.com/in/jevgenitupitson/" target="_blank">LinkedIn</a></li>
-                        <li><a href="https://www.instagram.com/hagryn/" target="_blank">Instagram</a></li>
-                    </ul>
-                </div>
+            <div class="project-navigation">
+                <a href="br.html" class="nav-portal prev">
+                    <span class="portal-icon">←</span>
+                    <span class="portal-text">BR.PROJECT</span>
+                </a>
                 
-                <div class="contact-email">
-                    <h3>Email</h3>
-                    <a href="mailto:jevgenidesign@gmail.com" class="email-link">jevgenidesign@gmail.com</a>
+                <a href="index.html" class="nav-portal home">
+                    <span class="portal-icon">⌂</span>
+                    <span class="portal-text">REALITY.HUB</span>
+                </a>
+                
+                <a href="dat.html" class="nav-portal next">
+                    <span class="portal-text">DAT.PROJECT</span>
+                    <span class="portal-icon">→</span>
+                </a>
                 </div>
-            </div>
-        </div>
-        
-        <div class="section-shapes">
-            <div class="shape shape-1"></div>
-            <div class="shape shape-2"></div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; <span id="current-year"></span> Jevgeni Tupitson. All rights reserved.</p>
+    <!-- Reality Footer -->
+    <footer class="reality-footer">
+        <div class="footer-essence">
+            <span class="copyright">© 2025 JEVGENI.REALITY</span>
+            <span class="footer-meta">AALBORG.KOMMUNE — MUNICIPAL DESIGN EXCELLENCE</span>
         </div>
     </footer>
 
-    <!-- Page Transition -->
-    <div class="page-transition"></div>
+    <!-- Particle System -->
+    <div class="particle-universe">
+        <div class="particle" style="--delay: 0s; --duration: 8s;"></div>
+        <div class="particle" style="--delay: 1s; --duration: 6s;"></div>
+        <div class="particle" style="--delay: 2s; --duration: 10s;"></div>
+        <div class="particle" style="--delay: 3s; --duration: 7s;"></div>
+        <div class="particle" style="--delay: 4s; --duration: 9s;"></div>
+    </div>
 
-    <!-- Custom JS -->
-    <script src="script.js"></script>
-    <script>
-        // Register GSAP plugins
-        gsap.registerPlugin(ScrollTrigger);
-        
-        // Project-specific animations
-        document.addEventListener('DOMContentLoaded', () => {
-            // Update copyright year
-            document.getElementById('current-year').textContent = new Date().getFullYear();
-            
-            // Project hero gradient animation
-            const projectHero = document.querySelector('.project-hero');
-            if (projectHero) {
-                gsap.to(projectHero, {
-                    backgroundPosition: '100% 50%',
-                    duration: 15,
-                    ease: 'sine.inOut',
-                    repeat: -1,
-                    yoyo: true
-                });
-            }
-            
-            // Project title animation
-            const projectTitle = document.querySelector('.project-title');
-            if (projectTitle) {
-                gsap.from(projectTitle, {
-                    y: 50,
-                    opacity: 0,
-                    duration: 1.2,
-                    ease: 'power3.out',
-                    delay: 0.3
-                });
-            }
-            
-            // Hero content animation
-            const projectYear = document.querySelector('.project-year');
-            const projectCategories = document.querySelector('.project-categories');
-            
-            if (projectYear && projectCategories) {
-                gsap.from([projectYear, projectCategories], {
-                    opacity: 0,
-                    duration: 1,
-                    delay: 0.5,
-                    stagger: 0.2,
-                    ease: 'power2.out'
-                });
-            }
-            
-            // Section headers animation (исключая секцию контактов)
-            const sectionHeaders = document.querySelectorAll('.section-header:not(.section.contact .section-header)');
-            sectionHeaders.forEach(header => {
-                ScrollTrigger.create({
-                    trigger: header,
-                    start: 'top 80%',
-                    onEnter: () => {
-                        gsap.from(header.querySelector('.section-tag'), {
-                            y: 20,
-                            opacity: 0,
-                            duration: 0.6,
-                            ease: 'power2.out'
-                        });
-                        gsap.from(header.querySelector('.section-title'), {
-                            y: 30,
-                            opacity: 0,
-                            duration: 0.8,
-                            delay: 0.2,
-                            ease: 'power2.out'
-                        });
-                        gsap.from(header.querySelector('.section-line'), {
-                            scaleX: 0,
-                            duration: 0.8,
-                            delay: 0.4,
-                            ease: 'power2.out'
-                        });
-                    },
-                    once: true
-                });
-            });
-            
-            // Gallery items animation
-            const galleryItems = document.querySelectorAll('.gallery-item');
-            galleryItems.forEach((item, index) => {
-                ScrollTrigger.create({
-                    trigger: item,
-                    start: 'top 80%',
-                    onEnter: () => {
-                        gsap.from(item, {
-                            opacity: 0,
-                            x: index % 2 === 0 ? -50 : 50,
-                            duration: 0.8,
-                            delay: index * 0.15,
-                            ease: 'power3.out'
-                        });
-                    },
-                    once: true
-                });
-            });
-            
-            // Split sections animation
-            const splitSections = document.querySelectorAll('.split-section');
-            splitSections.forEach(section => {
-                ScrollTrigger.create({
-                    trigger: section,
-                    start: 'top 70%',
-                    onEnter: () => {
-                        const image = section.querySelector('img');
-                        const details = section.querySelector('.project-details');
-                        
-                        gsap.from(image, {
-                            x: section.classList.contains('reversed') ? 50 : -50,
-                            opacity: 0,
-                            duration: 1,
-                            ease: 'power2.out'
-                        });
-                        
-                        gsap.from(details, {
-                            x: section.classList.contains('reversed') ? -50 : 50,
-                            opacity: 0,
-                            duration: 1,
-                            delay: 0.2,
-                            ease: 'power2.out'
-                        });
-                    },
-                    once: true
-                });
-            });
-            
-            // Keywords animation
-            const keywordItems = document.querySelectorAll('.keyword-item');
-            keywordItems.forEach((item, index) => {
-                ScrollTrigger.create({
-                    trigger: item,
-                    start: 'top bottom',
-                    onEnter: () => {
-                        gsap.from(item, {
-                            opacity: 0,
-                            y: 30,
-                            duration: 0.8,
-                            delay: index * 0.1,
-                            ease: 'back.out(1.4)',
-                            onComplete: () => {
-                                gsap.set(item, { opacity: 1, clearProps: "y" });
-                            }
-                        });
-                    },
-                    once: true
-                });
-            });
-            
-            // Next project animation
-            const nextProject = document.querySelector('.next-project');
-            if (nextProject) {
-                ScrollTrigger.create({
-                    trigger: nextProject,
-                    start: 'top 80%',
-                    onEnter: () => {
-                        gsap.from(nextProject.querySelector('h3'), {
-                            opacity: 0,
-                            y: 20,
-                            duration: 0.8,
-                            ease: 'power2.out'
-                        });
-                        gsap.from(nextProject.querySelector('.next-project-title'), {
-                            opacity: 0,
-                            y: 30,
-                            duration: 0.8,
-                            delay: 0.2,
-                            ease: 'power2.out'
-                        });
-                        gsap.from(nextProject.querySelector('.next-project-preview'), {
-                            opacity: 0,
-                            y: 40,
-                            duration: 0.8,
-                            delay: 0.4,
-                            ease: 'power2.out'
-                        });
-                    },
-                    once: true
-                });
-            }
+    <!-- Lightbox Overlay -->
+    <div class="lightbox-overlay" aria-hidden="true">
+        <button class="lightbox-close" aria-label="Close fullscreen">×</button>
+        <img class="lightbox-image" alt="">
+    </div>
 
-            // Custom cursor effects for specific elements
-            const cursorDot = document.querySelector('.cursor-dot');
-            const cursorOutline = document.querySelector('.cursor-outline');
-            
-            if (cursorDot && cursorOutline && window.innerWidth > 768 && !('ontouchstart' in window)) {
-                const cursorElements = [cursorDot, cursorOutline];
-                let mouseX = 0;
-                let mouseY = 0;
-                let dotX = 0;
-                let dotY = 0;
-                let outlineX = 0;
-                let outlineY = 0;
-                let lastMouseMoveTime = 0;
-                const throttleDelay = 10; // Throttle to once per 10ms
-                
-                // Cursor movement with throttling
-                window.addEventListener('mousemove', (e) => {
-                    const currentTime = Date.now();
-                    if (currentTime - lastMouseMoveTime < throttleDelay) return;
-                    
-                    lastMouseMoveTime = currentTime;
-                    mouseX = e.clientX;
-                    mouseY = e.clientY;
-                });
-                
-                // Use requestAnimationFrame for smoother animation
-                function animateCursor() {
-                    // Smooth movement for dot
-                    const dotEasing = 0.2;
-                    dotX += (mouseX - dotX) * dotEasing;
-                    dotY += (mouseY - dotY) * dotEasing;
-                    
-                    // Slower movement for outline
-                    const outlineEasing = 0.1;
-                    outlineX += (mouseX - outlineX) * outlineEasing;
-                    outlineY += (mouseY - outlineY) * outlineEasing;
-                    
-                    // Apply transforms directly (more efficient than GSAP for this purpose)
-                    cursorDot.style.transform = `translate3d(${outlineX}px, ${outlineY}px, 0) translate3d(-50%, -50%, 0)`;
-                    cursorOutline.style.transform = `translate3d(${outlineX}px, ${outlineY}px, 0) translate3d(-50%, -50%, 0)`;
-                    
-                    requestAnimationFrame(animateCursor);
-                }
-                
-                // Start the animation loop
-                requestAnimationFrame(animateCursor);
-                
-                // Hide cursor when leaving window
-                document.addEventListener('mouseleave', () => {
-                    gsap.to(cursorElements, {
-                        opacity: 0,
-                        duration: 0.3
-                    });
-                });
-                
-                document.addEventListener('mouseenter', () => {
-                    gsap.to(cursorElements, {
-                        opacity: 1,
-                        duration: 0.3
-                    });
-                });
-            } else if (cursorDot && cursorOutline) {
-                // Hide cursor elements on mobile/touch devices or smaller screens
-                cursorDot.style.display = 'none';
-                cursorOutline.style.display = 'none';
-            }
-
-            const hoverableElements = document.querySelectorAll('a, button, .gallery-item, .grid-gallery-item, .next-project-title, .keyword-item');
-            hoverableElements.forEach(el => {
-                el.addEventListener('mouseenter', () => {
-                    document.body.classList.add('cursor-hover');
-                    // Still use GSAP for hover effect as it's not called frequently
-                    if (cursorDot && cursorOutline) {
-                        gsap.to(cursorOutline, {
-                            scale: 1.5,
-                            duration: 0.3,
-                            ease: 'back.out(1.7)'
-                        });
-                    }
-                });
-                
-                el.addEventListener('mouseleave', () => {
-                    document.body.classList.remove('cursor-hover');
-                    if (cursorDot && cursorOutline) {
-                        gsap.to(cursorOutline, {
-                            scale: 1,
-                            duration: 0.3,
-                            ease: 'back.out(1.7)'
-                        });
-                    }
-                });
-            });
-        });
-	</script>
+    <!-- Scripts -->
+    <script src="ak-script.js"></script>
 </body>
 </html>
