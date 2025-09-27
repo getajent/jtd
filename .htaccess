@@ -5,12 +5,6 @@ RewriteEngine On
 RewriteCond %{THE_REQUEST} \s/([^.]+)\.html[\s?] [NC]
 RewriteRule ^ %1 [R=301,L]
 
-# 1b) Redirect single-segment URLs with trailing slash to non-slash form
-#     when a same-named .html exists (fixes broken relative asset paths)
-RewriteCond %{REQUEST_URI} ^/([A-Za-z0-9_-]+)/$ [NC]
-RewriteCond %{DOCUMENT_ROOT}/%1.html -f
-RewriteRule ^ %1 [R=301,L]
-
 # 2) Serve real files as-is (assets, images, etc.)
 RewriteCond %{REQUEST_FILENAME} -f
 RewriteRule ^ - [L]
