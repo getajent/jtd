@@ -535,12 +535,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Performance optimizations
 window.addEventListener('load', () => {
-    // Preload images for smooth experience
-    const images = document.querySelectorAll('img[src]');
-    images.forEach(img => {
-        const preload = new Image();
-        preload.src = img.src;
-    });
+    // Defer heavy work to keep first load snappy
 });
 
 // Accessibility support
