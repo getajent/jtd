@@ -1,0 +1,16 @@
+RewriteEngine On
+
+# Redirect direct requests for .html to extensionless URLs
+RewriteCond %{THE_REQUEST} \s/+(.+)\.html[\s?]
+RewriteRule ^ %1 [R=301,L]
+
+# If the request is for an actual file or directory, serve it as-is
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Internally rewrite extensionless URLs to their .html counterparts if they exist
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+)$ $1.html [L]
+
+
