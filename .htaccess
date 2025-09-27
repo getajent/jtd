@@ -1,23 +1,18 @@
+Options -MultiViews
 RewriteEngine On
 
-# 1) Redirect direct requests for .html to extensionless URLs
+# 1) Redirect direct requests for .html to extensionless URLs (canonicalization only)
 RewriteCond %{THE_REQUEST} \s/([^.]+)\.html[\s?] [NC]
 RewriteRule ^ %1 [R=301,L]
 
-# 2) If a URL ends with a trailing slash but a same-named .html exists at docroot,
-#    redirect to the extensionless, non-slash form (e.g., /dolle/ -> /dolle)
-RewriteCond %{REQUEST_URI} ^/([A-Za-z0-9_-]+)/$ [NC]
-RewriteCond %{DOCUMENT_ROOT}/%1.html -f
-RewriteRule ^ %1 [R=301,L]
-
-# 3) Serve real files and directories as-is (assets, images, etc.)
-RewriteCond %{REQUEST_FILENAME} -f [OR]
-RewriteCond %{REQUEST_FILENAME} -d
+# 2) Serve real files as-is (assets, images, etc.)
+RewriteCond %{REQUEST_FILENAME} -f
 RewriteRule ^ - [L]
 
-# 4) Internally rewrite extensionless, single-segment URLs to their .html counterparts
-#    Only match a single path segment with no dot to avoid catching assets like /dolle/back.png
+# 3) Internally rewrite single-segment URLs (with or without trailing slash)
+#    to their .html counterparts if such file exists. This avoids 403 and
+#    prevents slash/no-slash redirect loops when a same-named directory exists.
 RewriteCond %{REQUEST_FILENAME}.html -f
-RewriteRule ^([A-Za-z0-9_-]+)$ $1.html [L]
+RewriteRule ^([A-Za-z0-9_-]+)/?$ $1.html [L]
 
 
